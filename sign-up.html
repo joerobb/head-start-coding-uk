@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Head Start Coding</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <meta name="facebook-domain-verification" content="4eo5z0o3m8z6yroxmp3c1o4ngwxbaw" />
+
+
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '719206096806149');
+        fbq('track', 'PageView');
+    </script>
+
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=719206096806149&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
+</head>
+
+<body class="sign-up">
+    <div class="overlay" id="overlayCollapse"></div>
+    <div class="container-xxl container-intro-form" id="top">
+
+        <!-- Spinner Start -->
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+
+        <div id="mobile-indicator"></div>
+
+
+
+        <!-- Model and Courses -->
+        <div class="container-xxl">
+            <div class="container px-lg-5" id="model">
+                <div class="row g-5 align-items-center intro-container">
+                    <div id="fireworks-container"></div>
+                    
+                    <!-- Privacy Policy Modal -->
+                    <div id="privacy-modal" class="privacy-modal">
+                        <div class="privacy-modal-overlay"></div>
+                        <div class="privacy-modal-content">
+                            <div class="privacy-modal-header">
+                                <h2>Privacy Policy</h2>
+                                <span class="privacy-close">&times;</span>
+                            </div>
+                            <div class="privacy-modal-body">
+                                <h3>Information We Collect</h3>
+                                <p>We collect personal information that you voluntarily provide to us when you contact us about our coding courses, including:</p>
+                                <ul>
+                                    <li>Your name and contact details (email address, phone number)</li>
+                                    <li>Your child's name and age</li>
+                                    <li>Information about your child's interests and experience with technology</li>
+                                    <li>Any special requirements or preferences for lessons</li>
+                                </ul>
+
+                                <h3>How We Use Your Information</h3>
+                                <p>We use the information we collect to:</p>
+                                <ul>
+                                    <li>Provide information about our coding courses</li>
+                                    <li>Schedule and conduct coding lessons</li>
+                                    <li>Communicate with you about your child's progress</li>
+                                    <li>Send you updates about our services (with your consent)</li>
+                                    <li>Improve our educational programs</li>
+                                </ul>
+
+                                <h3>Information Sharing</h3>
+                                <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy. We may share information with:</p>
+                                <ul>
+                                    <li>Our qualified tutors for lesson delivery purposes</li>
+                                    <li>Service providers who assist us in operating our website and conducting our business</li>
+                                    <li>Law enforcement or regulatory authorities when required by law</li>
+                                </ul>
+
+                                <h3>Data Security</h3>
+                                <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+
+                                <h3>Your Rights</h3>
+                                <p>Under GDPR, you have the right to:</p>
+                                <ul>
+                                    <li>Access your personal data</li>
+                                    <li>Correct inaccurate personal data</li>
+                                    <li>Request deletion of your personal data</li>
+                                    <li>Object to processing of your personal data</li>
+                                    <li>Request data portability</li>
+                                    <li>Withdraw consent at any time</li>
+                                </ul>
+
+                                <h3>Contact Us</h3>
+                                <p>If you have any questions about this Privacy Policy, please contact us at hello@headstartcoding.co.uk</p>
+
+                                <div class="privacy-consent">
+                                    <label class="privacy-checkbox-container">
+                                        <input type="checkbox" id="privacy-agreement">
+                                        <span class="privacy-checkmark"></span>
+                                        I have read and agree to the Privacy Policy and consent to the collection and use of my personal information as described above.
+                                    </label>
+                                </div>
+
+                                <div class="privacy-modal-footer">
+                                    <button id="privacy-decline" class="privacy-btn privacy-btn-secondary">Decline</button>
+                                    <button id="privacy-accept" class="privacy-btn privacy-btn-primary" disabled>Accept & Continue</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Overlay -->
+                    <div class="modal-overlay">
+                    </div>
+
+                    <div class="col-lg-12 wow fadeInUp model-info" data-wow-delay="0.1s">
+                        <div class="model-container model-container-one">
+                            <div class="intro-box">
+                                <!-- Question Box -->
+                                <div class="question-box">
+                                    <h2 class="mb-4 model-sub-title current-question">
+                                        Do you have a child between the ages of 8 and 16 years old?
+                                    </h2>
+                                    <div class="yes-no-box">
+                                        <button class="trigger-yes trigger">Yes</button>
+                                        <button class="trigger-no trigger">No</button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Progress Bar -->
+                                <div class="form-progress-container">
+                                    <div class="form-progress-bar">
+                                        <div class="form-progress-fill" id="progressFill"></div>
+                                    </div>
+                                    <div class="form-progress-text">
+                                        <span id="progressText">Question 1 of 7</span>
+                                    </div>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal">
+                                    <span class="close-button hide">&times;</span>
+                                    <div class="col-lg-12 sign-up-wrapper g-5 align-items-center intro-center intro-display-none wow fadeInUp"
+                                        data-wow-delay="0.2s">
+                                        <!-- Answer Section 1 -->
+                                        <div class="col-lg-12 sign-up-wrapper intro-age wow hide a-1 fadeInUp" data-wow-delay="0.2s">
+                                            <p class="section-title text-secondary text-white">No time like the
+                                                present</p>
+                                            <h1 class="mb-5 text-white intro-title">Now is the best time to start coding!</h1>
+                                            <div class="skill mb-4">
+                                                <div class="d-flex justify-content-between">
+                                                    <p class="mb-2">Up to 8 years old</p>
+                                                    <p class="mb-2">10%</p>
+                                                </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-dark" role="progressbar"
+                                                        aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                            <div class="skill mb-4">
+                                                <div class="d-flex justify-content-between">
+                                                    <p class="mb-2">8 to 16 years</p>
+                                                    <p class="mb-2">60%</p>
+                                                </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-secondary" role="progressbar"
+                                                        aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                            <div class="skill mb-4">
+                                                <div class="d-flex justify-content-between">
+                                                    <p class="mb-2">16 to 24 years</p>
+                                                    <p class="mb-2">23%</p>
+                                                </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-dark" role="progressbar"
+                                                        aria-valuenow="23" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                            <div class="skill mb-4">
+                                                <div class="d-flex justify-content-between">
+                                                    <p class="mb-2">25 years plus</p>
+                                                    <p class="mb-2">7%</p>
+                                                </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-dark" role="progressbar"
+                                                        aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                            <p class="mb-4">
+                                                According to one global study, most professional developers wrote their
+                                                first line of code
+                                                between the ages of 8 and 17 years old. <br />
+                                                Around 70 percent of the developers surveyed started coding before
+                                                turning 18 years old. Starting with visual programming like Scratch at age 8 provides an excellent foundation!
+                                            </p>
+                                        </div>
+
+                                        <!-- Answer Section 2 -->
+
+                                        <div class="col-lg-12 sign-up-wrapper hide a-2 wow fadeInUp" data-wow-delay="0.2s">
+                                            <p class="section-title text-secondary text-white">Let's get
+                                                creative</p>
+                                            <h1 class="mb-5 text-white intro-title">Natural Problem Solvers</h1>
+                                            <div class="pixel-container">
+                                                <div class="pixel-grid">
+                                                    <!-- Pixelated Heart Shape -->
+                                                    <div></div>
+                                                    <div class="pixel" style="--delay: 0.1s"></div>
+                                                    <div class="pixel" style="--delay: 0.2s"></div>
+                                                    <div></div>
+                                                    <div class="pixel" style="--delay: 0.3s"></div>
+                                                    <div class="pixel" style="--delay: 0.4s"></div>
+                                                    <div></div>
+                                                    <!-- New Line -->
+                                                    <div class="pixel" style="--delay: 0.3s"></div>
+                                                    <div class="pixel" style="--delay: 0.4s"></div>
+                                                    <div class="pixel" style="--delay: 0.5s"></div>
+                                                    <div class="pixel" style="--delay: 0.6s"></div>
+                                                    <div class="pixel" style="--delay: 0.7s"></div>
+                                                    <div class="pixel" style="--delay: 0.8s"></div>
+                                                    <div class="pixel" style="--delay: 0.9s"></div>
+                                                    <!-- New Line -->
+                                                    <div class="pixel" style="--delay: 1s"></div>
+                                                    <div class="pixel" style="--delay: 1.1s"></div>
+                                                    <div class="pixel" style="--delay: 1.2s"></div>
+                                                    <div class="pixel" style="--delay: 1.3s"></div>
+                                                    <div class="pixel" style="--delay: 1.4s"></div>
+                                                    <div class="pixel" style="--delay: 1.5s"></div>
+                                                    <div class="pixel" style="--delay: 1.6s"></div>
+                                                    <!-- New Line -->
+                                                    <div></div>
+                                                    <div class="pixel" style="--delay: 1.5s"></div>
+                                                    <div class="pixel" style="--delay: 1.6s"></div>
+                                                    <div class="pixel" style="--delay: 1.7s"></div>
+                                                    <div class="pixel" style="--delay: 1.8s"></div>
+                                                    <div class="pixel" style="--delay: 1.9s"></div>
+                                                    <div></div>
+                                                    <!-- New Line -->
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div class="pixel" style="--delay: 2s"></div>
+                                                    <div class="pixel" style="--delay: 2.1s"></div>
+                                                    <div class="pixel" style="--delay: 2.2s"></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <!-- New Line -->
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div class="pixel" style="--delay: 2.3s"></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
+                                                <!-- <div class="message">Your coding journey starts here!</div> -->
+                                            </div>
+                                            <p class="mb-4">
+                                                Many young coders start their journey through gaming. Did you know that
+                                                Minecraft and Roblox both use real programming concepts? We'll build on
+                                                their gaming interest to teach actual coding skills.
+                                            </p>
+                                        </div>
+
+                                        <!-- Answer Section 3 -->
+
+                                        <div class="col-lg-12 sign-up-wrapper hide a-3 wow fadeInUp" data-wow-delay="0.1s">
+                                            <p class="section-title text-secondary text-white">Not just
+                                                coding</p>
+                                            <h1 class="mb-5 text-white intro-title">Skills for life</h1>
+                                            <div class="typewriter">
+                                                <h1>Welcome coders!</h1>
+                                              </div>
+                                            <p class="mb-4">
+                                                Great news! That existing keyboard confidence will give them a head
+                                                start. We'll help them apply those skills to create their own coding
+                                                projects.
+                                            </p>
+                                        </div>
+
+
+                                        <!-- Answer Section 4 -->
+
+                                        <div class="col-lg-12 sign-up-wrapper hide a-4 wow" data-wow-delay="0.5s">
+                                            <p class="section-title text-secondary text-white">The future is
+                                                bright</p>
+                                            <h1 class="mb-5 text-white intro-title">Job security in a digital world</h1>
+                                            <div class="col-md-6 intro-stats-container col-lg-3 text-center wow fadeIn" data-wow-delay="0.3s">
+                                                <i class="fa-solid fa-sterling-sign fa-3x text-secondary mb-3"></i>
+                                                <h1 class="text-white mb-2" data-toggle="counter-up">30000</h1>
+                                                <p class="text-white mb-0">Average junior developer salary (GBP)</p>
+                                            </div>
+                                            <div class="col-md-6 col-lg-3 intro-stats-container text-center wow fadeIn stat-box" data-wow-delay="0.5s">
+                                                <i class="fa fa-percentage fa-3x text-secondary mb-3"></i>
+                                                <h1 class="text-white mb-2" data-toggle="counter-up">30</h1>
+                                                <p class="text-white mb-0">Predicted increase in demand for 
+                                                programmers over the next 10 years</p>
+                                            </div>
+                                            <div class="col-md-6 col-lg-3 intro-stats-container text-center wow fadeIn stat-box" data-wow-delay="0.7s">
+                                                <i class="fa-regular fa-handshake fa-3x text-secondary mb-3"></i>
+                                                <h1 class="text-white mb-2" data-toggle="counter-up">4000</h1>
+                                                <p class="text-white mb-0">Number of coding jobs listed on sites like Linkedin every month</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Answer section 5 -->
+
+                                        <div class="col-lg-12 sign-up-wrapper hide a-5 wow fadeInUp" data-wow-delay="0.1s">
+                                            <p class="section-title text-secondary text-white">Introducing new skills</p>
+                                            <h1 class="mb-5 text-white intro-title">Flip the tiles below for more info!</h1>
+                                        
+                                            <!-- Scratch Flip Card -->
+                                            <div class="col-lg-4 col-md-6 wow fadeInUp service-item-container service-item-container-intro" data-wow-delay="0.1s">
+                                                <a class="btn btn-square" href="#">Flip<i class="fa-solid fa-share"></i></a>
+                                                <div class="flip-container">
+                                                    <div class="service-item d-flex flex-column text-center rounded flipper">
+                                                        <div class="front">
+                                                            <div class="service-icon flex-shrink-0">
+                                                                <i class="fa-solid fa-puzzle-piece fa-2x"></i>
+                                                            </div>
+                                                            <h5 class="mb-3">Scratch</h5>
+                                                            <p class="m-0">Visual programming perfect for young beginners.</p>
+                                                        </div>
+                                                        <div class="back">
+                                                            <h5 class="mb-3">Learn Scratch</h5>
+                                                            <p class="m-0">Perfect for ages 8+! Scratch is a visual programming language where kids drag and drop colorful blocks to create animations, stories, and games while learning core programming concepts.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                            <!-- Python Flip Card -->
+                                            <div class="col-lg-4 col-md-6 wow fadeInUp align-items-center service-item-container service-item-container-intro" data-wow-delay="0.2s">
+                                                <a class="btn btn-square" href="#">Flip<i class="fa-solid fa-share"></i></a>
+                                                <div class="flip-container">
+                                                    <div class="service-item d-flex flex-column text-center rounded flipper">
+                                                        <div class="front">
+                                                            <div class="service-icon flex-shrink-0">
+                                                                <i class="fa-brands fa-python fa-2x"></i>
+                                                            </div>
+                                                            <h5 class="mb-3">Python</h5>
+                                                            <p class="m-0">Code real games & apps. Solve real-world challenges.</p>
+                                                        </div>
+                                                        <div class="back">
+                                                            <h5 class="mb-3">Learn Python</h5>
+                                                            <p class="m-0">Python is a versatile language that introduces kids to coding in an engaging way. They'll learn how to create games, solve problems, and develop valuable skills for their future.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                            <!-- Web Development Flip Card -->
+                                            <div class="col-lg-4 col-md-6 wow fadeInUp service-item-container service-item-container-intro" data-wow-delay="0.3s">
+                                                <a class="btn btn-square" href="#">Flip<i class="fa-solid fa-share"></i></a>
+                                                <div class="flip-container">
+                                                    <div class="service-item d-flex flex-column text-center rounded flipper">
+                                                        <div class="front">
+                                                            <div class="service-icon flex-shrink-0">
+                                                                <i class="fa-solid fa-globe fa-2x"></i>
+                                                            </div>
+                                                            <h5 class="mb-3">Web Development</h5>
+                                                            <p class="m-0">Build interactive websites from scratch.</p>
+                                                        </div>
+                                                        <div class="back">
+                                                            <h5 class="mb-3">Web Development</h5>
+                                                            <p class="m-0">Master the complete web development toolkit! Learn HTML for structure, CSS for styling, and JavaScript for interactivity. Create websites that look amazing and work perfectly!</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Answer section 6 -->
+
+                                        <div class="col-lg-12 sign-up-wrapper hide a-6 wow fadeInUp testimonial-section" data-wow-delay="0.1s">
+                                            <p class="section-title text-secondary text-white">Positive feedback</p>
+                                            <h1 class="mb-5 text-white intro-title">Real testimonials from happy parents</h1>
+                                        
+                                            <div class="testimonial-container">
+                                                <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                        
+                                                <div class="testimonial-slider">
+                                                    <div class="testimonial active">
+                                                        <p>"My sons have both just completed Joe's Level 1 HTML & CSS course. They thoroughly enjoyed the fun and interactive lessons. We would definitely recommend Joe and look forward to enrolling in his next course."</p>
+                                                        <h5>- Louise.</h5>
+                                                    </div>
+                                                    <div class="testimonial">
+                                                        <p>"My son loves his coding lessons with Joe! In future he wants to learn how to code games."</p>
+                                                        <h5>- Esther.</h5>
+                                                    </div>
+                                                    <div class="testimonial">
+                                                        <p>"My daughter enjoys the challenges and fun of coding! So far flexbox and gradients have been her favourite subjects."</p>
+                                                        <h5>- Sorayuh.</h5>
+                                                    </div>
+                                                </div>
+                                        
+                                                <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                                            </div>
+                                        
+                                            <div class="dots-container"></div>
+                                        </div>
+
+                                        <!-- CTA Section-->
+
+                                        <div class="cta-section sign-up-wrapper col-lg-12 hide a-7 wow fadeInUp">
+                                            <p class="section-title text-secondary text-white">Let's get started!</p>
+                                            <h1 class="mb-5 text-white intro-title">Give Your Child a Head Start in Coding!</h1>
+                                            <p class="cta-subtext">Choose your preferred way to get in touch below. Please include your child's name, age and what they're interested in (gaming, art, etc.), and we'll help you find the perfect coding programme for them, plus book a free taster session. We're also happy to answer any questions about pricing, lesson times, or what to expect in their first lesson.</p>
+                                            <div class="cta-links">
+                                            <!-- <a href="https://calendly.com/headstartcodingteam/30min" target="_blank" class="cta-button trigger trigger-email">Book taster session</a> -->
+                                            <a href="mailto:hello@headstartcoding.co.uk?subject=Interest%20in%20Coding%20Lessons" target="_blank" class="btn trigger trigger-email privacy-contact-link" data-contact-type="email">Email Us</a>
+                                            <a href="https://wa.me/+447572592298?text=Hi!%20I'm%20interested%20in%20your%20coding%20courses!" target="_blank" class="btn trigger trigger-email privacy-contact-link" data-contact-type="whatsapp">Message Us on WhatsApp</a>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- No answers -->
+
+                                        <div class="col-lg-12 sign-up-wrapper hide no-1" data-wow-delay="0.1s">
+                                            <p class="section-title text-secondary text-white">Forward
+                                                thinking<span></span></p>
+                                            <h1 class="mb-5 text-white">Never say never</h1>
+                                            <p class="mb-4">
+                                                Unfortunately our courses are for children aged between 8 and 16 years
+                                                old. If your child is
+                                                nearly this age, or you know somebody else who may enjoy learning how to
+                                                code, feel free to send
+                                                us an email.
+                                            </p>
+                                        </div>
+
+                                        <div class="col-lg-12 sign-up-wrapper hide no-2" data-wow-delay="0.1s">
+                                            <p class="section-title text-secondary text-white">Open to all<span></span>
+                                            </p>
+                                            <h1 class="mb-5 text-white">Coders come from many backgrounds</h1>
+                                            <p class="mb-4">
+                                                That's completely fine! While many kids come to coding through gaming,
+                                                others are drawn to it through different interests like art, music, or
+                                                problem-solving. Our courses appeal to all types of learners.
+                                            </p>
+                                        </div>
+
+                                        <div class="col-lg-12 sign-up-wrapper hide no-3" data-wow-delay="0.1s">
+                                            <p class="section-title text-secondary text-white">Let's Learn new
+                                                skills<span></span></p>
+                                            <h1 class="mb-5 text-white">Let's start from scratch!</h1>
+                                            <p class="mb-4">
+                                                Don't worry! We start with the basics and gradually build up typing
+                                                skills alongside coding concepts. Students will learn valuable skills
+                                                such as keyboard shortcuts.
+                                            </p>
+                                        </div>
+
+                                        <div class="col-lg-12 sign-up-wrapper hide no-4" data-wow-delay="0.1s">
+                                            <p class="section-title text-secondary text-white">Lifetime
+                                                benefits<span></span></p>
+                                            <h1 class="mb-5 text-white">Skills in more than just coding</h1>
+                                            <p class="mb-4">
+                                                That's okay! We can focus instead on how coding develops valuable skills
+                                                like logical thinking, creativity, and problem-solving that benefit
+                                                students in any future path they choose.
+                                            </p>
+                                        </div>
+
+                                        <div class="col-lg-12 sign-up-wrapper hide no-5" data-wow-delay="0.1s">
+                                            <p class="section-title text-secondary text-white">Let's move
+                                                on<span></span></p>
+                                            <h1 class="mb-5 text-white">Next steps</h1>
+                                            <p class="mb-4">
+                                                Take your time to review our other information first. The course details
+                                                will be here when you're ready to learn more.
+                                            </p>
+                                        </div>
+
+                                        <!-- Next Button -->
+                                        <button class="trigger trigger-next fadeInUp wow"
+                                            data-wow-delay="0.2s">Next</button>
+
+                                            <!-- <div class="progress-dots"></div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- The Course End -->
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@latest/dist/index.umd.js"></script>
+
+
+
+
+
+    <!-- Main Javascript File -->
+    <script src="js/sign-up.js"></script>
+</body>
+
+</html>

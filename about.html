@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Head Start Coding</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <meta name="facebook-domain-verification" content="4eo5z0o3m8z6yroxmp3c1o4ngwxbaw" />
+
+        
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '719206096806149');
+        fbq('track', 'PageView');
+    </script>
+
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=719206096806149&ev=PageView&noscript=1"
+        /></noscript>
+        <!-- End Meta Pixel Code -->
+</head>
+
+<body>
+    <div class="overlay" id="overlayCollapse"></div>
+    <div class="container-xxl bg-white p-0 homepage" id="top">
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        
+
+        <div id="mobile-indicator"></div>
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <ul class="logos">
+                    <li class="logo-mobile"><a href="" class="navbar-brand p-0 logo-mobile">
+                        <img src="img/logos/Icon_White.svg" class="logo-mobile" alt="Logo">
+                    </a></li>
+                    <li class="logo-white"><a href="" class="navbar-brand p-0 logo-white">
+                        <img src="img/logos/Logo_FullLong_White.png" class="logo-white" alt="Logo">
+                    </a></li>
+                    <li class="logo-color"><a href="" class="navbar-brand p-0 logo-color">
+                        <img src="img/logos/Icon_Purple.svg" class="logo-color" alt="Logo">
+                    </a></li>
+                    <li class="logo-color-text"><a href="" class="navbar-brand p-0 logo-color-text">
+                        <img src="img/logos/Logo_TextLong_Purple.png" class="logo-color-text" alt="Logo">
+                    </a></li>
+                </ul>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <button class="navbar-close" type="button">
+                    <span class="fa fa-close"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav mx-auto py-0">
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="#model" class="nav-item nav-link">About Us</a>
+                        <a href="#courses" class="nav-item nav-link">Courses</a>
+                        <a href="#why" class="nav-item nav-link">Why Coding?</a>
+                        <a href="#contact" class="nav-item nav-link">Contact Us</a>
+                    </div>
+                    <a href="#contact" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get Started</a>
+                </div>
+            </nav>
+
+            <div class="container-xxl bg-primary hero-header">
+                <div class="container px-lg-5">
+                    <div class="row g-5 align-items-center">
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <h1 class="text-white mb-4 animated slideInDown letter-spacing">Professional and experienced tutors</h1>
+                            <p class="text-white pb-3 animated slideInDown">"Teaching kids to code is just as important as teaching them any other language and the earlier they start learning it, the better" <br />Tim Cook, CEO Apple</p>
+                            <a href="#model" class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Learn More</a>
+                            <a href="#contact" class="btn btn-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a>
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <img class="img-fluid animated zoomIn gallery-img" src="img/gallery.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+         <!-- Model and Courses -->
+         <div class="container-xxl">
+            <div class="container px-lg-5" id="model">
+                <div class="wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="section-title text-secondary justify-content-center"><span></span>How it works<span></span></p>
+                    <h1 class="text-center mb-5 model-img-title">About Us</h1>
+                </div>
+                <div class="row g-5 align-items-center course-container">
+                    <div class="modal-overlay"></div>
+                    <div class="col-lg-8 model-img-container">
+                        <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="img/group-learning.jpg">
+                    </div>
+                    <div class="col-lg-4 wow fadeInUp model-info" data-wow-delay="0.1s">
+                        <div class="model-container model-container-one">
+                            <h5 class="mb-4 model-sub-title">Online learning with a quality tutor</h5>
+                            <button class="trigger"><i class="fa-solid fa-circle-info"></i></button>
+                            <div class="modal">
+                                <span class="close-button">&times;</span>
+                                <h5>Professional Tuition</h5>
+                               <ul class="course-list">
+                                    <li>Quality Instructors: Our tutors make coding fun and easy to learn.</li> 
+                                    <li>Critical Thinking: We help students to develop excellent problem-solving skills.</li>
+                                    <li>Real-world Skills: Our instructors use their wealth of industry experience to help students learn needed skills for future success.</lil>
+                                    <li>Unlocking Potential: Every student is helped to build confidence and reach their full potential.</li>
+                               </ul>
+                            </div>
+                        </div>
+                        <div class="model-container">
+                            <h5 class="mb-4 model-sub-title">12 week interactive programme</h5>
+                            <button class="trigger"><i class="fa-solid fa-circle-info"></i></button>
+                            <div class="modal">
+                                <span class="close-button">&times;</span>
+                                <h5>Hands-on Learning</h5>
+                                <ul class="course-list">
+                                    <li>Each of our courses spans 12 weeks to ensure full understanding of course material.</li> 
+                                    <li>Two 45-minute lessons per week in small, supportive groups.</lil>
+                                    <li>Collaborative learning to foster teamwork, creativity, and support among students.</li>
+                                    <li>Weekly coding challenges and creative projects to build a fantastic portfolio.</li>
+                               </ul>
+                            </div> 
+                        </div>
+                        <div class="model-container">
+                            <h5 class="mb-4 model-sub-title">Learn how to use AI</h5>
+                            <button class="trigger"><i class="fa-solid fa-circle-info"></i></button>
+                            <div class="modal">
+                                <span class="close-button">&times;</span>
+                                <h5>Unleash AI</h5>
+                                <p>Our coding lessons go beyond the ordinary by introducing students to the incredible world of AI-driven problem-solving.<br/><br/>
+                                   Alongside learning how to code, students will discover how to harness the power of artificial intelligence to debug, optimize, and streamline their code.<br/><br/>
+                                   This innovative approach equips them with valuable skills to tackle real-world challenges in the ever-evolving tech landscape.<br/><br/>
+                                   With AI on their side, students become proficient not only in coding but also in leveraging cutting-edge technology to become agile problem solvers.</p>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4" id="courses">
+                    <div class="wow fadeInUp" data-wow-delay="0.1s">
+                        <p class="section-title text-primary justify-content-left">Introductory Course<span></span></p>
+                        <h1 class="text-left mb-5">Beginner HTML and CSS</h1>
+                        <p class="course-desc">If you want to create incredible websites and apps, you'll need two key programming languages: HTML and CSS.
+                             This course covers the basics of both languages and introduces you to using AI for coding assistance.</p>
+                        <p class="course-bold">Flip the tiles below to see the skills you will gain by the end of the course.</p>
+                    </div>
+                        
+                            <div class="col-lg-4 col-md-6 wow fadeInUp service-item-container" data-wow-delay="0.1s">
+                                <a class="btn btn-square" href="#">Flip<i class="fa-solid fa-share"></i></a>
+                                <div class="flip-container">
+                                    <div class="service-item d-flex flex-column text-center rounded flipper">
+                                        <div class="front">
+                                            <div class="service-icon flex-shrink-0">
+                                                <i class="fa-brands fa-html5 fa-2x"></i>
+                                            </div>
+                                            <h5 class="mb-3">HTML</h5>
+                                            <p class="m-0">The building blocks of all web pages.</p>
+                                        </div>
+                                        <div class="back">
+                                            <h5 class="mb-3">HyperText Markup Language</h5>
+                                            <p class="m-0">Headings, paragraphs, images, forms and links - HTML is the code that is used to build a web page and it's content.
+                                                In this course you will learn how to create all of the elements needed to structure a basic web page.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 wow fadeInUp service-item-container" data-wow-delay="0.1s">
+                                <a class="btn btn-square" href="#">Flip<i class="fa-solid fa-share"></i></a>
+                                <div class="flip-container">
+                                    <div class="service-item d-flex flex-column text-center rounded flipper">
+                                        <div class="front">
+                                            <div class="service-icon flex-shrink-0">
+                                                <i class="fa-brands fa-css3 fa-2x"></i>
+                                            </div>
+                                            <h5 class="mb-3">CSS</h5>
+                                            <p class="m-0">Make your website beautiful.</p>
+                                        </div>
+                                        <div class="back">
+                                            <h5 class="mb-3">Cascading Style Sheets</h5>
+                                            <p class="m-0">CSS is used for styling and laying out webpages. 
+                                                It is used to adjust content size, spacing, 
+                                                colour and font. In this course you will learn how to style and lay out a web page to make it look fantastic.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 wow fadeInUp service-item-container" data-wow-delay="0.1s">
+                                <a class="btn btn-square" href="#">Flip<i class="fa-solid fa-share"></i></a>
+                                <div class="flip-container">
+                                    <div class="service-item d-flex flex-column text-center rounded flipper">
+                                        <div class="front">
+                                            <div class="service-icon flex-shrink-0">
+                                                <i class="fa-solid fa-rocket fa-2x"></i></i>
+                                            </div>
+                                            <h5 class="mb-3">AI Assisted Learning</h5>
+                                            <p class="m-0">The future is now.</p>
+                                        </div>
+                                        <div class="back">
+                                            <h5 class="mb-3">AI Guidance</h5>
+                                            <p class="m-0"> AI is an essential new skill for new developers.
+                                                Here you will learn how to use it to boost your coding, automate routine tasks, and troubleshoot issues.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <p class="section-title text-secondary justify-content-left">More Courses<span></span></p>
+                        <div class="courses-container">
+                            <div class="course-info">
+                                <h5 class="mb-4 model-sub-title">Introducing JavaScript</h5>
+                                <p>In this course, you will learn the essentials of JavaScript, 
+                                    enabling you to build interactive web applications and bring your coding ideas to life.</p>
+                            </div>
+                            
+                            <i class="fa-brands fa-js"></i>
+                        </div>
+                        <div class="courses-container">
+                            <div class="course-info">
+                            <h5 class="mb-4 model-sub-title">Intermediate HTML and CSS</h5>
+                            <p>Take your web development skills to the next level with our 'Intermediate HTML and CSS' course, 
+                                where you'll refine your design and coding abilities for creating sophisticated, responsive websites.</p>
+                            </div>
+                            <i class="fa-brands fa-html5"></i>
+                            <i class="fa-brands fa-css3"></i>
+                        </div>
+                        <div class="courses-container">
+                            <div class="course-info">
+                            <h5 class="mb-4 model-sub-title">Python Basics</h5>
+                            <p>Start from the ground up with our 'Python Basics' course,
+                                 designed to instill the core principles of this versatile and user-friendly programming language.</p>
+                            </div>
+                            <i class="fa-brands fa-python"></i>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!-- The Course End -->
+
+                <!-- Why Start -->
+                <div id="why" class="container-xxl why-container bg-primary fact py-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="container py-2 px-lg-5">
+                        <div class="row g-4">
+                            <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.1s">
+                                <p class="section-title text-secondary-light">The Future's Bright<span></span></p>
+                                <h1 class="mb-5">Why should I learn how to code?</h1>
+                            </div>
+                            <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.3s">
+                                <i class="fa-solid fa-sterling-sign fa-3x text-secondary mb-3"></i>
+                                <h1 class="text-white mb-2" data-toggle="counter-up">30000</h1>
+                                <p class="text-white mb-0">Average Junior Web Developer salary (GBP)</p>
+                            </div>
+                            <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.7s">
+                                <i class="fa fa-percentage fa-3x text-secondary mb-3"></i>
+                                <h1 class="text-white mb-2" data-toggle="counter-up">30</h1>
+                                <p class="text-white mb-0">Predicted increase in demand for Web Developers over the next 10 years</p>
+                            </div>
+                            <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.5s">
+                                <i class="fa-regular fa-handshake fa-3x text-secondary mb-3"></i>
+                                <h1 class="text-white mb-2" data-toggle="counter-up">4000</h1>
+                                <p class="text-white mb-0">Jobs for Web Developers listed on sites like Indeed every month</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Why End -->
+
+
+        <!-- When -->
+        <div class="container-xxl py-1" id="when">
+            <div class="container py-1 px-lg-5">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <p class="section-title text-secondary">The time is now<span></span></p>
+                        <h1 class="mb-5">When should I begin learning?</h1>
+                        <div class="skill mb-4">
+                            <div class="d-flex justify-content-between">
+                                <p class="mb-2">Up to 10 years old</p>
+                                <p class="mb-2">15%</p>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="skill mb-4">
+                            <div class="d-flex justify-content-between">
+                                <p class="mb-2">11 to 17 years</p>
+                                <p class="mb-2">55%</p>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="skill mb-4">
+                            <div class="d-flex justify-content-between">
+                                <p class="mb-2">18 to 24 years</p>
+                                <p class="mb-2">23%</p>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="skill mb-4">
+                            <div class="d-flex justify-content-between">
+                                <p class="mb-2">25 years plus</p>
+                                <p class="mb-2">7%</p>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <p class="mb-4">Statista Research Department surveyed developers globally to find out how old they were when they wrote their first line of code. Most started
+                            between the ages of 11 and 17 years. The study shows that around 70 percent of developers start coding before turning 18 years old.</p>
+                        <!-- <a href="" class="btn btn-primary py-sm-3 px-sm-5 rounded-pill mt-3">Read More</a> -->
+                    </div>
+                    <div class="col-lg-6 age-image">
+                        <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="img/age.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+
+        <!-- FAQ -->
+        <div class="container-xxl py-1" id="faq">
+            <div class="container py-1 px-lg-5">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.1s">
+                        <p class="section-title text-primary text-center"><span></span>Frequently Asked Questions<span></span></p>
+                        <h1 class="mb-5">FAQs</h1>
+                    
+                            <h4 clas="question text-primary">What will I need for the course?</h4>
+                            <p class="mb-4 answer">Ideally two devices such as a laptop and an iPad to allow you to follow the tutor on 
+                                one screen and write your code on the other. However, one large screen split down the middle will also be fine. We will help you get everything set up for the course.</p>
+                      
+                        <h4 clas="question text-primary">I'm a parent, how can I track my child's progress?</h4>
+                        <p class="mb-4 answer">Our courses are "project based" meaning that your child will develop a portfolio of accomplishments 
+                            to demonstrate their progress.</p>
+
+                        <h4 clas="question text-primary">What if I miss a lesson?</h4>
+                        <p class="mb-4 answer">Lesson recordings can be provided if a student was to miss a lesson.</p>
+                 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-primary text-light footer wow fadeIn" data-wow-delay="0.1s" id="contact">
+            <div class="container py-5 px-lg-5">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-3">
+                        <p class="section-title text-white h5 mb-4">Contact Us<span></span></p>
+                        <!-- <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p> -->
+                        <p class="text-white"><i class="fa fa-phone-alt me-3"></i>	
+                            <a class="mobile-number" href="tel:+447977196793">+44 7977 196 793</a></p>
+                        <p class="text-white"><i class="fa fa-envelope me-3"></i><a href="mailto:hello@headstartcoding.co.uk" class="text-white">hello@headstartcoding.co.uk</a></p>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <!-- <p class="section-title text-white h5 mb-4">Quick Link<span></span></p> -->
+                        <a href="#model" class="btn btn-link">About Us</a>
+                        <a href="#courses" class="btn btn-link">Courses</a>
+                        <a href="#why" class="btn btn-link">Why Coding?</a>
+                        <!-- <a class="btn btn-link" href="">Privacy Policy</a> -->
+                        <!-- <a class="btn btn-link" href="">Terms & Condition</a>
+                        <a class="btn btn-link" href="">Career</a> -->
+                    </div>
+                </div>
+            </div>
+            <div class="container px-lg-5">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#">Head Start Coding</a>, All Right Reserved. 
+														Designed By HSC with <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a><br />
+                                                        <a href="https://lovepik.com/images/png-developer.html">Vectors by Lovepik.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
+
+
+
+
+    <!-- Main Javascript File -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
+
+
+
