@@ -32,14 +32,23 @@
     // Show privacy modal when contact links are clicked
     privacyContactLinks.on('click', function(e) {
         e.preventDefault();
-        const link = $(this);
-        const contactType = link.data('contact-type');
+        const element = $(this);
+        const contactType = element.data('contact-type');
         
-        // Store the pending action
-        pendingContactAction = {
-            url: link.attr('href'),
-            type: contactType
-        };
+        // Handle different types of contact actions
+        if (contactType === 'form') {
+            // Store the form element for submission
+            pendingContactAction = {
+                form: element.closest('form')[0],
+                type: contactType
+            };
+        } else {
+            // Store the URL for email/whatsapp links
+            pendingContactAction = {
+                url: element.attr('href'),
+                type: contactType
+            };
+        }
         
         // Show privacy modal
         privacyModal.fadeIn(300);
@@ -62,9 +71,15 @@
             // Close modal
             privacyModal.fadeOut(300);
             
-            // Open the contact link after a brief delay
+            // Handle the action after a brief delay
             setTimeout(() => {
-                window.open(pendingContactAction.url, '_blank');
+                if (pendingContactAction.type === 'form') {
+                    // Submit the form
+                    pendingContactAction.form.submit();
+                } else {
+                    // Open the contact link
+                    window.open(pendingContactAction.url, '_blank');
+                }
                 pendingContactAction = null;
             }, 300);
         }
@@ -109,8 +124,15 @@
             if (consentTimestamp > twelveMonthsAgo) {
                 // Consent is still valid, allow direct contact
                 privacyContactLinks.off('click').on('click', function(e) {
-                    // Don't prevent default, allow normal link behavior
-                    return true;
+                    const contactType = $(this).data('contact-type');
+                    
+                    if (contactType === 'form') {
+                        // For forms, allow normal submission
+                        return true;
+                    } else {
+                        // For links, allow normal behavior
+                        return true;
+                    }
                 });
             }
         }
