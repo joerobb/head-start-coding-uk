@@ -111,6 +111,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
         }
 
         .course-description {
@@ -118,7 +119,6 @@
             margin-bottom: 25px;
             line-height: 1.6;
             font-size: 1rem;
-            flex: 1;
         }
 
         .course-tags {
@@ -233,6 +233,43 @@
                 width: 350px;
                 height: 350px;
                 border-width: 8px;
+            }
+        }
+
+        .course-cta {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .learn-more {
+            color: #666;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .course-card:hover .learn-more {
+            color: #6222CC;
+            transform: translateX(5px);
+        }
+
+        .course-card:hover .learn-more i {
+            transform: translateX(3px);
+        }
+
+        /* Mobile Hero Spacing Fix */
+        @media (max-width: 767.98px) {
+            .hero-header .container {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+            .hero-header .col-lg-6 {
+                padding-left: 15px;
+                padding-right: 15px;
             }
         }
     </style>
@@ -382,6 +419,9 @@
                                     <span class="course-tag">Ages 8-10</span>
                                     <span class="course-tag">Visual Programming</span>
                                 </div>
+                                <div class="course-cta mt-3">
+                                    <span class="learn-more">Learn More <i class="fas fa-arrow-right"></i></span>
+                                </div>
                             </div>
                         </a>
                     </div>
@@ -405,6 +445,9 @@
                                 <div class="course-tags">
                                     <span class="course-tag">Ages 10+</span>
                                     <span class="course-tag">Programming Language</span>
+                                </div>
+                                <div class="course-cta mt-3">
+                                    <span class="learn-more">Learn More <i class="fas fa-arrow-right"></i></span>
                                 </div>
                             </div>
                         </a>
@@ -430,6 +473,9 @@
                                     <span class="course-tag">Ages 10+</span>
                                     <span class="course-tag">Web Development</span>
                                 </div>
+                                <div class="course-cta mt-3">
+                                    <span class="learn-more">Learn More <i class="fas fa-arrow-right"></i></span>
+                                </div>
                             </div>
                         </a>
                     </div>
@@ -454,6 +500,9 @@
                                     <span class="course-tag">Ages 11+</span>
                                     <span class="course-tag">Web Programming</span>
                                 </div>
+                                <div class="course-cta mt-3">
+                                    <span class="learn-more">Learn More <i class="fas fa-arrow-right"></i></span>
+                                </div>
                             </div>
                         </a>
                     </div>
@@ -477,6 +526,9 @@
                                 <div class="course-tags">
                                     <span class="course-tag">Ages 8+</span>
                                     <span class="course-tag">Design & Making</span>
+                                </div>
+                                <div class="course-cta mt-3">
+                                    <span class="learn-more">Learn More <i class="fas fa-arrow-right"></i></span>
                                 </div>
                             </div>
                         </a>
