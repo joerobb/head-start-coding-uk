@@ -193,7 +193,25 @@
     });
 
 
-    $nav.on("click", function() {
+    $nav.on("click", function(event) {
+        // Get click position for animation
+        var x = event.pageX || window.innerWidth / 2;
+        var y = event.pageY || window.innerHeight / 2;
+      
+        // Animate overlay out
+        anime({
+          targets: $overlay[0],
+          clipPath: ['circle(100% at ' + x + 'px ' + y + 'px)', 'circle(0% at ' + x + 'px ' + y + 'px)'],
+          duration: 500,
+          easing: 'linear',
+          complete: function() {
+            $overlay.hide();
+          }
+        });
+      
+        // Hide mobile menu elements
+        $navbarCollapse.removeClass('show');
+        $navbarClose.hide();
         $navbarToggler.show();
     });
 
