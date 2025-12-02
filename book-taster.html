@@ -175,29 +175,270 @@
             width: 20px;
         }
 
-        .calendar-container {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 30px;
-            margin-top: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        .calendar-btn {
+            background: linear-gradient(135deg, #6222CC 0%, #8B5CF6 100%);
+            border: none;
+            color: white !important;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 18px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(98, 34, 204, 0.3);
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
 
-        .calendar-wrapper {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        .calendar-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(98, 34, 204, 0.4);
+            color: white !important;
+            text-decoration: none;
+        }
+
+        .calendar-button-container {
+            padding: 20px 0;
         }
 
         @media (max-width: 768px) {
-            .calendar-container {
-                padding: 20px;
-                margin-top: 20px;
+            .calendar-btn {
+                padding: 15px 30px;
+                font-size: 16px;
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Privacy Policy Modal Styles */
+        .privacy-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+        }
+
+        .privacy-modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .privacy-modal-content {
+            position: relative;
+            background: #ffffff;
+            margin: 2% auto;
+            padding: 0;
+            border-radius: 20px;
+            max-width: 800px;
+            max-height: 90vh;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.4s ease-out;
+            overflow: hidden;
+        }
+
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-50px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .privacy-modal-header {
+            background: linear-gradient(135deg, #6222CC 0%, #8B5CF6 100%);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .privacy-modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .privacy-close {
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
+        }
+
+        .privacy-close:hover {
+            color: white;
+        }
+
+        .privacy-modal-body {
+            padding: 30px;
+            max-height: calc(90vh - 180px);
+            overflow-y: auto;
+        }
+
+        .privacy-modal-body h3 {
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 8px;
+        }
+
+        .privacy-modal-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .privacy-modal-body p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .privacy-modal-body ul {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .privacy-modal-body li {
+            margin-bottom: 8px;
+        }
+
+        .privacy-consent {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0 20px 0;
+            border-left: 4px solid #6222CC;
+        }
+
+        .privacy-checkbox-container {
+            display: flex;
+            align-items: flex-start;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .privacy-checkbox-container input {
+            display: none;
+        }
+
+        .privacy-checkmark {
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            margin-right: 12px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .privacy-checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .privacy-checkbox-container input:checked ~ .privacy-checkmark {
+            background-color: #6222CC;
+            border-color: #6222CC;
+        }
+
+        .privacy-checkbox-container input:checked ~ .privacy-checkmark:after {
+            display: block;
+        }
+
+        .privacy-modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .privacy-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .privacy-btn-secondary {
+            background: #f8f9fa;
+            color: #666;
+            border: 2px solid #dee2e6;
+        }
+
+        .privacy-btn-secondary:hover {
+            background: #e9ecef;
+            border-color: #adb5bd;
+        }
+
+        .privacy-btn-primary {
+            background: linear-gradient(135deg, #6222CC 0%, #8B5CF6 100%);
+            color: white;
+        }
+
+        .privacy-btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(98, 34, 204, 0.3);
+        }
+
+        .privacy-btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .privacy-modal-content {
+                margin: 5% 10px;
+                max-height: 85vh;
             }
             
-            .calendar-wrapper iframe {
-                height: 500px;
+            .privacy-modal-header {
+                padding: 20px;
+            }
+            
+            .privacy-modal-body {
+                padding: 20px;
+                max-height: calc(85vh - 140px);
+            }
+            
+            .privacy-modal-footer {
+                flex-direction: column;
+            }
+            
+            .privacy-btn {
+                width: 100%;
             }
         }
     </style>
@@ -279,6 +520,75 @@
         </div>
         <!-- Hero Section End -->
 
+        <!-- Privacy Policy Modal -->
+        <div id="privacy-modal" class="privacy-modal">
+            <div class="privacy-modal-overlay"></div>
+            <div class="privacy-modal-content">
+                <div class="privacy-modal-header">
+                    <h2>Privacy Policy</h2>
+                    <span class="privacy-close">&times;</span>
+                </div>
+                <div class="privacy-modal-body">
+                    <h3>Information We Collect</h3>
+                    <p>We collect personal information that you voluntarily provide to us when you contact us about our coding courses, including:</p>
+                    <ul>
+                        <li>Your name and contact details (email address, phone number)</li>
+                        <li>Your child's name and age</li>
+                        <li>Information about your child's interests and experience with technology</li>
+                        <li>Any special requirements or preferences for lessons</li>
+                    </ul>
+
+                    <h3>How We Use Your Information</h3>
+                    <p>We use the information we collect to:</p>
+                    <ul>
+                        <li>Provide information about our coding courses</li>
+                        <li>Schedule and conduct coding lessons</li>
+                        <li>Communicate with you about your child's progress</li>
+                        <li>Send you updates about our services (with your consent)</li>
+                        <li>Improve our educational programs</li>
+                    </ul>
+
+                    <h3>Information Sharing</h3>
+                    <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy. We may share information with:</p>
+                    <ul>
+                        <li>Our qualified tutors for lesson delivery purposes</li>
+                        <li>Service providers who assist us in operating our website and conducting our business</li>
+                        <li>Law enforcement or regulatory authorities when required by law</li>
+                    </ul>
+
+                    <h3>Data Security</h3>
+                    <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+
+                    <h3>Your Rights</h3>
+                    <p>Under GDPR, you have the right to:</p>
+                    <ul>
+                        <li>Access your personal data</li>
+                        <li>Correct inaccurate personal data</li>
+                        <li>Request deletion of your personal data</li>
+                        <li>Object to processing of your personal data</li>
+                        <li>Request data portability</li>
+                        <li>Withdraw consent at any time</li>
+                    </ul>
+
+                    <h3>Contact Us</h3>
+                    <p>If you have any questions about this Privacy Policy, please contact us at hello@headstartcoding.co.uk</p>
+
+                    <div class="privacy-consent">
+                        <label class="privacy-checkbox-container">
+                            <input type="checkbox" id="privacy-agreement">
+                            <span class="privacy-checkmark"></span>
+                            I have read and agree to the Privacy Policy and consent to the collection and use of my personal information as described above.
+                        </label>
+                    </div>
+
+                    <div class="privacy-modal-footer">
+                        <button id="privacy-decline" class="privacy-btn privacy-btn-secondary">Decline</button>
+                        <button id="privacy-accept" class="privacy-btn privacy-btn-primary" disabled>Accept & Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Form Section Start -->
         <div class="container-xxl py-5">
             <div class="container px-lg-5">
@@ -312,23 +622,16 @@
 
                             <!-- Success Message -->
                             <div class="success-message" id="successMessage">
-                                <h5><i class="fas fa-check-circle me-2"></i>Booking Successful!</h5>
-                                <p class="mb-0">Thank you for booking a taster session! Now choose your preferred time slot below:</p>
-                            </div>
-
-                            <!-- Calendar Scheduler -->
-                            <div class="calendar-container" id="calendarContainer" style="display: none;">
-                                <div class="text-center mb-4">
-                                    <h4 class="text-primary"><i class="fas fa-calendar-check me-2"></i>Step 2: Choose Your Session Time</h4>
-                                    <p class="text-muted">Select a convenient time slot for your free 30-minute taster session</p>
-                                </div>
-                                <div class="calendar-wrapper">
-                                    <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1WbsAGsyAtS0jYCTA2pV60xKn_RlJtz-Na3DCVnOJI3Yg7ApR9-pd4KTdY8yHGQWI1lQ7q9S1E?gv=true" 
-                                            style="border: 0; border-radius: 10px;" 
-                                            width="100%" 
-                                            height="600" 
-                                            frameborder="0">
-                                    </iframe>
+                                <h5><i class="fas fa-check-circle me-2"></i>Details Received!</h5>
+                                <p class="mb-0">Thank you for your interest! Now let's find the perfect time for your child's taster session.</p>
+                                
+                                <!-- Calendar Button -->
+                                <div class="calendar-button-container text-center mt-4">
+                                    <a href="https://calendar.app.google/1u1P4sUKAf2WWSqE9" target="_blank" class="btn calendar-btn">
+                                        <i class="fas fa-calendar-check me-2"></i>
+                                        Choose Your Session Time
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                    </a>
                                 </div>
                             </div>
 
@@ -340,81 +643,25 @@
 
                             <!-- Form -->
                             <form id="tasterForm" novalidate>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="studentName" class="form-label">Student Name <span class="required">*</span></label>
-                                            <input type="text" class="form-control" id="studentName" name="studentName" required>
-                                            <div class="invalid-feedback"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="parentName" class="form-label">Parent/Guardian Name <span class="required">*</span></label>
-                                            <input type="text" class="form-control" id="parentName" name="parentName" required>
-                                            <div class="invalid-feedback"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="parentEmail" class="form-label">Parent Email Address <span class="required">*</span></label>
-                                            <input type="email" class="form-control" id="parentEmail" name="parentEmail" required>
-                                            <div class="invalid-feedback"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="phoneNumber" class="form-label">Phone Number <span class="required">*</span></label>
-                                            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
-                                            <div class="invalid-feedback"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="courseInterest" class="form-label">Course Interest</label>
-                                            <select class="form-control" id="courseInterest" name="courseInterest">
-                                                <option value="">Please select...</option>
-                                                <option value="Scratch Programming">Scratch Programming</option>
-                                                <option value="Python">Python</option>
-                                                <option value="HTML & CSS">HTML & CSS</option>
-                                                <option value="JavaScript">JavaScript</option>
-                                                <option value="3D Design & Printing">3D Design & Printing</option>
-                                                <option value="Not sure - need guidance">Not sure - need guidance</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="hearAboutUs" class="form-label">How did you hear about us?</label>
-                                            <select class="form-control" id="hearAboutUs" name="hearAboutUs">
-                                                <option value="">Please select...</option>
-                                                <option value="Google Search">Google Search</option>
-                                                <option value="Social Media">Social Media</option>
-                                                <option value="Friend Referral">Friend Referral</option>
-                                                <option value="School">School</option>
-                                                <option value="Other">Other</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="studentName" class="form-label">Student Name <span class="required">*</span></label>
+                                    <input type="text" class="form-control" id="studentName" name="studentName" required>
+                                    <div class="invalid-feedback"></div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="preferredTime" class="form-label">Preferred Day/Time</label>
-                                    <input type="text" class="form-control" id="preferredTime" name="preferredTime" placeholder="e.g., Weekday evenings, Saturday mornings, etc.">
+                                    <label for="parentName" class="form-label">Parent Name <span class="required">*</span></label>
+                                    <input type="text" class="form-control" id="parentName" name="parentName" required>
+                                    <div class="invalid-feedback"></div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="additionalNotes" class="form-label">Additional Notes</label>
-                                    <textarea class="form-control" id="additionalNotes" name="additionalNotes" rows="4" placeholder="Any questions, specific interests, or requirements?"></textarea>
+                                    <label for="parentEmail" class="form-label">Parent Email <span class="required">*</span></label>
+                                    <input type="email" class="form-control" id="parentEmail" name="parentEmail" required>
+                                    <div class="invalid-feedback"></div>
                                 </div>
 
-                                <button type="submit" class="submit-btn" id="submitBtn">
+                                <button type="submit" class="submit-btn privacy-contact-link" id="submitBtn" data-contact-type="form">
                                     <div class="spinner" id="spinner"></div>
                                     <span id="submitText">Book My Free Taster Session</span>
                                 </button>
@@ -456,6 +703,7 @@
     <script src="lib/easing/easing.min.js"></script>
     <script src="js/main.js"></script>
 
+
     <!-- Form Submission Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -465,12 +713,11 @@
             const spinner = document.getElementById('spinner');
             const successMessage = document.getElementById('successMessage');
             const errorMessage = document.getElementById('errorMessage');
-            const calendarContainer = document.getElementById('calendarContainer');
 
             // Form validation
             function validateForm() {
                 let isValid = true;
-                const requiredFields = ['studentName', 'parentName', 'parentEmail', 'phoneNumber'];
+                const requiredFields = ['studentName', 'parentName', 'parentEmail'];
                 
                 // Reset previous validation states
                 document.querySelectorAll('.form-control').forEach(field => {
@@ -520,7 +767,6 @@
             function hideMessages() {
                 successMessage.style.display = 'none';
                 errorMessage.style.display = 'none';
-                calendarContainer.style.display = 'none';
             }
 
             // Show loading state
@@ -537,10 +783,8 @@
                 submitBtn.disabled = false;
             }
 
-            // Form submission
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
+            // Function to actually submit the form
+            async function submitForm() {
                 hideMessages();
 
                 if (!validateForm()) {
@@ -554,11 +798,6 @@
                     studentName: document.getElementById('studentName').value.trim(),
                     parentName: document.getElementById('parentName').value.trim(),
                     parentEmail: document.getElementById('parentEmail').value.trim(),
-                    phoneNumber: document.getElementById('phoneNumber').value.trim(),
-                    courseInterest: document.getElementById('courseInterest').value,
-                    hearAboutUs: document.getElementById('hearAboutUs').value,
-                    preferredTime: document.getElementById('preferredTime').value.trim(),
-                    additionalNotes: document.getElementById('additionalNotes').value.trim(),
                     submissionDate: new Date().toISOString()
                 };
 
@@ -572,12 +811,11 @@
                     if (response.ok) {
                         // Success
                         successMessage.style.display = 'block';
-                        calendarContainer.style.display = 'block';
                         form.reset();
                         form.style.display = 'none';
                         
                         // Scroll to success message
-                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     } else {
                         throw new Error('Network response was not ok');
                     }
@@ -588,7 +826,23 @@
                 }
 
                 hideLoading();
+            }
+
+            // Form submission handler - only prevent default, let privacy modal handle the rest
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Check if user has privacy consent
+                const hasConsent = localStorage.getItem('privacyConsent') === 'accepted';
+                if (hasConsent) {
+                    // If consent already given, submit directly
+                    submitForm();
+                }
+                // If no consent, the privacy modal will handle this via the button click
             });
+
+            // Make submitForm available globally for privacy modal
+            window.tasterFormSubmit = submitForm;
 
             // Real-time validation
             const fields = document.querySelectorAll('.form-control');

@@ -74,8 +74,13 @@
             // Handle the action after a brief delay
             setTimeout(() => {
                 if (pendingContactAction.type === 'form') {
-                    // Submit the form
-                    pendingContactAction.form.submit();
+                    // Check if this is the taster form with custom submission
+                    if (window.tasterFormSubmit && pendingContactAction.form.id === 'tasterForm') {
+                        window.tasterFormSubmit();
+                    } else {
+                        // Submit the form normally for other forms
+                        pendingContactAction.form.submit();
+                    }
                 } else {
                     // Open the contact link
                     window.open(pendingContactAction.url, '_blank');
@@ -127,8 +132,17 @@
                     const contactType = $(this).data('contact-type');
                     
                     if (contactType === 'form') {
-                        // For forms, allow normal submission
-                        return true;
+                        // For the taster form, prevent default and call our custom function
+                        if ($(this).closest('form').attr('id') === 'tasterForm') {
+                            e.preventDefault();
+                            if (window.tasterFormSubmit) {
+                                window.tasterFormSubmit();
+                            }
+                            return false;
+                        } else {
+                            // For other forms, allow normal submission
+                            return true;
+                        }
                     } else {
                         // For links, allow normal behavior
                         return true;
