@@ -174,6 +174,32 @@
             margin-right: 12px;
             width: 20px;
         }
+
+        .calendar-container {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .calendar-wrapper {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .calendar-container {
+                padding: 20px;
+                margin-top: 20px;
+            }
+            
+            .calendar-wrapper iframe {
+                height: 500px;
+            }
+        }
     </style>
 </head>
 
@@ -287,7 +313,23 @@
                             <!-- Success Message -->
                             <div class="success-message" id="successMessage">
                                 <h5><i class="fas fa-check-circle me-2"></i>Booking Successful!</h5>
-                                <p class="mb-0">Thank you for booking a taster session! We'll contact you within 24 hours to confirm your preferred time and send joining instructions.</p>
+                                <p class="mb-0">Thank you for booking a taster session! Now choose your preferred time slot below:</p>
+                            </div>
+
+                            <!-- Calendar Scheduler -->
+                            <div class="calendar-container" id="calendarContainer" style="display: none;">
+                                <div class="text-center mb-4">
+                                    <h4 class="text-primary"><i class="fas fa-calendar-check me-2"></i>Step 2: Choose Your Session Time</h4>
+                                    <p class="text-muted">Select a convenient time slot for your free 30-minute taster session</p>
+                                </div>
+                                <div class="calendar-wrapper">
+                                    <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1WbsAGsyAtS0jYCTA2pV60xKn_RlJtz-Na3DCVnOJI3Yg7ApR9-pd4KTdY8yHGQWI1lQ7q9S1E?gv=true" 
+                                            style="border: 0; border-radius: 10px;" 
+                                            width="100%" 
+                                            height="600" 
+                                            frameborder="0">
+                                    </iframe>
+                                </div>
                             </div>
 
                             <!-- Error Message -->
@@ -423,6 +465,7 @@
             const spinner = document.getElementById('spinner');
             const successMessage = document.getElementById('successMessage');
             const errorMessage = document.getElementById('errorMessage');
+            const calendarContainer = document.getElementById('calendarContainer');
 
             // Form validation
             function validateForm() {
@@ -477,6 +520,7 @@
             function hideMessages() {
                 successMessage.style.display = 'none';
                 errorMessage.style.display = 'none';
+                calendarContainer.style.display = 'none';
             }
 
             // Show loading state
@@ -528,11 +572,12 @@
                     if (response.ok) {
                         // Success
                         successMessage.style.display = 'block';
+                        calendarContainer.style.display = 'block';
                         form.reset();
                         form.style.display = 'none';
                         
                         // Scroll to success message
-                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     } else {
                         throw new Error('Network response was not ok');
                     }
