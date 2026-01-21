@@ -63,6 +63,16 @@
                 padding-right: 15px;
             }
         }
+
+        /* Blog Preview Hover Effects */
+        .blog-preview-item:hover .blog-preview-overlay {
+            opacity: 1 !important;
+        }
+        
+        .blog-preview-item:hover .blog-preview-image img {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
     </style>
 
     <!-- Meta Pixel Code -->
@@ -273,6 +283,7 @@
                             <a href="courses.html" class="nav-item nav-link">Courses</a>
                             <a href="#pricing" class="nav-item nav-link">Pricing</a>
                             <a href="#why" class="nav-item nav-link">Why Coding?</a>
+                            <a href="blog.html" class="nav-item nav-link">Blog</a>
                             <a href="#contact-form" class="nav-item nav-link">Contact Us</a>
                         </div>
                         <a href="sign-up.html" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Take Our Quiz</a>
@@ -644,6 +655,77 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <!-- Testimonials End -->
+
+        <!-- Instagram Feed Start -->
+        <div class="container-xxl pt-5">
+            <div class="container py-5 px-lg-5">
+                <div class="wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="section-title text-secondary justify-content-center"><span></span>Follow Us<span></span></p>
+                    <h1 class="text-center mb-5">See What Our Students Are Creating</h1>
+                    <p class="text-center mb-5 text-muted">Follow us <a href="https://instagram.com/headstartcoding" target="_blank" style="color: #6222CC; text-decoration: none; font-weight: 500;">@headstartcoding</a> to see the amazing projects our students are building, coding tips, and behind-the-scenes moments from our lessons!</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <!-- SnapWidget -->
+                        <script src="https://snapwidget.com/js/snapwidget.js"></script>
+                        <iframe src="https://snapwidget.com/embed/1116536" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden;  width:100%; " title="Posts from Instagram"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Instagram Feed End -->
+
+        <!-- Latest Blog Posts Section -->
+        <div class="container-xxl py-5">
+            <div class="container px-lg-5">
+                <div class="wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="section-title text-secondary justify-content-center"><span></span>Latest Insights<span></span></p>
+                    <h2 class="text-center mb-5">From Our Blog</h2>
+                </div>
+                <div class="row justify-content-center">
+                    <!-- Featured Blog Post -->
+                    <div class="col-lg-8 col-md-10 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="blog-preview-item bg-light rounded overflow-hidden">
+                            <div class="blog-preview-image position-relative overflow-hidden" style="height: 300px;">
+                                <img class="img-fluid w-100 h-100" src="img/ai-blog.png" alt="Is Learning to Code Still Worth It in 2026" style="object-fit: cover;">
+                                <div class="blog-preview-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(98, 34, 204, 0.8); opacity: 0; transition: opacity 0.3s;">
+                                    <a class="btn btn-square btn-outline-light" href="blog/2026/01/is-learning-to-code-still-worth-it-in-2026.html"><i class="fa fa-link"></i></a>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <div class="blog-category mb-3">
+                                    <span class="badge" style="background-color: #f8f9fa; color: #6222CC; font-size: 0.9rem; padding: 8px 15px;">AI</span>
+                                </div>
+                                <h3 class="mb-4" style="font-size: 1.8rem;">Is Learning to Code Still Worth It in 2026?</h3>
+                                <p class="text-muted mb-4 lead">Despite rapid AI advances, programming remains one of the most valuable skills for the next generation. Discover why coding is more important than ever and how it prepares children for future success in an AI-powered world.</p>
+                                <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <small class="text-muted me-4">
+                                            <i class="fa fa-calendar me-1"></i>
+                                            January 11, 2026
+                                        </small>
+                                        <small class="text-muted">
+                                            <i class="fa fa-clock me-1"></i>
+                                            2 min read
+                                        </small>
+                                    </div>
+                                    <a href="blog/2026/01/is-learning-to-code-still-worth-it-in-2026.html" class="btn btn-primary rounded-pill px-4 py-2">
+                                        Read Full Article <i class="fa fa-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-5">
+                    <a href="blog.html" class="btn btn-primary rounded-pill py-3 px-5">
+                        <i class="fa fa-newspaper me-2"></i>View All Blog Posts
+                    </a>
                 </div>
             </div>
         </div>
