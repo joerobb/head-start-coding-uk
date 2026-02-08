@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Which Coding Course is Right for My Child? - Head Start Coding</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="Not sure which coding course to choose for your child? From Scratch to Python to Web Development, here's how to find the perfect fit based on age and interests.">
+    <meta name="keywords" content="coding course for kids, which coding language for children, Scratch vs Python, kids programming course, coding for beginners children">
+
+    <!-- Favicon -->
+    <link href="../../../img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="../../../lib/animate/animate.min.css" rel="stylesheet">
+    <link href="../../../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="../../../css/style.css" rel="stylesheet">
+
+    <!-- Blog Post Specific Styles -->
+    <style>
+        .blog-post-header {
+            background: linear-gradient(135deg, #6222CC 0%, #8B5CF6 100%);
+            padding: 150px 0 40px;
+            margin-bottom: 50px;
+        }
+
+        .blog-post-meta {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .blog-post-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .blog-post-content h2 {
+            color: #6222CC;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .blog-post-content h3 {
+            color: #333;
+            font-weight: 600;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .blog-post-content p {
+            margin-bottom: 20px;
+        }
+
+        .blog-post-content ul, .blog-post-content ol {
+            margin-bottom: 25px;
+            padding-left: 30px;
+        }
+
+        .blog-post-content li {
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #6222CC;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #6222CC 0%, #8B5CF6 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        .quote-source {
+            font-size: 0.9rem;
+            margin-top: 15px;
+            opacity: 0.9;
+            font-style: normal;
+        }
+
+        .course-link {
+            color: #6222CC;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .course-link:hover {
+            color: #8B5CF6;
+            text-decoration: underline;
+        }
+
+        .cta-banner {
+            background: linear-gradient(135deg, #6222CC 0%, #8B5CF6 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .cta-banner h3 {
+            color: white !important;
+            margin-bottom: 15px;
+        }
+
+        .cta-banner p {
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .breadcrumb-nav {
+            background: #f8f9fa;
+            padding: 15px 0;
+            margin-bottom: 0;
+        }
+
+        .breadcrumb-nav a {
+            color: #6c757d;
+            text-decoration: none;
+        }
+
+        .breadcrumb-nav a:hover {
+            color: #6222CC;
+        }
+
+        .breadcrumb-nav .current {
+            color: #6222CC;
+            font-weight: 500;
+        }
+
+        .blog-meta-box {
+            background: rgba(255,255,255,0.15);
+            padding: 15px 20px;
+            border-radius: 25px;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .robot-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .robot-image-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .robot-caption {
+            font-style: italic;
+            color: #666;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Hero Spacing Fix */
+        @media (max-width: 767.98px) {
+            .blog-post-header {
+                padding: 150px 0 30px;
+            }
+            .hero-header .container {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+            .hero-header .col-lg-6 {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .blog-post-content {
+                font-size: 1rem;
+            }
+            .blog-meta-box {
+                padding: 12px 15px;
+                margin-top: 15px;
+            }
+            .robot-image-container {
+                margin: 30px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Navbar Start -->
+        <div class="container-xxl position-relative p-0">
+            <div class="navbar-container" id="navbarContainer">
+                <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                    <ul class="logos">
+                        <li class="logo-mobile">
+                            <a href="../../../index.html" class="navbar-brand p-0">
+                                <img src="../../../img/logos/Icon_White.svg" class="logo-mobile" alt="Logo">
+                            </a>
+                        </li>
+                        <li class="logo-white">
+                            <a href="../../../index.html" class="navbar-brand p-0">
+                                <img src="../../../img/logos/Logo_FullLong_White.png" class="logo-white" alt="Logo">
+                            </a>
+                        </li>
+                        <li class="logo-color">
+                            <a href="../../../index.html" class="navbar-brand p-0">
+                                <img src="../../../img/logos/Icon_Purple.svg" class="logo-color" alt="Logo">
+                            </a>
+                        </li>
+                        <li class="logo-color-text">
+                            <a href="../../../index.html" class="navbar-brand p-0">
+                                <img src="../../../img/logos/Logo_TextLong_Purple.png" class="logo-color-text" alt="Logo">
+                            </a>
+                        </li>
+                    </ul>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars"></span>
+                    </button>
+
+                    <button class="navbar-close" type="button">
+                        <span class="fa fa-close"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav mx-auto py-0">
+                            <a href="../../../index.html" class="nav-item nav-link">Home</a>
+                            <a href="../../../index.html#model" class="nav-item nav-link">About Us</a>
+                            <a href="../../../courses.html" class="nav-item nav-link">Courses</a>
+                            <a href="../../../index.html#pricing" class="nav-item nav-link">Pricing</a>
+                            <a href="../../../index.html#why" class="nav-item nav-link">Why Coding?</a>
+                            <a href="../../../blog.html" class="nav-item nav-link active">Blog</a>
+                            <a href="../../../index.html#contact-form" class="nav-item nav-link">Contact Us</a>
+                        </div>
+                        <a href="../../../sign-up.html" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Take Our Quiz</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Navbar End -->
+
+        <!-- Blog Post Header Start -->
+        <div class="blog-post-header">
+            <div class="container px-lg-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h1 class="text-white mb-4 mt-12 animated slideInDown">Which Coding Course is Right for My Child?</h1>
+                        <p class="text-white pb-3 animated slideInDown lead">A guide to choosing the perfect coding course based on your child's age, interests, and goals.</p>
+                        <div class="blog-meta-box">
+                            <div class="d-flex justify-content-center align-items-center flex-wrap">
+                                <span class="me-4 mb-2 text-white"><i class="fa fa-calendar me-2"></i>February 8, 2026</span>
+                                <span class="mb-2 text-white"><i class="fa fa-clock me-2"></i>3 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Blog Post Header End -->
+
+        <!-- Breadcrumb Navigation Start -->
+        <div class="breadcrumb-nav">
+            <div class="container px-lg-5">
+                <div class="row">
+                    <div class="col-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="../../../blog.html">Blog</a></li>
+                                <li class="breadcrumb-item current" aria-current="page">Which Coding Course is Right for My Child?</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcrumb Navigation End -->
+
+        <!-- Blog Post Content Start -->
+        <div class="container-xxl py-5">
+            <div class="container px-lg-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="blog-post-content">
+                            <p>As a coding tutor for the past five years, this is hands down the question I get asked most. And I get it - you want to make sure your child starts with something that clicks for them, not something that feels like homework. Here's how I usually help parents figure it out.</p>
+
+                            <div class="robot-image-container">
+                                <img src="../../../blog/courses.jpg" alt="Coding courses for children" class="robot-image">
+                            </div>
+
+                            <h2>Starting with Age</h2>
+
+                            <p>If your child is <strong>8-10 years old</strong>, I almost always recommend starting with <a href="../../../course-scratch.html" class="course-link">Scratch</a>. It's visual, it's intuitive, and kids can make games from day one without getting bogged down in syntax. They're learning all the fundamentals - loops, variables, conditions - but it feels like playing with digital Lego.</p>
+
+                            <p>For <strong>ages 11-13</strong>, <a href="../../../course-python.html" class="course-link">Python</a> tends to be the sweet spot. They're ready for text-based coding, and Python reads almost like English. Plus, it's what actual developers use for everything from web apps to AI, so they're learning something genuinely valuable.</p>
+
+                            <p><strong>Ages 14+</strong> can jump into <a href="../../../course-html-css.html" class="course-link">JavaScript and Web Development</a>. At this age, they want to build things that look professional. Being able to create a real website they can share with friends? That's the hook.</p>
+
+                            <h2>Following Their Interests</h2>
+
+                            <p>Age is just a starting point though. I've had 9-year-olds absolutely smash Python because they were obsessed with making a text adventure game. And I've had 15-year-olds start with Scratch because they wanted to understand game mechanics first.</p>
+
+                            <div class="highlight-box">
+                                <strong>Here's my rule of thumb:</strong>
+                                <ul style="margin-top: 15px; margin-bottom: 0;">
+                                    <li>If they love games and want to make characters move around, start with <a href="../../../course-scratch.html" class="course-link">Scratch</a>.</li>
+                                    <li>If they're curious about how websites work and want to build their own, go for <a href="../../../course-html-css.html" class="course-link">Web Development</a>.</li>
+                                    <li>If they're asking "how does this actually work?" about everything, <a href="../../../course-python.html" class="course-link">Python</a>'s your answer.</li>
+                                    <li>And if they're into design and making physical things, our <a href="../../../course-3d-design.html" class="course-link">3D Print & Design</a> course lets them create objects they can actually hold.</li>
+                                </ul>
+                            </div>
+
+                            <h2>Not Sure? That's What Taster Sessions Are For</h2>
+
+                            <p>Honestly, the best way to know is to try. Our free taster sessions let your child experience a course firsthand, and I can usually tell within 20 minutes what's going to work best for them.</p>
+
+                            <div class="author-byline" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e0e0e0;">
+                                <p style="color: #666; font-size: 0.95rem; margin: 0;">
+                                    <i class="fas fa-user-circle" style="margin-right: 0.5rem;"></i>
+                                    <strong>Author:</strong> Joe, Founder at Head Start Coding
+                                </p>
+                            </div>
+
+                            <div class="cta-banner">
+                                <h3>Book a Free Taster Session</h3>
+                                <p class="text-white">Let's figure it out together. Try a course firsthand and we'll help find the perfect fit for your child.</p>
+                                <a href="../../../book-taster.html" class="btn btn-light btn-lg rounded-pill px-5 py-3">
+                                    <i class="fas fa-calendar-check me-2"></i>Book a Free Taster Session
+                                </a>
+                            </div>
+
+                            <div class="highlight-box">
+                                <p style="margin-bottom: 0;"><em>P.S. - There's no wrong choice. Every coding language teaches problem-solving. The best course is simply the one your child is excited to show up for.</em></p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Blog Post Content End -->
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-primary text-light footer wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5 px-lg-5">
+                <div class="row side-padding g-5">
+                    <!-- Company Info Section -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-section">
+                            <div class="footer-logo mb-4">
+                                <img src="../../../img/logos/Logo_FullLong_White.png" alt="Head Start Coding" style="height: 45px;">
+                            </div>
+                            <p class="footer-description mb-4">
+                                Empowering young minds aged 8-16 with essential coding skills. From visual programming with Scratch to advanced web development, we make coding accessible and fun.
+                            </p>
+                            <div class="footer-stats">
+                                <div class="stat-item mb-2">
+                                    <i class="fas fa-users text-secondary me-2"></i>
+                                    <span>Small groups of around 6 students</span>
+                                </div>
+                                <div class="stat-item mb-2">
+                                    <i class="fas fa-certificate text-secondary me-2"></i>
+                                    <span>DBS-checked tutors</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-laptop text-secondary me-2"></i>
+                                    <span>100% online learning</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Courses Section -->
+                    <div class="col-lg-2 col-md-6">
+                        <div class="footer-section">
+                            <h5 class="text-white mb-4">Our Courses</h5>
+                            <ul class="footer-links">
+                                <li><a href="../../../course-scratch.html">Scratch Programming</a></li>
+                                <li><a href="../../../course-python.html">Python Basics</a></li>
+                                <li><a href="../../../course-html-css.html">Web Development</a></li>
+                                <li><a href="../../../course-javascript.html">JavaScript</a></li>
+                                <li><a href="../../../course-3d-design.html">3D Design</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links Section -->
+                    <div class="col-lg-2 col-md-6">
+                        <div class="footer-section">
+                            <h5 class="text-white mb-4">Quick Links</h5>
+                            <ul class="footer-links">
+                                <li><a href="../../../index.html#model">About Us</a></li>
+                                <li><a href="../../../index.html#why">Why Coding?</a></li>
+                                <li><a href="../../../index.html#faq">FAQs</a></li>
+                                <li><a href="../../../blog.html">Blog</a></li>
+                                <li><a href="../../../sign-up.html">Get Started</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Contact Section -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-section">
+                            <h5 class="text-white mb-4">Get In Touch</h5>
+                            <div class="contact-info mb-4">
+                                <div class="contact-item mb-3">
+                                    <i class="fas fa-envelope text-secondary me-3"></i>
+                                    <div>
+                                        <span class="d-block">Email Us</span>
+                                        <a href="mailto:hello@headstartcoding.co.uk" class="contact-link">hello@headstartcoding.co.uk</a>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-map-marker-alt text-secondary me-3"></i>
+                                    <div>
+                                        <span class="d-block">Location</span>
+                                        <span class="contact-text">United Kingdom</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="container px-lg-5">
+                <div class="footer-bottom py-4 mt-4" style="border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div class="row align-items-center">
+                        <div class="col-md-8 text-center text-md-start mb-3 mb-md-0">
+                            <div class="copyright-text">
+                                &copy; 2025 <a class="text-secondary" href="../../../index.html">Head Start Coding</a>. All Rights Reserved.
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center text-md-end">
+                            <div class="footer-badges">
+                                <span class="badge bg-secondary me-2">DBS Checked</span>
+                                <span class="badge bg-secondary">UK Based</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../lib/wow/wow.min.js"></script>
+    <script src="../../../lib/easing/easing.min.js"></script>
+    <script src="../../../lib/waypoints/waypoints.min.js"></script>
+    <script src="../../../js/main.js"></script>
+</body>
+
+</html>
