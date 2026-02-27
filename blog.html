@@ -3,11 +3,68 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Blog - Head Start Coding</title>
+    <title>Coding Education Blog for Kids & Parents - Head Start Coding</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="description" content="Read the latest coding education insights, tips for young programmers, and industry trends from Head Start Coding.">
     <meta name="keywords" content="coding education blog, programming for kids, coding tips, children learning code, programming education">
-    
+
+    <!-- Open Graph meta tags for social sharing -->
+    <meta property="og:title" content="Coding Education Blog - Head Start Coding">
+    <meta property="og:description" content="Read the latest coding education insights, tips for young programmers, and industry trends from Head Start Coding.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.headstartcoding.co.uk/blog.html">
+    <meta property="og:image" content="https://www.headstartcoding.co.uk/img/ai-blog.png">
+
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Coding Education Blog - Head Start Coding">
+    <meta name="twitter:description" content="Read the latest coding education insights, tips for young programmers, and industry trends from Head Start Coding.">
+    <meta name="twitter:image" content="https://www.headstartcoding.co.uk/img/ai-blog.png">
+
+    <!-- Additional SEO meta tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Head Start Coding">
+    <link rel="canonical" href="https://www.headstartcoding.co.uk/blog.html">
+
+    <!-- Structured Data - Blog -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Head Start Coding Blog",
+        "description": "Coding education insights, tips for young programmers, and industry trends.",
+        "url": "https://www.headstartcoding.co.uk/blog.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Head Start Coding",
+            "url": "https://www.headstartcoding.co.uk"
+        },
+        "blogPost": [
+            {
+                "@type": "BlogPosting",
+                "headline": "3 Reasons Why Gamers Make Great Coders",
+                "url": "https://www.headstartcoding.co.uk/blog/2026/02/3-reasons-why-gamers-make-great-coders.html",
+                "datePublished": "2026-02-08",
+                "author": { "@type": "Person", "name": "Joe" }
+            },
+            {
+                "@type": "BlogPosting",
+                "headline": "Which Coding Course is Right for My Child?",
+                "url": "https://www.headstartcoding.co.uk/blog/2026/02/which-coding-course-is-right-for-my-child.html",
+                "datePublished": "2026-02-08",
+                "author": { "@type": "Person", "name": "Joe" }
+            },
+            {
+                "@type": "BlogPosting",
+                "headline": "Is Learning to Code Still Worth It in 2026?",
+                "url": "https://www.headstartcoding.co.uk/blog/2026/01/is-learning-to-code-still-worth-it-in-2026.html",
+                "datePublished": "2026-01-11",
+                "author": { "@type": "Person", "name": "Joe" }
+            }
+        ]
+    }
+    </script>
+
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
@@ -46,15 +103,31 @@
 
         /* Blog specific styles */
         .blog-item {
+            padding-bottom: 30px;
+        }
+
+        .blog-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
-        .blog-item:hover {
+        .blog-card .blog-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card .blog-excerpt {
+            flex: 1;
+        }
+
+        .blog-item:hover .blog-card {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
@@ -72,7 +145,7 @@
             transition: transform 0.5s;
         }
 
-        .blog-item:hover .blog-image img {
+        .blog-card:hover .blog-image img {
             transform: scale(1.05);
         }
 
@@ -90,7 +163,7 @@
             transition: opacity 0.3s;
         }
 
-        .blog-item:hover .blog-overlay {
+        .blog-card:hover .blog-overlay {
             opacity: 1;
         }
 
@@ -251,6 +324,36 @@
                     </div>
                 </div>
                 <div class="row g-4 blog-container justify-content-center">
+                    <!-- Blog Post 3 -->
+                    <div class="col-lg-6 col-md-8 blog-item tips wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="blog-card">
+                            <div class="blog-image">
+                                <img src="img/minecraft-blog.jpg" alt="3 Reasons Why Gamers Make Great Coders">
+                                <div class="blog-overlay">
+                                    <a class="btn btn-square btn-outline-light mx-1" href="blog/2026/02/3-reasons-why-gamers-make-great-coders.html"><i class="fa fa-link"></i></a>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-category">Tips & Advice</div>
+                                <h3 class="blog-title">3 Reasons Why Gamers Make Great Coders</h3>
+                                <p class="blog-excerpt">Does your child love gaming? From problem-solving to pattern recognition to systems thinking, gamers already have the perfect mindset for learning to code.</p>
+                                <div class="blog-meta">
+                                    <div class="blog-date">
+                                        <i class="fa fa-calendar me-2"></i>
+                                        February 8, 2026
+                                    </div>
+                                    <div class="blog-read-time">
+                                        <i class="fa fa-clock me-2"></i>
+                                        3 min read
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <a href="blog/2026/02/3-reasons-why-gamers-make-great-coders.html" class="read-more-btn">Read Full Article <i class="fa fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Blog Post 2 -->
                     <div class="col-lg-6 col-md-8 blog-item tips wow fadeInUp" data-wow-delay="0.1s">
                         <div class="blog-card">
@@ -406,7 +509,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-8 text-center text-md-start mb-3 mb-md-0">
                             <div class="copyright-text">
-                                &copy; 2025 <a class="text-secondary" href="index.html">Head Start Coding</a>. All Rights Reserved.
+                                &copy; <script>document.write(new Date().getFullYear())</script> <a class="text-secondary" href="index.html">Head Start Coding</a>. All Rights Reserved.
                             </div>
                         </div>
                         <div class="col-md-4 text-center text-md-end">
