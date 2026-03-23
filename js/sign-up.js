@@ -698,11 +698,8 @@ function showResults() {
         });
     }
 
-    // Update progress bar to complete
-    $progressContainer.show();
-    $progressFill.css('width', '100%');
-    $progressText.text('Complete!');
-    $progressFill.addClass('completed');
+    // Hide progress bar on results screen
+    $progressContainer.hide();
 }
 
 function showPreviousQuestion() {
