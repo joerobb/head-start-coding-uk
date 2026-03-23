@@ -1,0 +1,2 @@
+[  997731ms] TypeError: Cannot read properties of null (reading 'addEventListener')
+    at HTMLDocument.<anonymous> (http://localhost:8765/js/sign-up.js:589:13)

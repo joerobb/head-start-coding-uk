@@ -77,7 +77,6 @@ if (document.body.classList.contains("sign-up")) {
 
 // Facebook Pixel Lead Tracking Functions
 function trackFacebookLead(contactType) {
-    // Track as Lead event
     if (typeof fbq !== 'undefined') {
         fbq('track', 'Lead', {
             content_name: 'Coding Course Interest',
@@ -86,23 +85,22 @@ function trackFacebookLead(contactType) {
             value: 1,
             currency: 'GBP'
         });
-        
-        // Also track as custom event for more granular reporting
+
         fbq('trackCustom', 'ContactButtonClick', {
             contact_type: contactType,
             form_completed: true
         });
-        
+
         console.log('Facebook Pixel: Lead tracked for ' + contactType);
     }
 }
 
-// Additional tracking for form completion milestones
 function trackFormProgress(step) {
     if (typeof fbq !== 'undefined') {
         fbq('trackCustom', 'FormProgress', {
             step: step,
-            progress_percentage: Math.round((step / 7) * 100)
+            progress_percentage: Math.round((step / getTotalVisibleQuestions()) * 100),
+            age_range: userAnswers.ageRange || 'not_yet_answered'
         });
     }
 }
@@ -116,48 +114,33 @@ const privacyCloseBtn = $('.privacy-close');
 const privacyContactLinks = $('.privacy-contact-link');
 let pendingContactAction = null;
 
-// Enable/disable accept button based on checkbox
 privacyCheckbox.on('change', function() {
     privacyAcceptBtn.prop('disabled', !this.checked);
 });
 
-// Show privacy modal when contact links are clicked
 privacyContactLinks.on('click', function(e) {
     e.preventDefault();
     const link = $(this);
     const contactType = link.data('contact-type');
-    
-    // Store the pending action
+
     pendingContactAction = {
         url: link.attr('href'),
         type: contactType
     };
-    
-    // Show privacy modal
+
     privacyModal.fadeIn(300);
-    
-    // Reset checkbox and button state
     privacyCheckbox.prop('checked', false);
     privacyAcceptBtn.prop('disabled', true);
-    
-    // Scroll to top of modal
     $('.privacy-modal-body').scrollTop(0);
 });
 
-// Handle accept button with lead tracking
 privacyAcceptBtn.on('click', function() {
     if (pendingContactAction && privacyCheckbox.prop('checked')) {
-        // Store consent in localStorage for future visits
         localStorage.setItem('privacyConsent', 'accepted');
         localStorage.setItem('privacyConsentDate', new Date().toISOString());
-        
-        // Track the lead BEFORE opening the contact method
         trackFacebookLead(pendingContactAction.type);
-        
-        // Close modal
         privacyModal.fadeOut(300);
-        
-        // Open the contact link after a brief delay
+
         setTimeout(() => {
             window.open(pendingContactAction.url, '_blank');
             pendingContactAction = null;
@@ -165,24 +148,19 @@ privacyAcceptBtn.on('click', function() {
     }
 });
 
-// Handle decline button
 privacyDeclineBtn.on('click', function() {
     privacyModal.fadeOut(300);
     pendingContactAction = null;
-    
-    // Optional: Show a message that they need to accept to continue
     setTimeout(() => {
         alert('You need to accept the Privacy Policy to contact us. Your privacy and data protection are important to us.');
     }, 300);
 });
 
-// Handle close button
 privacyCloseBtn.on('click', function() {
     privacyModal.fadeOut(300);
     pendingContactAction = null;
 });
 
-// Close modal when clicking outside of it
 privacyModal.on('click', function(e) {
     if (e.target === this) {
         privacyModal.fadeOut(300);
@@ -190,37 +168,31 @@ privacyModal.on('click', function(e) {
     }
 });
 
-// Check if user has already consented - with lead tracking for direct clicks
 $(document).ready(function() {
     const consentDate = localStorage.getItem('privacyConsentDate');
     const consent = localStorage.getItem('privacyConsent');
-    
-    // Check if consent is still valid (e.g., within last 12 months)
+
     if (consent === 'accepted' && consentDate) {
         const consentTimestamp = new Date(consentDate);
         const twelveMonthsAgo = new Date();
         twelveMonthsAgo.setMonth(twelveMonthsAgo.getMonth() - 12);
-        
+
         if (consentTimestamp > twelveMonthsAgo) {
-            // Consent is still valid, track leads on direct contact
             privacyContactLinks.off('click').on('click', function(e) {
                 const contactType = $(this).data('contact-type');
-                
-                // Track the lead immediately
                 trackFacebookLead(contactType);
-                
-                // Allow normal link behavior
                 return true;
             });
         }
     }
 });
-      
+
 // Modal elements
 const $modalOverlay = $(".modal-overlay");
 const $triggerYes = $(".trigger-yes");
 const $triggerNo = $(".trigger-no");
 const $triggerNext = $(".trigger-next");
+const $triggerBack = $(".trigger-back");
 const $closeButton = $(".close-button");
 const $questionBox = $(".question-box");
 const $modal = $(".modal");
@@ -230,63 +202,252 @@ const $introRow = $(".intro-display-none");
 // Question and answer management
 const qaData = [
     {
-        question: "Do you have a child between the ages of 8 and 16 years old?",
+        question: "How old is your child?",
+        type: "choice",
         answerClass: "a-1",
-        answerNoClass: "no-1"
+        answerNoClass: "no-1",
+        options: [
+            { label: "7 or under", value: "under-8", outOfRange: true },
+            { label: "8 to 10", value: "8-10" },
+            { label: "11 to 13", value: "11-13" },
+            { label: "14 to 16", value: "14-16" },
+            { label: "17 or older", value: "over-16", outOfRange: true }
+        ]
     },
     {
         question: "Do they like playing games like Minecraft and Roblox?",
+        type: "yesno",
         answerClass: "a-2",
         answerNoClass: "no-2"
     },
     {
-        question: "Is your child comfortable using a keyboard for basic typing?",
+        question: "Has your child tried any coding before?",
+        type: "yesno",
         answerClass: "a-3",
         answerNoClass: "no-3"
     },
     {
-        question: "Curious about exciting future prospects for coders?",
-        answerClass: "a-4",
-        answerNoClass: "no-4"
-    },
-    {
-        question: "Fancy a sneak peak at the skills your child can learn in our courses?",
+        question: "What does your child enjoy more?",
+        type: "choice",
         answerClass: "a-5",
-        answerNoClass: "no-5"
-    },
-    {
-        question: "Would you like to hear testimonials from other parents?",
-        answerClass: "a-6",
-        answerNoClass: "no-6"
-    },
-    {
-        question: "Ready to take the first step toward your child's coding adventure?",
-        answerClass: "a-7",
-        answerNoClass: "no-7"
+        answerNoClass: null,
+        options: [
+            { label: "Art, Design & Creativity", value: "creative", icon: "fas fa-palette" },
+            { label: "Maths, Logic & Problem-Solving", value: "logical", icon: "fas fa-brain" }
+        ]
     }
 ];
 
 // State management
 let currentQuestionIndex = 0;
+let userAnswers = {
+    ageRange: null,
+    likesGaming: null,
+    hasCodingExp: null,
+    interest: null
+};
 
 // Progress bar elements
 const $progressFill = $('#progressFill');
 const $progressText = $('#progressText');
 const $progressContainer = $('.form-progress-container');
 
+// Dynamic question count helpers
+function getTotalVisibleQuestions() {
+    // Interest question (index 3) only shown for 11-13 and 14-16
+    if (userAnswers.ageRange === "11-13" || userAnswers.ageRange === "14-16") {
+        return 4;
+    }
+    return 3;
+}
+
+function getVisibleQuestionNumber() {
+    let count = 0;
+    for (let i = 0; i <= currentQuestionIndex; i++) {
+        if (i === 3 && userAnswers.ageRange !== "11-13" && userAnswers.ageRange !== "14-16") continue;
+        count++;
+    }
+    return count;
+}
+
+function getNextQuestionIndex(currentIndex) {
+    let nextIndex = currentIndex + 1;
+    // Skip interest question (index 3) if age is 8-10
+    if (nextIndex === 3 && userAnswers.ageRange !== "11-13" && userAnswers.ageRange !== "14-16") {
+        nextIndex = 4;
+    }
+    return nextIndex;
+}
+
+function getPreviousQuestionIndex(currentIndex) {
+    let prevIndex = currentIndex - 1;
+    // Skip interest question (index 3) if age is 8-10
+    if (prevIndex === 3 && userAnswers.ageRange !== "11-13" && userAnswers.ageRange !== "14-16") {
+        prevIndex = 2;
+    }
+    return prevIndex;
+}
+
 // Update progress bar
 function updateProgressBar() {
-    const progressPercentage = ((currentQuestionIndex + 1) / qaData.length) * 100;
-    const questionNumber = currentQuestionIndex + 1;
-    
+    const total = getTotalVisibleQuestions();
+    const current = getVisibleQuestionNumber();
+    const progressPercentage = (current / total) * 100;
+
     $progressFill.css('width', progressPercentage + '%');
-    $progressText.text(`Question ${questionNumber} of ${qaData.length}`);
-    
-    // Add completion state at the end
-    if (currentQuestionIndex === qaData.length - 1) {
-        $progressText.text('Complete!');
-        $progressFill.addClass('completed');
+    $progressText.text(`Question ${current} of ${total}`);
+}
+
+// Course recommendation logic
+function getRecommendedCourse() {
+    const { ageRange, hasCodingExp, interest } = userAnswers;
+
+    if (ageRange === "8-10") {
+        if (hasCodingExp) {
+            return {
+                name: "Python",
+                icon: "fab fa-python",
+                description: "Real code, fun projects and one of the world's most popular languages.",
+                color: "#3776AB"
+            };
+        } else {
+            return {
+                name: "Scratch",
+                icon: "fas fa-puzzle-piece",
+                description: "Create games and animations with colourful drag-and-drop blocks.",
+                color: "#FFB628"
+            };
+        }
     }
+
+    if (ageRange === "11-13") {
+        if (interest === "creative") {
+            return {
+                name: "Web Development",
+                icon: "fas fa-code",
+                description: "Design and build real websites, combining creativity with code.",
+                color: "#E44D26"
+            };
+        } else {
+            return {
+                name: "Python",
+                icon: "fab fa-python",
+                description: "Solve challenges and build real applications with Python.",
+                color: "#3776AB"
+            };
+        }
+    }
+
+    if (ageRange === "14-16") {
+        if (interest === "creative") {
+            return {
+                name: "Web Development",
+                icon: "fas fa-code",
+                description: "Build professional websites — a real-world, portfolio-ready skill.",
+                color: "#E44D26"
+            };
+        } else {
+            return {
+                name: "Python",
+                icon: "fab fa-python",
+                description: "The language behind AI, data science and so much more.",
+                color: "#3776AB"
+            };
+        }
+    }
+
+    // Fallback
+    return {
+        name: "Scratch",
+        icon: "fas fa-puzzle-piece",
+        description: "A great starting point for any young learner.",
+        color: "#FFB628"
+    };
+}
+
+function displayRecommendation() {
+    const course = getRecommendedCourse();
+
+    $("#rec-icon").html('<i class="' + course.icon + '"></i>');
+    $("#rec-heading").text("We think your child would love " + course.name + "!");
+    $("#rec-description").text(course.description);
+    $(".recommendation-card").css("border-left-color", course.color);
+
+    if (typeof fbq !== 'undefined') {
+        fbq('trackCustom', 'CourseRecommended', {
+            course_name: course.name,
+            age_range: userAnswers.ageRange,
+            has_experience: userAnswers.hasCodingExp,
+            interest: userAnswers.interest || 'n/a'
+        });
+    }
+}
+
+// Handle multi-choice answers
+function handleChoiceAnswer(value) {
+    const initialColor = "rgba(46, 204, 113, 0.9)";
+    const transitionColor = "rgba(147, 51, 234, 0.9)";
+
+    // Age range question (index 0)
+    if (currentQuestionIndex === 0) {
+        const option = qaData[0].options.find(o => o.value === value);
+
+        // Out-of-range age — show age restriction screen
+        if (option && option.outOfRange) {
+            userAnswers.ageRange = value;
+            const noColor = "rgba(231, 76, 60, 0.9)";
+            showNoModal(noColor, transitionColor);
+            return;
+        }
+
+        userAnswers.ageRange = value;
+        // Clear interest if age changed (in case user went back)
+        userAnswers.interest = null;
+    }
+
+    // Interest question (index 3)
+    if (currentQuestionIndex === 3) {
+        userAnswers.interest = value;
+
+        const responses = {
+            "creative": {
+                title: "A creative mind!",
+                text: "We've got the perfect creative course for them!"
+            },
+            "logical": {
+                title: "A logical thinker!",
+                text: "We've got the perfect course to match those skills!"
+            }
+        };
+
+        const response = responses[value];
+        $("#interest-response-title").text(response.title);
+        $("#interest-response-text").text(response.text);
+
+        // Show palette for creative, oxo grid for logical
+        if (value === "creative") {
+            $("#palette-container").show();
+            $("#oxo-container").hide();
+            // Re-trigger animations by cloning swatches
+            $(".palette-swatch").each(function() {
+                var el = $(this);
+                var clone = el.clone(true);
+                el.replaceWith(clone);
+            });
+        } else {
+            $("#palette-container").hide();
+            $("#oxo-container").show();
+            // Re-trigger animations by cloning cells
+            $(".oxo-cell").each(function() {
+                var el = $(this);
+                var clone = el.clone(true);
+                el.replaceWith(clone);
+            });
+        }
+    }
+
+    trackFormProgress(currentQuestionIndex + 1);
+    showModal(initialColor, transitionColor);
 }
 
 // Track form start for abandonment tracking
@@ -300,27 +461,24 @@ var y = window.innerHeight / 2;
 var maxRadius = Math.sqrt(x * x + y * y);
 
 function showModal(initialColor, transitionColor) {
-    // Show the modal overlay with animation
-    
     $modalOverlay.show();
     $modal.css({ display: "block", opacity: 1 });
     $modal[0].scrollTo({ top: 0, behavior: 'smooth' });
-    const currentAnswerClass = qaData[currentQuestionIndex].answerClass;        
+    const currentAnswerClass = qaData[currentQuestionIndex].answerClass;
     $(`.${currentAnswerClass}`).fadeIn();
-    
-    // Always show the next button for "Yes" answers
+
     $triggerNext.show();
+    var nextIndex = getNextQuestionIndex(currentQuestionIndex);
+    $triggerNext.text(nextIndex >= qaData.length ? "See Results" : "Next");
     $(".no-options-container").hide();
 
-    // Slower counter animation
-    
     $('[data-toggle="counter-up"]').each(function () {
         $(this).counterUp({
             delay: 30,
             time: 2000
         });
     });
-    
+
     anime({
         targets: $modalOverlay[0],
         clipPath: [
@@ -335,56 +493,48 @@ function showModal(initialColor, transitionColor) {
 
     $questionBox.hide();
     $progressContainer.hide();
+    $triggerBack.addClass('hide');
 }
 
 function showNoModal(initialColor, transitionColor) {
-    // If we're on question 4 or 5, just skip to the next question
-    if (currentQuestionIndex >= 3) {
-        showNextQuestion();
+    // Choice-type questions with no "No" path
+    const currentQ = qaData[currentQuestionIndex];
+    if (!currentQ.answerNoClass) {
         return;
     }
 
-    // Show the modal overlay with animation
     $modalOverlay.show();
     $modal.css({ display: "block", opacity: 1 });
     $modal[0].scrollTo({ top: 0, behavior: 'smooth' });
-    const currentAnswerClass = qaData[currentQuestionIndex].answerNoClass;        
+    const currentAnswerClass = currentQ.answerNoClass;
     $(`.${currentAnswerClass}`).fadeIn();
-    
-    // If this is the first question (age restriction), show multiple buttons instead of "Next"
+
+    // Age restriction (out-of-range on Q0) — show Start Again / Email / Home buttons
     if (currentQuestionIndex === 0) {
-        $triggerNext.hide(); // Hide the standard "Next" button
-        
-        // Check if buttons don't already exist before adding
+        $triggerNext.hide();
+
         if ($(".no-options-container").length === 0) {
-            // Create button container
             const $optionsContainer = $('<div class="no-options-container fadeInUp wow" data-wow-delay="0.3s"></div>');
-            
-            // Create the three buttons
             const $startAgainBtn = $('<button class="trigger trigger-restart">Start Again</button>');
             const $emailUsBtn = $('<a href="mailto:hello@headstartcoding.co.uk" class="trigger trigger-email">Email Us</a>');
             const $homePageBtn = $('<a href="/" class="trigger trigger-home">Visit Home Page</a>');
-            
-            // Add buttons to container
+
             $optionsContainer.append($startAgainBtn, $emailUsBtn, $homePageBtn);
-            
-            // Add container after the content in the "no-1" div
             $(`.${currentAnswerClass}`).after($optionsContainer);
-            
-            // Set up event handlers for the new buttons
+
             $startAgainBtn.click(function() {
                 resetForm();
             });
         } else {
-            // Just make sure they're visible if they already exist
             $(".no-options-container").show();
         }
     } else {
-        // For other questions, ensure the Next button is visible and the options are hidden
         $triggerNext.show();
+        var nextIndex = getNextQuestionIndex(currentQuestionIndex);
+        $triggerNext.text(nextIndex >= qaData.length ? "See Results" : "Next");
         $(".no-options-container").hide();
     }
-    
+
     anime({
         targets: $modalOverlay[0],
         clipPath: [
@@ -399,6 +549,7 @@ function showNoModal(initialColor, transitionColor) {
 
     $questionBox.hide();
     $progressContainer.hide();
+    $triggerBack.addClass('hide');
 }
 
 function hideModal() {
@@ -406,11 +557,11 @@ function hideModal() {
     const currentAnswerNoClass = qaData[currentQuestionIndex].answerNoClass;
     $modal.hide();
     $(`.${currentAnswerClass}`).fadeOut();
-    $(`.${currentAnswerNoClass}`).fadeOut();
-    $(".no-options-container").hide(); // Also hide the options container
-    
+    if (currentAnswerNoClass) $(`.${currentAnswerNoClass}`).fadeOut();
+    $(".no-options-container").hide();
+
     anime({
-        targets: $modalOverlay[0], 
+        targets: $modalOverlay[0],
         clipPath: [
             `circle(${maxRadius}px at ${x}px ${y}px)`,
             `circle(0% at ${x}px ${y}px)`
@@ -426,17 +577,15 @@ function hideModal() {
 }
 
 function resetForm() {
-    // Hide all content
     const currentAnswerClass = qaData[currentQuestionIndex].answerClass;
     const currentAnswerNoClass = qaData[currentQuestionIndex].answerNoClass;
     $modal.hide();
     $(`.${currentAnswerClass}`).fadeOut();
-    $(`.${currentAnswerNoClass}`).fadeOut();
+    if (currentAnswerNoClass) $(`.${currentAnswerNoClass}`).fadeOut();
     $(".no-options-container").hide();
-    
-    // Animate closing
+
     anime({
-        targets: $modalOverlay[0], 
+        targets: $modalOverlay[0],
         clipPath: [
             `circle(${maxRadius}px at ${x}px ${y}px)`,
             `circle(0% at ${x}px ${y}px)`
@@ -446,70 +595,150 @@ function resetForm() {
         easing: "easeInOutQuad",
         complete: function () {
             $modalOverlay.hide();
-            
-            // Reset to first question
+
+            // Reset state
             currentQuestionIndex = 0;
-            $questionTitle.text(qaData[currentQuestionIndex].question);
-            $questionBox.fadeIn(500);
-            
-            // Show and reset progress bar
-            $progressContainer.show();
-            updateProgressBar();
+            userAnswers = {
+                ageRange: null,
+                likesGaming: null,
+                hasCodingExp: null,
+                interest: null
+            };
+
+            $triggerBack.addClass('hide');
+            updateQuestionUI();
         }
     });
 }
 
-function showNextQuestion() {
-    currentQuestionIndex++;
+function updateQuestionUI() {
+    const currentQ = qaData[currentQuestionIndex];
 
-    if (currentQuestionIndex >= 3) {
-        $triggerNo.text("Skip");
+    // Back button visibility
+    if (currentQuestionIndex > 0) {
+        $triggerBack.removeClass('hide');
     } else {
-        $triggerNo.text("No");
+        $triggerBack.addClass('hide');
     }
 
-    if (currentQuestionIndex === qaData.length - 1) {
-        $triggerNo.hide(); 
-        $triggerYes.text("Let's go!");
+    if (currentQ.type === "choice") {
+        // Hide yes/no, show choice buttons
+        $(".yes-no-box").hide();
+        const $choiceBox = $(".choice-box");
+        $choiceBox.empty();
+
+        currentQ.options.forEach(function(option) {
+            const iconHtml = option.icon ? '<i class="' + option.icon + ' me-2"></i>' : '';
+            const $btn = $('<button class="trigger trigger-choice" data-value="' + option.value + '">' +
+                iconHtml + option.label +
+            '</button>');
+            $choiceBox.append($btn);
+        });
+
+        $choiceBox.show();
+
+        // Bind click handlers
+        $(".trigger-choice").off("click").on("click", function() {
+            handleChoiceAnswer($(this).data("value"));
+        });
+
+    } else {
+        // Standard yes/no question
+        $(".choice-box").hide();
+        $(".yes-no-box").show();
+
+        $triggerNo.show();
+        $triggerNo.text("No");
+        $triggerYes.text("Yes");
     }
-    const nextQuestion = qaData[currentQuestionIndex].question;
-    $questionTitle.text(nextQuestion);
+
+    // Update question text and show
+    $questionTitle.text(currentQ.question);
     $questionBox.fadeIn(500);
-    
+
     // Show and update progress bar
     $progressContainer.show();
+    $progressFill.removeClass('completed');
     updateProgressBar();
+}
+
+function showNextQuestion() {
+    currentQuestionIndex = getNextQuestionIndex(currentQuestionIndex);
+    updateQuestionUI();
+}
+
+function showResults() {
+    displayRecommendation();
+
+    // Fade out current answer content, fade in results
+    const currentAnswerClass = qaData[currentQuestionIndex].answerClass;
+    const currentAnswerNoClass = qaData[currentQuestionIndex].answerNoClass;
+    $(`.${currentAnswerClass}`).fadeOut(400, function () {
+        $(`.a-7`).fadeIn(400);
+    });
+    if (currentAnswerNoClass) {
+        $(`.${currentAnswerNoClass}`).fadeOut(400, function () {
+            $(`.a-7`).fadeIn(400);
+        });
+    }
+
+    $triggerNext.hide();
+    $triggerBack.addClass('hide');
+    $modal[0].scrollTo({ top: 0, behavior: 'smooth' });
+
+    setTimeout(function () {
+        launchFireworks();
+    }, 500);
+
+    if (typeof fbq !== 'undefined') {
+        fbq('trackCustom', 'FormCompleted', {
+            total_questions: getTotalVisibleQuestions(),
+            completion_rate: 100,
+            recommended_course: getRecommendedCourse().name
+        });
+    }
+
+    // Update progress bar to complete
+    $progressContainer.show();
+    $progressFill.css('width', '100%');
+    $progressText.text('Complete!');
+    $progressFill.addClass('completed');
+}
+
+function showPreviousQuestion() {
+    if (currentQuestionIndex <= 0) return;
+    currentQuestionIndex = getPreviousQuestionIndex(currentQuestionIndex);
+    updateQuestionUI();
 }
 
 
 function launchFireworks() {
     const container = document.getElementById("fireworks-container");
     const fireworks = new Fireworks.default(container, {
-        hue: { min: 0, max: 345 }, 
-        acceleration: 1.1, 
-        brightness: { min: 17, max: 95 }, 
-        decay: { min: 0.015, max: 0.036 }, 
-        delay: { min: 30, max: 60 }, 
-        explosion: 10, 
-        flickering: 50, 
-        intensity: 30, 
-        friction: 0.97, 
-        gravity: 1.5, 
-        opacity: 0.5, 
-        particles: 60, 
-        traceLength: 3, 
-        traceSpeed: 10, 
-        rocketsPoint: { min: 50, max: 50 }, 
-        lineWidth: { explosion: { min: 1, max: 4 }, trace: { min: 0.1, max: 1 } }, 
+        hue: { min: 0, max: 345 },
+        acceleration: 1.1,
+        brightness: { min: 17, max: 95 },
+        decay: { min: 0.015, max: 0.036 },
+        delay: { min: 30, max: 60 },
+        explosion: 10,
+        flickering: 50,
+        intensity: 30,
+        friction: 0.97,
+        gravity: 1.5,
+        opacity: 0.5,
+        particles: 60,
+        traceLength: 3,
+        traceSpeed: 10,
+        rocketsPoint: { min: 50, max: 50 },
+        lineWidth: { explosion: { min: 1, max: 4 }, trace: { min: 0.1, max: 1 } },
         lineStyle: "round"
     });
 
     fireworks.start();
 
-    // Stop fireworks after 4 seconds
     setTimeout(() => {
         fireworks.stop();
-    }, 4000);
+    }, 3000);
 }
 
 // Testimonial code
@@ -589,48 +818,39 @@ $triggerYes.click(function () {
     const initialColor = "rgba(46, 204, 113, 0.9)";
     const transitionColor = "rgba(147, 51, 234, 0.9)";
 
-    // Track form progress
+    // Store yes/no answers
+    if (currentQuestionIndex === 1) userAnswers.likesGaming = true;
+    if (currentQuestionIndex === 2) userAnswers.hasCodingExp = true;
+
     trackFormProgress(currentQuestionIndex + 1);
 
-    if (currentQuestionIndex === qaData.length - 1) {
-        // Final CTA question - track form completion
-        if (typeof fbq !== 'undefined') {
-            fbq('trackCustom', 'FormCompleted', {
-                total_questions: qaData.length,
-                completion_rate: 100
-            });
-        }
-
-        // Final CTA question:
-        $triggerNext.hide();
-        launchFireworks();
-
-        setTimeout(() => {
-            showModal(initialColor, transitionColor);
-            $triggerNext.hide(); // Hide the "Next" button
-        }, 3000);
-    } else {
-        showModal(initialColor, transitionColor);
-    }
+    showModal(initialColor, transitionColor);
 });
 
 $triggerNo.click(function () {
-    const initialColor = "rgba(231, 76, 60, 0.9)";
+    const initialColor = "rgba(46, 204, 113, 0.9)";
     const transitionColor = "rgba(147, 51, 234, 0.9)";
 
-    // Track form abandonment
-    if (typeof fbq !== 'undefined') {
-        fbq('trackCustom', 'FormAbandonment', {
-            abandoned_at_step: currentQuestionIndex + 1,
-            progress_percentage: Math.round(((currentQuestionIndex + 1) / qaData.length) * 100)
-        });
-    }
+    // Store no answers
+    if (currentQuestionIndex === 1) userAnswers.likesGaming = false;
+    if (currentQuestionIndex === 2) userAnswers.hasCodingExp = false;
+
+    trackFormProgress(currentQuestionIndex + 1);
 
     showNoModal(initialColor, transitionColor);
 });
 
 $triggerNext.click(function () {
-    hideModal(); // Your existing function
+    var nextIndex = getNextQuestionIndex(currentQuestionIndex);
+    if (nextIndex >= qaData.length) {
+        showResults();
+    } else {
+        hideModal();
+    }
+});
+
+$triggerBack.click(function () {
+    showPreviousQuestion();
 });
 
 $closeButton.click(hideModal);
@@ -641,7 +861,7 @@ $(window).on('beforeunload', function() {
         if (typeof fbq !== 'undefined') {
             fbq('trackCustom', 'FormAbandonment', {
                 abandoned_at_step: currentQuestionIndex + 1,
-                progress_percentage: Math.round(((currentQuestionIndex + 1) / qaData.length) * 100),
+                progress_percentage: Math.round(((currentQuestionIndex + 1) / getTotalVisibleQuestions()) * 100),
                 abandonment_type: 'page_unload'
             });
         }
@@ -649,11 +869,88 @@ $(window).on('beforeunload', function() {
 });
 
 // Initialize first question
-$questionTitle.text(qaData[currentQuestionIndex].question);
+updateQuestionUI();
 
-// Initialize and show progress bar
-$progressContainer.show();
-updateProgressBar();
+// Quiz booking form submission
+$('#quizBookingForm').on('submit', function(e) {
+    e.preventDefault();
+
+    var studentName = $('#quizStudentName').val().trim();
+    var parentName = $('#quizParentName').val().trim();
+    var parentEmail = $('#quizParentEmail').val().trim();
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Reset validation
+    $('.quiz-form-control').removeClass('is-invalid');
+    $('#quizFormError').hide();
+
+    var isValid = true;
+    if (!studentName) { $('#quizStudentName').addClass('is-invalid'); isValid = false; }
+    if (!parentName) { $('#quizParentName').addClass('is-invalid'); isValid = false; }
+    if (!parentEmail || !emailRegex.test(parentEmail)) { $('#quizParentEmail').addClass('is-invalid'); isValid = false; }
+
+    if (!isValid) {
+        $('#quizFormError').show();
+        return;
+    }
+
+    // Disable button
+    var $btn = $('#quizSubmitBtn');
+    $btn.prop('disabled', true);
+    $('#quizSubmitText').html('<i class="fas fa-spinner fa-spin me-2"></i>Submitting...');
+
+    var course = getRecommendedCourse();
+
+    var formData = {
+        studentName: studentName,
+        parentName: parentName,
+        parentEmail: parentEmail,
+        recommendedCourse: course.name,
+        ageRange: userAnswers.ageRange,
+        hasCodingExperience: userAnswers.hasCodingExp ? 'Yes' : 'No',
+        interest: userAnswers.interest || 'N/A',
+        submissionDate: new Date().toISOString(),
+        source: 'quiz'
+    };
+
+    fetch('https://hooks.zapier.com/hooks/catch/19633836/uki351v/', {
+        method: 'POST',
+        body: JSON.stringify(formData)
+    }).then(function(response) {
+        if (response.ok) {
+            // Track lead
+            trackFacebookLead('quiz_booking');
+
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Schedule', {
+                    content_name: course.name,
+                    content_category: 'Taster Session Booking'
+                });
+            }
+
+            // Redirect straight to calendar
+            window.open('https://calendar.app.google/1u1P4sUKAf2WWSqE9', '_blank');
+
+            // Show confirmation in place of form
+            $('#quizBookingForm').html(
+                '<div style="text-align:center;padding:20px 0;">' +
+                    '<i class="fas fa-check-circle" style="font-size:2.5rem;color:#4ade80;margin-bottom:15px;display:block;"></i>' +
+                    '<p style="color:#fff;font-size:1.1rem;margin-bottom:5px;">Details received!</p>' +
+                    '<p style="color:rgba(255,255,255,0.7);font-size:0.9rem;">Choose a time in the calendar that just opened.</p>' +
+                    '<a href="https://calendar.app.google/1u1P4sUKAf2WWSqE9" target="_blank" class="btn btn-cta-primary" style="margin-top:15px;">' +
+                        '<i class="fas fa-calendar-check me-2"></i>Open Calendar Again' +
+                    '</a>' +
+                '</div>'
+            );
+        } else {
+            throw new Error('Submission failed');
+        }
+    }).catch(function() {
+        $btn.prop('disabled', false);
+        $('#quizSubmitText').html('<i class="fas fa-calendar-check me-2"></i>Book a Free Taster Session');
+        $('#quizFormError').text('Something went wrong. Please try again or email hello@headstartcoding.co.uk').show();
+    });
+});
 
 }
 
@@ -737,14 +1034,11 @@ updateProgressBar();
             offset: '80%'    // You can keep this same offset
         });
     
-        // Modal show logic
-        $('.trigger-yes').on('click', function () {
-            // Show the modal
+        // Modal show logic — enable waypoint when modal is triggered by yes or choice buttons
+        $(document).on('click', '.trigger-yes, .trigger-choice', function () {
             $('.modal').fadeIn();
-    
-            // Enable and refresh the Waypoint after the modal is shown
             skillWaypoint.enable();
-            Waypoint.refreshAll();  // Refresh all waypoints
+            Waypoint.refreshAll();
         });
     
         // Close modal logic (optional if you have a close button)

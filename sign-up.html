@@ -173,30 +173,34 @@
                                 <!-- Question Box -->
                                 <div class="question-box">
                                     <h2 class="mb-4 model-sub-title current-question">
-                                        Do you have a child between the ages of 8 and 16 years old?
+                                        How old is your child?
                                     </h2>
                                     <div class="yes-no-box">
                                         <button class="trigger-yes trigger">Yes</button>
                                         <button class="trigger-no trigger">No</button>
                                     </div>
+                                    <div class="choice-box" style="display: none;">
+                                        <!-- Dynamically populated by JS -->
+                                    </div>
                                 </div>
-                                
+
                                 <!-- Progress Bar -->
                                 <div class="form-progress-container">
                                     <div class="form-progress-bar">
                                         <div class="form-progress-fill" id="progressFill"></div>
                                     </div>
                                     <div class="form-progress-text">
-                                        <span id="progressText">Question 1 of 7</span>
+                                        <span id="progressText">Question 1 of 5</span>
                                     </div>
                                 </div>
+                                <button class="trigger-back hide"><i class="fas fa-arrow-left me-2"></i>Back</button>
 
                                 <!-- Modal -->
                                 <div class="modal">
                                     <span class="close-button hide">&times;</span>
                                     <div class="col-lg-12 sign-up-wrapper g-5 align-items-center intro-center intro-display-none wow fadeInUp"
                                         data-wow-delay="0.2s">
-                                        <!-- Answer Section 1 -->
+                                        <!-- Answer Section 1 - Age Range Response -->
                                         <div class="col-lg-12 sign-up-wrapper intro-age wow hide a-1 fadeInUp" data-wow-delay="0.2s">
                                             <p class="section-title text-secondary text-white">No time like the
                                                 present</p>
@@ -211,7 +215,7 @@
                                                         aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
-                                            <div class="skill mb-4">
+                                            <div class="skill mb-4 highlight">
                                                 <div class="d-flex justify-content-between">
                                                     <p class="mb-2">8 to 16 years</p>
                                                     <p class="mb-2">60%</p>
@@ -242,11 +246,7 @@
                                                 </div>
                                             </div>
                                             <p class="mb-4">
-                                                According to one global study, most professional developers wrote their
-                                                first line of code
-                                                between the ages of 8 and 17 years old. <br />
-                                                Around 70 percent of the developers surveyed started coding before
-                                                turning 18 years old. Starting with visual programming like Scratch at age 8 provides an excellent foundation!
+                                                Most developers started coding before age 18! Starting early gives kids a powerful head start!
                                             </p>
                                         </div>
 
@@ -310,162 +310,88 @@
                                                 <!-- <div class="message">Your coding journey starts here!</div> -->
                                             </div>
                                             <p class="mb-4">
-                                                Many young coders start their journey through gaming. Did you know that
-                                                Minecraft and Roblox both use real programming concepts? We'll build on
-                                                their gaming interest to teach actual coding skills.
+                                                Many young coders start through gaming. Kids can build on what they already know from Minecraft & Roblox.
                                             </p>
                                         </div>
 
                                         <!-- Answer Section 3 -->
-
-                                        <div class="col-lg-12 sign-up-wrapper hide a-3 wow fadeInUp" data-wow-delay="0.1s">
-                                            <p class="section-title text-secondary text-white">Not just
-                                                coding</p>
-                                            <h1 class="mb-5 text-white intro-title">Skills for life</h1>
+                                        <div class="col-lg-12 sign-up-wrapper hide a-3 wow fadeInUp" data-wow-delay="0.2s">
+                                            <p class="section-title text-secondary text-white">Building on experience</p>
+                                            <h1 class="mb-5 text-white intro-title">Every line of code counts!</h1>
                                             <div class="typewriter">
-                                                <h1>Welcome coders!</h1>
-                                              </div>
+                                                <h1>print("Hello!")</h1>
+                                            </div>
                                             <p class="mb-4">
-                                                Great news! That existing keyboard confidence will give them a head
-                                                start. We'll help them apply those skills to create their own coding
-                                                projects.
+                                                Perfect—we'll meet your child where they are and help them level up their skills!
                                             </p>
                                         </div>
 
-
-                                        <!-- Answer Section 4 -->
-
-                                        <div class="col-lg-12 sign-up-wrapper hide a-4 wow" data-wow-delay="0.5s">
-                                            <p class="section-title text-secondary text-white">The future is
-                                                bright</p>
-                                            <h1 class="mb-5 text-white intro-title">Job security in a digital world</h1>
-                                            <div class="col-md-6 intro-stats-container col-lg-3 text-center wow fadeIn" data-wow-delay="0.3s">
-                                                <i class="fa-solid fa-sterling-sign fa-3x text-secondary mb-3"></i>
-                                                <h1 class="text-white mb-2" data-toggle="counter-up">30000</h1>
-                                                <p class="text-white mb-0">Average junior developer salary (GBP)</p>
-                                            </div>
-                                            <div class="col-md-6 col-lg-3 intro-stats-container text-center wow fadeIn stat-box" data-wow-delay="0.5s">
-                                                <i class="fa fa-percentage fa-3x text-secondary mb-3"></i>
-                                                <h1 class="text-white mb-2" data-toggle="counter-up">30</h1>
-                                                <p class="text-white mb-0">Predicted increase in demand for 
-                                                programmers over the next 10 years</p>
-                                            </div>
-                                            <div class="col-md-6 col-lg-3 intro-stats-container text-center wow fadeIn stat-box" data-wow-delay="0.7s">
-                                                <i class="fa-regular fa-handshake fa-3x text-secondary mb-3"></i>
-                                                <h1 class="text-white mb-2" data-toggle="counter-up">4000</h1>
-                                                <p class="text-white mb-0">Number of coding jobs listed on sites like Linkedin every month</p>
-                                            </div>
-                                        </div>
-
-                                        <!-- Answer section 5 -->
-
-                                        <div class="col-lg-12 sign-up-wrapper hide a-5 wow fadeInUp" data-wow-delay="0.1s">
-                                            <p class="section-title text-secondary text-white">Introducing new skills</p>
-                                            <h1 class="mb-5 text-white intro-title">Flip the tiles below for more info!</h1>
-                                        
-                                            <!-- Scratch Flip Card -->
-                                            <div class="col-lg-4 col-md-6 wow fadeInUp service-item-container service-item-container-intro" data-wow-delay="0.1s">
-                                                <a class="btn btn-square" href="#">Flip<i class="fa-solid fa-share"></i></a>
-                                                <div class="flip-container">
-                                                    <div class="service-item d-flex flex-column text-center rounded flipper">
-                                                        <div class="front">
-                                                            <div class="service-icon flex-shrink-0">
-                                                                <i class="fa-solid fa-puzzle-piece fa-2x"></i>
-                                                            </div>
-                                                            <h5 class="mb-3">Scratch</h5>
-                                                            <p class="m-0">Visual programming perfect for young beginners.</p>
-                                                        </div>
-                                                        <div class="back">
-                                                            <h5 class="mb-3">Learn Scratch</h5>
-                                                            <p class="m-0">Perfect for ages 8+! Scratch is a visual programming language where kids drag and drop colorful blocks to create animations, stories, and games while learning core programming concepts.</p>
-                                                        </div>
-                                                    </div>
+                                        <!-- Answer Section 5 - Interest Response -->
+                                        <div class="col-lg-12 sign-up-wrapper hide a-5 wow fadeInUp" data-wow-delay="0.2s">
+                                            <p class="section-title text-secondary text-white">Great to know</p>
+                                            <h1 class="mb-5 text-white intro-title" id="interest-response-title">Wonderful!</h1>
+                                            <div class="palette-container" id="palette-container" style="display:none;">
+                                                <div class="palette-shape">
+                                                    <div class="palette-hole"></div>
+                                                    <div class="palette-swatch" style="--swatch-color: #DE3B30; --delay: 0.1s; --x: 22%; --y: 18%;"></div>
+                                                    <div class="palette-swatch" style="--swatch-color: #F09B37; --delay: 0.25s; --x: 48%; --y: 8%;"></div>
+                                                    <div class="palette-swatch" style="--swatch-color: #FDDA44; --delay: 0.4s; --x: 72%; --y: 16%;"></div>
+                                                    <div class="palette-swatch" style="--swatch-color: #4CAF50; --delay: 0.55s; --x: 82%; --y: 42%;"></div>
+                                                    <div class="palette-swatch" style="--swatch-color: #3D8BD5; --delay: 0.7s; --x: 72%; --y: 66%;"></div>
                                                 </div>
                                             </div>
-                                        
-                                            <!-- Python Flip Card -->
-                                            <div class="col-lg-4 col-md-6 wow fadeInUp align-items-center service-item-container service-item-container-intro" data-wow-delay="0.2s">
-                                                <a class="btn btn-square" href="#">Flip<i class="fa-solid fa-share"></i></a>
-                                                <div class="flip-container">
-                                                    <div class="service-item d-flex flex-column text-center rounded flipper">
-                                                        <div class="front">
-                                                            <div class="service-icon flex-shrink-0">
-                                                                <i class="fa-brands fa-python fa-2x"></i>
-                                                            </div>
-                                                            <h5 class="mb-3">Python</h5>
-                                                            <p class="m-0">Code real games & apps. Solve real-world challenges.</p>
-                                                        </div>
-                                                        <div class="back">
-                                                            <h5 class="mb-3">Learn Python</h5>
-                                                            <p class="m-0">Python is a versatile language that introduces kids to coding in an engaging way. They'll learn how to create games, solve problems, and develop valuable skills for their future.</p>
-                                                        </div>
-                                                    </div>
+                                            <div class="oxo-container" id="oxo-container" style="display:none;">
+                                                <div class="oxo-grid">
+                                                    <div class="oxo-cell" style="--delay: 0.2s;"><span class="oxo-x">X</span></div>
+                                                    <div class="oxo-cell" style="--delay: 0.3s;"></div>
+                                                    <div class="oxo-cell" style="--delay: 0.4s;"><span class="oxo-o">O</span></div>
+                                                    <div class="oxo-cell" style="--delay: 0.7s;"><span class="oxo-o">O</span></div>
+                                                    <div class="oxo-cell" style="--delay: 0.8s;"><span class="oxo-x">X</span></div>
+                                                    <div class="oxo-cell" style="--delay: 0.9s;"><span class="oxo-o">O</span></div>
+                                                    <div class="oxo-cell" style="--delay: 1.2s;"></div>
+                                                    <div class="oxo-cell" style="--delay: 1.3s;"><span class="oxo-o">O</span></div>
+                                                    <div class="oxo-cell" style="--delay: 1.4s;"><span class="oxo-x">X</span></div>
                                                 </div>
                                             </div>
-                                        
-                                            <!-- Web Development Flip Card -->
-                                            <div class="col-lg-4 col-md-6 wow fadeInUp service-item-container service-item-container-intro" data-wow-delay="0.3s">
-                                                <a class="btn btn-square" href="#">Flip<i class="fa-solid fa-share"></i></a>
-                                                <div class="flip-container">
-                                                    <div class="service-item d-flex flex-column text-center rounded flipper">
-                                                        <div class="front">
-                                                            <div class="service-icon flex-shrink-0">
-                                                                <i class="fa-solid fa-globe fa-2x"></i>
-                                                            </div>
-                                                            <h5 class="mb-3">Web Development</h5>
-                                                            <p class="m-0">Build interactive websites from scratch.</p>
-                                                        </div>
-                                                        <div class="back">
-                                                            <h5 class="mb-3">Web Development</h5>
-                                                            <p class="m-0">Master the complete web development toolkit! Learn HTML for structure, CSS for styling, and JavaScript for interactivity. Create websites that look amazing and work perfectly!</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Answer section 6 -->
-
-                                        <div class="col-lg-12 sign-up-wrapper hide a-6 wow fadeInUp testimonial-section" data-wow-delay="0.1s">
-                                            <p class="section-title text-secondary text-white">Positive feedback</p>
-                                            <h1 class="mb-5 text-white intro-title">Real testimonials from happy parents</h1>
-                                        
-                                            <div class="testimonial-container">
-                                                <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                                        
-                                                <div class="testimonial-slider">
-                                                    <div class="testimonial active">
-                                                        <p>"My sons have both just completed Joe's Level 1 HTML & CSS course. They thoroughly enjoyed the fun and interactive lessons. We would definitely recommend Joe and look forward to enrolling in his next course."</p>
-                                                        <h5>- Louise.</h5>
-                                                    </div>
-                                                    <div class="testimonial">
-                                                        <p>"My son loves his coding lessons with Joe! In future he wants to learn how to code games."</p>
-                                                        <h5>- Esther.</h5>
-                                                    </div>
-                                                    <div class="testimonial">
-                                                        <p>"My daughter enjoys the challenges and fun of coding! So far flexbox and gradients have been her favourite subjects."</p>
-                                                        <h5>- Sorayuh.</h5>
-                                                    </div>
-                                                </div>
-                                        
-                                                <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                                            </div>
-                                        
-                                            <div class="dots-container"></div>
+                                            <p class="mb-4" id="interest-response-text"></p>
                                         </div>
 
                                         <!-- CTA Section-->
 
                                         <div class="cta-section sign-up-wrapper col-lg-12 hide a-7 wow fadeInUp">
-                                            <p class="section-title text-secondary text-white">Let's get started!</p>
-                                            <h1 class="mb-5 text-white intro-title">Give Your Child a Head Start in Coding!</h1>
-                                            <p class="cta-subtext">Ready to give your child a head start? We have limited spaces available for our upcoming taster sessions. Book your child's free 30-minute taster session now to secure their spot and discover which coding course is perfect for them. If you have questions before booking, feel free to email us.</p>
-                                            <div class="cta-links">
-                                            <a href="book-taster.html" class="btn btn-primary trigger trigger-book-taster" style="background: linear-gradient(135deg, #6222CC 0%, #8B5CF6 100%); border: none; color: white; padding: 15px 30px; border-radius: 50px; font-weight: 600; text-decoration: none; margin-bottom: 15px; display: inline-block; transition: all 0.3s ease;"><i class="fas fa-calendar-check me-2"></i>Book a Free Taster Session</a>
-                                            <a href="mailto:hello@headstartcoding.co.uk?subject=Interest%20in%20Coding%20Lessons" target="_blank" class="btn trigger trigger-email privacy-contact-link" data-contact-type="email">Email Us</a>
-                                            <a href="https://wa.me/+447572592298?text=Hi!%20I'm%20interested%20in%20your%20coding%20courses!" target="_blank" class="btn trigger trigger-email privacy-contact-link d-md-none" data-contact-type="whatsapp">Message Us on WhatsApp</a>
+                                            <!-- Course Recommendation Block -->
+                                            <div class="recommendation-block" id="recommendation-block">
+                                                <div class="recommendation-card">
+                                                    <div class="recommendation-icon" id="rec-icon">
+                                                        <i class="fas fa-puzzle-piece"></i>
+                                                    </div>
+                                                    <h2 class="recommendation-heading" id="rec-heading">We think your child would love Scratch!</h2>
+                                                    <p class="recommendation-description" id="rec-description"></p>
+                                                </div>
+                                                <p class="recommendation-disclaimer">
+                                                    Based on your answers, here's our recommendation. Your tutor will find the perfect fit in the free taster session.
+                                                </p>
                                             </div>
+
+                                            <!-- Booking Form -->
+                                            <form id="quizBookingForm" class="quiz-booking-form" novalidate>
+                                                <div class="quiz-form-group">
+                                                    <input type="text" class="quiz-form-control" id="quizStudentName" name="studentName" placeholder="Student's first name" required>
+                                                </div>
+                                                <div class="quiz-form-group">
+                                                    <input type="text" class="quiz-form-control" id="quizParentName" name="parentName" placeholder="Parent's name" required>
+                                                </div>
+                                                <div class="quiz-form-group">
+                                                    <input type="email" class="quiz-form-control" id="quizParentEmail" name="parentEmail" placeholder="Parent's email" required>
+                                                </div>
+                                                <button type="submit" class="btn btn-cta-primary quiz-submit-btn" id="quizSubmitBtn">
+                                                    <span id="quizSubmitText">Book Free Taster Session</span>
+                                                </button>
+                                                <div class="quiz-form-error" id="quizFormError" style="display: none;">
+                                                    Please fill in all fields with a valid email address.
+                                                </div>
+                                            </form>
+                                            <a href="index.html" class="quiz-exit-link"><i class="fas fa-arrow-left me-1"></i>Back to website</a>
                                         </div>
 
 
@@ -496,34 +422,10 @@
                                         </div>
 
                                         <div class="col-lg-12 sign-up-wrapper hide no-3" data-wow-delay="0.1s">
-                                            <p class="section-title text-secondary text-white">Let's Learn new
-                                                skills<span></span></p>
-                                            <h1 class="mb-5 text-white">Let's start from scratch!</h1>
+                                            <p class="section-title text-secondary text-white">The perfect starting point<span></span></p>
+                                            <h1 class="mb-5 text-white">No experience? No problem!</h1>
                                             <p class="mb-4">
-                                                Don't worry! We start with the basics and gradually build up typing
-                                                skills alongside coding concepts. Students will learn valuable skills
-                                                such as keyboard shortcuts.
-                                            </p>
-                                        </div>
-
-                                        <div class="col-lg-12 sign-up-wrapper hide no-4" data-wow-delay="0.1s">
-                                            <p class="section-title text-secondary text-white">Lifetime
-                                                benefits<span></span></p>
-                                            <h1 class="mb-5 text-white">Skills in more than just coding</h1>
-                                            <p class="mb-4">
-                                                That's okay! We can focus instead on how coding develops valuable skills
-                                                like logical thinking, creativity, and problem-solving that benefit
-                                                students in any future path they choose.
-                                            </p>
-                                        </div>
-
-                                        <div class="col-lg-12 sign-up-wrapper hide no-5" data-wow-delay="0.1s">
-                                            <p class="section-title text-secondary text-white">Let's move
-                                                on<span></span></p>
-                                            <h1 class="mb-5 text-white">Next steps</h1>
-                                            <p class="mb-4">
-                                                Take your time to review our other information first. The course details
-                                                will be here when you're ready to learn more.
+                                                Most of our students start as complete beginners—and they're amazed at what they create in their very first lesson!
                                             </p>
                                         </div>
 
