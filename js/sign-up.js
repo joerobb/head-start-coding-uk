@@ -138,13 +138,20 @@ privacyAcceptBtn.on('click', function() {
     if (pendingContactAction && privacyCheckbox.prop('checked')) {
         localStorage.setItem('privacyConsent', 'accepted');
         localStorage.setItem('privacyConsentDate', new Date().toISOString());
-        trackFacebookLead(pendingContactAction.type);
         privacyModal.fadeOut(300);
 
-        setTimeout(() => {
-            window.open(pendingContactAction.url, '_blank');
+        if (pendingContactAction.submitForm) {
             pendingContactAction = null;
-        }, 300);
+            setTimeout(function() {
+                submitQuizBooking();
+            }, 300);
+        } else {
+            trackFacebookLead(pendingContactAction.type);
+            setTimeout(() => {
+                window.open(pendingContactAction.url, '_blank');
+                pendingContactAction = null;
+            }, 300);
+        }
     }
 });
 
@@ -869,6 +876,61 @@ $(window).on('beforeunload', function() {
 updateQuestionUI();
 
 // Quiz booking form submission
+function submitQuizBooking() {
+    var $btn = $('#quizSubmitBtn');
+    $btn.prop('disabled', true);
+    $('#quizSubmitText').html('<i class="fas fa-spinner fa-spin me-2"></i>Submitting...');
+
+    var course = getRecommendedCourse();
+
+    var formData = {
+        studentName: $('#quizStudentName').val().trim(),
+        parentName: $('#quizParentName').val().trim(),
+        parentEmail: $('#quizParentEmail').val().trim(),
+        recommendedCourse: course.name,
+        ageRange: userAnswers.ageRange,
+        hasCodingExperience: userAnswers.hasCodingExp ? 'Yes' : 'No',
+        interest: userAnswers.interest || 'N/A',
+        submissionDate: new Date().toISOString(),
+        source: 'quiz'
+    };
+
+    fetch('https://hooks.zapier.com/hooks/catch/19633836/uki351v/', {
+        method: 'POST',
+        body: JSON.stringify(formData)
+    }).then(function(response) {
+        if (response.ok) {
+            trackFacebookLead('quiz_booking');
+
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Schedule', {
+                    content_name: course.name,
+                    content_category: 'Taster Session Booking'
+                });
+            }
+
+            window.open('https://calendar.app.google/1u1P4sUKAf2WWSqE9', '_blank');
+
+            $('#quizBookingForm').html(
+                '<div style="text-align:center;padding:20px 0;">' +
+                    '<i class="fas fa-check-circle" style="font-size:2.5rem;color:#4ade80;margin-bottom:15px;display:block;"></i>' +
+                    '<p style="color:#fff;font-size:1.1rem;margin-bottom:5px;">Details received!</p>' +
+                    '<p style="color:rgba(255,255,255,0.7);font-size:0.9rem;">Choose a time in the calendar that just opened.</p>' +
+                    '<a href="https://calendar.app.google/1u1P4sUKAf2WWSqE9" target="_blank" class="btn btn-cta-primary" style="margin-top:15px;">' +
+                        '<i class="fas fa-calendar-check me-2"></i>Open Calendar Again' +
+                    '</a>' +
+                '</div>'
+            );
+        } else {
+            throw new Error('Submission failed');
+        }
+    }).catch(function() {
+        $btn.prop('disabled', false);
+        $('#quizSubmitText').html('<i class="fas fa-calendar-check me-2"></i>Book a Free Taster Session');
+        $('#quizFormError').text('Something went wrong. Please try again or email hello@headstartcoding.co.uk').show();
+    });
+}
+
 $('#quizBookingForm').on('submit', function(e) {
     e.preventDefault();
 
@@ -891,62 +953,25 @@ $('#quizBookingForm').on('submit', function(e) {
         return;
     }
 
-    // Disable button
-    var $btn = $('#quizSubmitBtn');
-    $btn.prop('disabled', true);
-    $('#quizSubmitText').html('<i class="fas fa-spinner fa-spin me-2"></i>Submitting...');
-
-    var course = getRecommendedCourse();
-
-    var formData = {
-        studentName: studentName,
-        parentName: parentName,
-        parentEmail: parentEmail,
-        recommendedCourse: course.name,
-        ageRange: userAnswers.ageRange,
-        hasCodingExperience: userAnswers.hasCodingExp ? 'Yes' : 'No',
-        interest: userAnswers.interest || 'N/A',
-        submissionDate: new Date().toISOString(),
-        source: 'quiz'
-    };
-
-    fetch('https://hooks.zapier.com/hooks/catch/19633836/uki351v/', {
-        method: 'POST',
-        body: JSON.stringify(formData)
-    }).then(function(response) {
-        if (response.ok) {
-            // Track lead
-            trackFacebookLead('quiz_booking');
-
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'Schedule', {
-                    content_name: course.name,
-                    content_category: 'Taster Session Booking'
-                });
-            }
-
-            // Redirect straight to calendar
-            window.open('https://calendar.app.google/1u1P4sUKAf2WWSqE9', '_blank');
-
-            // Show confirmation in place of form
-            $('#quizBookingForm').html(
-                '<div style="text-align:center;padding:20px 0;">' +
-                    '<i class="fas fa-check-circle" style="font-size:2.5rem;color:#4ade80;margin-bottom:15px;display:block;"></i>' +
-                    '<p style="color:#fff;font-size:1.1rem;margin-bottom:5px;">Details received!</p>' +
-                    '<p style="color:rgba(255,255,255,0.7);font-size:0.9rem;">Choose a time in the calendar that just opened.</p>' +
-                    '<a href="https://calendar.app.google/1u1P4sUKAf2WWSqE9" target="_blank" class="btn btn-cta-primary" style="margin-top:15px;">' +
-                        '<i class="fas fa-calendar-check me-2"></i>Open Calendar Again' +
-                    '</a>' +
-                '</div>'
-            );
-        } else {
-            throw new Error('Submission failed');
+    // Check if privacy consent already given (within 12 months)
+    var consent = localStorage.getItem('privacyConsent');
+    var consentDate = localStorage.getItem('privacyConsentDate');
+    if (consent === 'accepted' && consentDate) {
+        var consentTimestamp = new Date(consentDate);
+        var twelveMonthsAgo = new Date();
+        twelveMonthsAgo.setMonth(twelveMonthsAgo.getMonth() - 12);
+        if (consentTimestamp > twelveMonthsAgo) {
+            submitQuizBooking();
+            return;
         }
-    }).catch(function() {
-        $btn.prop('disabled', false);
-        $('#quizSubmitText').html('<i class="fas fa-calendar-check me-2"></i>Book a Free Taster Session');
-        $('#quizFormError').text('Something went wrong. Please try again or email hello@headstartcoding.co.uk').show();
-    });
+    }
+
+    // Show privacy modal — submit on accept
+    pendingContactAction = { type: 'quiz_booking', submitForm: true };
+    privacyModal.fadeIn(300);
+    privacyCheckbox.prop('checked', false);
+    privacyAcceptBtn.prop('disabled', true);
+    $('.privacy-modal-body').scrollTop(0);
 });
 
 }
