@@ -315,14 +315,16 @@ function getRecommendedCourse() {
                 name: "Python",
                 icon: "fab fa-python",
                 description: "Real code, fun projects and one of the world's most popular languages.",
-                color: "#3776AB"
+                color: "#3776AB",
+                emailBenefit: "A simple yet powerful, beginner-friendly programming language used by professionals worldwide. Great for building apps and games."
             };
         } else {
             return {
                 name: "Scratch",
                 icon: "fas fa-puzzle-piece",
                 description: "Create games and animations with colourful drag-and-drop blocks.",
-                color: "#FFB628"
+                color: "#FFB628",
+                emailBenefit: "A fun, visual coding language where kids build games and animations using drag-and-drop blocks. Perfect for building confidence and creative thinking."
             };
         }
     }
@@ -333,14 +335,16 @@ function getRecommendedCourse() {
                 name: "Web Development",
                 icon: "fas fa-code",
                 description: "Design and build real websites, combining creativity with code.",
-                color: "#E44D26"
+                color: "#E44D26",
+                emailBenefit: "Learn HTML, CSS and JavaScript to design and build real websites. A creative, portfolio-ready skill used across every industry."
             };
         } else {
             return {
                 name: "Python",
                 icon: "fab fa-python",
                 description: "Solve challenges and build real applications with Python.",
-                color: "#3776AB"
+                color: "#3776AB",
+                emailBenefit: "A simple yet powerful, beginner-friendly programming language used by professionals worldwide. Great for building apps and games."
             };
         }
     }
@@ -351,14 +355,16 @@ function getRecommendedCourse() {
                 name: "Web Development",
                 icon: "fas fa-code",
                 description: "Build professional websites — a real-world, portfolio-ready skill.",
-                color: "#E44D26"
+                color: "#E44D26",
+                emailBenefit: "Learn HTML, CSS and JavaScript to design and build real websites. A creative, portfolio-ready skill used across every industry."
             };
         } else {
             return {
                 name: "Python",
                 icon: "fab fa-python",
                 description: "The language behind AI, data science and so much more.",
-                color: "#3776AB"
+                color: "#3776AB",
+                emailBenefit: "A simple yet powerful, beginner-friendly programming language used by professionals worldwide. Great for building apps and games."
             };
         }
     }
@@ -368,17 +374,13 @@ function getRecommendedCourse() {
         name: "Scratch",
         icon: "fas fa-puzzle-piece",
         description: "A great starting point for any young learner.",
-        color: "#FFB628"
+        color: "#FFB628",
+        emailBenefit: "A fun, visual coding language where kids build games and animations using drag-and-drop blocks. Perfect for building confidence and creative thinking."
     };
 }
 
 function displayRecommendation() {
     const course = getRecommendedCourse();
-
-    $("#rec-icon").html('<i class="' + course.icon + '"></i>');
-    $("#rec-heading").text("We think your child would love " + course.name + "!");
-    $("#rec-description").text(course.description);
-    $(".recommendation-card").css("border-left-color", course.color);
 
     if (typeof fbq !== 'undefined') {
         fbq('trackCustom', 'CourseRecommended', {
@@ -888,6 +890,8 @@ function submitQuizBooking() {
         parentName: $('#quizParentName').val().trim(),
         parentEmail: $('#quizParentEmail').val().trim(),
         recommendedCourse: course.name,
+        courseBenefit: course.emailBenefit,
+        calendarLink: 'https://calendar.app.google/1u1P4sUKAf2WWSqE9',
         ageRange: userAnswers.ageRange,
         hasCodingExperience: userAnswers.hasCodingExp ? 'Yes' : 'No',
         interest: userAnswers.interest || 'N/A',
@@ -909,16 +913,12 @@ function submitQuizBooking() {
                 });
             }
 
-            window.open('https://calendar.app.google/1u1P4sUKAf2WWSqE9', '_blank');
-
+            var studentName = $('#quizStudentName').val() || formData.studentName;
             $('#quizBookingForm').html(
                 '<div style="text-align:center;padding:20px 0;">' +
-                    '<i class="fas fa-check-circle" style="font-size:2.5rem;color:#4ade80;margin-bottom:15px;display:block;"></i>' +
-                    '<p style="color:#fff;font-size:1.1rem;margin-bottom:5px;">Details received!</p>' +
-                    '<p style="color:rgba(255,255,255,0.7);font-size:0.9rem;">Choose a time in the calendar that just opened.</p>' +
-                    '<a href="https://calendar.app.google/1u1P4sUKAf2WWSqE9" target="_blank" class="btn btn-cta-primary" style="margin-top:15px;">' +
-                        '<i class="fas fa-calendar-check me-2"></i>Open Calendar Again' +
-                    '</a>' +
+                    '<i class="fas fa-envelope-circle-check" style="font-size:2.5rem;color:#4ade80;margin-bottom:15px;display:block;"></i>' +
+                    '<h3 style="color:#fff;font-size:1.3rem;margin-bottom:8px;">Check your inbox!</h3>' +
+                    '<p style="color:rgba(255,255,255,0.85);font-size:1rem;">We\u2019ve sent ' + studentName + '\u2019s personalised course recommendation to your email.</p>' +
                 '</div>'
             );
         } else {
@@ -926,7 +926,7 @@ function submitQuizBooking() {
         }
     }).catch(function() {
         $btn.prop('disabled', false);
-        $('#quizSubmitText').html('<i class="fas fa-calendar-check me-2"></i>Book a Free Taster Session');
+        $('#quizSubmitText').text('Get My Child\'s Results');
         $('#quizFormError').text('Something went wrong. Please try again or email hello@headstartcoding.co.uk').show();
     });
 }
