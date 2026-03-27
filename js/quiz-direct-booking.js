@@ -372,6 +372,11 @@ function getRecommendedCourse() {
 function displayRecommendation() {
     const course = getRecommendedCourse();
 
+    $("#rec-icon").html('<i class="' + course.icon + '"></i>');
+    $("#rec-heading").text("We think your child would love " + course.name + "!");
+    $("#rec-description").text(course.description);
+    $(".recommendation-card").css("border-left-color", course.color);
+
     if (typeof fbq !== 'undefined') {
         fbq('trackCustom', 'CourseRecommended', {
             course_name: course.name,
@@ -903,12 +908,16 @@ function submitQuizBooking() {
                 });
             }
 
-            var studentName = $('#quizStudentName').val() || formData.studentName;
+            window.open('https://calendar.app.google/1u1P4sUKAf2WWSqE9', '_blank');
+
             $('#quizBookingForm').html(
                 '<div style="text-align:center;padding:20px 0;">' +
-                    '<i class="fas fa-envelope-circle-check" style="font-size:2.5rem;color:#4ade80;margin-bottom:15px;display:block;"></i>' +
-                    '<h3 style="color:#fff;font-size:1.3rem;margin-bottom:8px;">Check your inbox!</h3>' +
-                    '<p style="color:rgba(255,255,255,0.85);font-size:1rem;">We\u2019ve sent ' + studentName + '\u2019s personalised course recommendation to your email.</p>' +
+                    '<i class="fas fa-check-circle" style="font-size:2.5rem;color:#4ade80;margin-bottom:15px;display:block;"></i>' +
+                    '<p style="color:#fff;font-size:1.1rem;margin-bottom:5px;">Details received!</p>' +
+                    '<p style="color:rgba(255,255,255,0.7);font-size:0.9rem;">Choose a time in the calendar that just opened.</p>' +
+                    '<a href="https://calendar.app.google/1u1P4sUKAf2WWSqE9" target="_blank" class="btn btn-cta-primary" style="margin-top:15px;">' +
+                        '<i class="fas fa-calendar-check me-2"></i>Open Calendar Again' +
+                    '</a>' +
                 '</div>'
             );
         } else {
@@ -916,7 +925,7 @@ function submitQuizBooking() {
         }
     }).catch(function() {
         $btn.prop('disabled', false);
-        $('#quizSubmitText').text('Get My Child\'s Results');
+        $('#quizSubmitText').html('<i class="fas fa-calendar-check me-2"></i>Book Free Taster Session');
         $('#quizFormError').text('Something went wrong. Please try again or email hello@headstartcoding.co.uk').show();
     });
 }
