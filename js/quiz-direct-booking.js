@@ -894,6 +894,9 @@ function submitQuizBooking() {
         source: 'quiz'
     };
 
+    // Open calendar immediately (before async fetch) to avoid popup blocker
+    window.open('https://calendar.app.google/1u1P4sUKAf2WWSqE9', '_blank');
+
     fetch('https://hooks.zapier.com/hooks/catch/19633836/uki351v/', {
         method: 'POST',
         body: JSON.stringify(formData)
@@ -907,8 +910,6 @@ function submitQuizBooking() {
                     content_category: 'Taster Session Booking'
                 });
             }
-
-            window.open('https://calendar.app.google/1u1P4sUKAf2WWSqE9', '_blank');
 
             $('#quizBookingForm').html(
                 '<div style="text-align:center;padding:20px 0;">' +
