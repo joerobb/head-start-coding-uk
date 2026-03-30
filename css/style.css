@@ -143,9 +143,11 @@
 
 .intro-box .yes-no-box {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     margin-top: 40px;
     justify-content: center;
+    gap: 15px;
 }
 
 @media (min-width: 920px) {
@@ -162,6 +164,7 @@
 
 @media (min-width: 767px) {
     .intro-box .yes-no-box {
+    flex-direction: row;
     justify-content: space-around;
     max-width: 600px;
     margin: 50px auto;
