@@ -369,28 +369,24 @@
                                                     <p class="recommendation-description" id="rec-description"></p>
                                                 </div>
                                                 <p class="recommendation-disclaimer">
-                                                    This recommendation is based on your answers. Book a free taster session below and your tutor will make sure it's the perfect fit.
+                                                    This recommendation is based on your answers. Get in touch with us to book a free taster or ask any questions about our courses!
                                                 </p>
                                             </div>
 
-                                            <!-- Booking Form -->
-                                            <form id="quizBookingForm" class="quiz-booking-form" novalidate>
-                                                <div class="quiz-form-group">
-                                                    <input type="text" class="quiz-form-control" id="quizStudentName" name="studentName" placeholder="Student's first name" required>
-                                                </div>
-                                                <div class="quiz-form-group">
-                                                    <input type="text" class="quiz-form-control" id="quizParentName" name="parentName" placeholder="Parent's name" required>
-                                                </div>
-                                                <div class="quiz-form-group">
-                                                    <input type="email" class="quiz-form-control" id="quizParentEmail" name="parentEmail" placeholder="Parent's email" required>
-                                                </div>
-                                                <button type="submit" class="btn btn-cta-primary quiz-submit-btn" id="quizSubmitBtn">
-                                                    <span id="quizSubmitText">Book Free Taster Session</span>
-                                                </button>
-                                                <div class="quiz-form-error" id="quizFormError" style="display: none;">
-                                                    Please fill in all fields with a valid email address.
-                                                </div>
-                                            </form>
+                                            <!-- Contact Buttons -->
+                                            <div class="quiz-contact-buttons">
+                                                <a href="https://wa.me/447572592298?text=Hi%2C%20I%20am%20interested%20in%20learning%20more%20about%20your%20coding%20lessons!"
+                                                   target="_blank"
+                                                   class="quiz-whatsapp-btn privacy-contact-link"
+                                                   data-contact-type="whatsapp">
+                                                    <i class="fab fa-whatsapp me-2"></i>Message Us on WhatsApp
+                                                </a>
+                                                <a href="mailto:hello@headstartcoding.co.uk?subject=Coding%20lessons%20enquiry"
+                                                   class="quiz-email-btn privacy-contact-link"
+                                                   data-contact-type="email">
+                                                    <i class="fas fa-envelope me-2"></i>Email Us
+                                                </a>
+                                            </div>
                                             <a href="index.html" class="quiz-exit-link"><i class="fas fa-arrow-left me-1"></i>Back to website</a>
                                         </div>
 
@@ -445,6 +441,78 @@
         </div>
         <!-- The Course End -->
     </div>
+
+    <!-- Quiz Contact Buttons Styling -->
+    <style>
+        .quiz-contact-buttons {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .quiz-whatsapp-btn,
+        .quiz-email-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 400px;
+            border: none;
+        }
+
+        .quiz-whatsapp-btn {
+            background: #25D366;
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .quiz-whatsapp-btn:hover {
+            background: #20BA5A;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+        }
+
+        .quiz-email-btn {
+            background: white;
+            color: #6222CC;
+            border: 2px solid #6222CC;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-email-btn:hover {
+            background: #6222CC;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(98, 34, 204, 0.3);
+            text-decoration: none;
+        }
+
+        /* Tablet and Desktop - side by side */
+        @media (min-width: 768px) {
+            .quiz-contact-buttons {
+                flex-direction: row;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .quiz-whatsapp-btn,
+            .quiz-email-btn {
+                width: auto;
+                min-width: 250px;
+                max-width: 300px;
+            }
+        }
+    </style>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

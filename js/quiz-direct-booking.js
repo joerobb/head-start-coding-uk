@@ -320,7 +320,7 @@ function getRecommendedCourse() {
             return {
                 name: "Python",
                 icon: "fab fa-python",
-                description: "Python is the coding language behind Google, Netflix, and NASA — and your child is about to learn it. They'll build real projects like games and mini apps that actually do something.",
+                description: "Python is the coding language behind Google, Netflix, and NASA. Your child can learn how to create their own games and apps.",
                 color: "#3776AB",
                 emailBenefit: "A simple yet powerful, beginner-friendly programming language used by professionals worldwide. Great for building apps and games."
             };
@@ -352,7 +352,7 @@ function getRecommendedCourse() {
             return {
                 name: "Python",
                 icon: "fab fa-python",
-                description: "Python is the coding language behind Google, Netflix, and NASA — and your child is about to learn it. They'll build real projects like games and mini apps that actually do something.",
+                description: "Python is the coding language behind Google, Netflix, and NASA. Your child can learn how to create their own games and apps.",
                 color: "#3776AB",
                 emailBenefit: "A simple yet powerful, beginner-friendly programming language used by professionals worldwide. Great for building apps and games."
             };
