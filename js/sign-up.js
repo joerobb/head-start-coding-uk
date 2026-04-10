@@ -886,7 +886,8 @@ function submitQuizBooking() {
         hasCodingExperience: userAnswers.hasCodingExp ? 'Yes' : 'No',
         interest: userAnswers.interest || 'N/A',
         submissionDate: new Date().toISOString(),
-        source: 'quiz'
+        source: 'quiz',
+        sendCourseRecommendation: true
     };
 
     fetch('https://hooks.zapier.com/hooks/catch/19633836/uki351v/', {

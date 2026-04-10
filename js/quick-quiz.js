@@ -891,7 +891,7 @@ function submitQuizBooking() {
         hasCodingExperience: userAnswers.hasCodingExp ? 'Yes' : 'No',
         interest: userAnswers.interest || 'N/A',
         submissionDate: new Date().toISOString(),
-        source: 'quiz'
+        sendCourseRecommendation: false
     };
 
     // Open calendar immediately (before async fetch) to avoid popup blocker
