@@ -911,6 +911,16 @@ function submitQuizBooking() {
                 });
             }
 
+            // Redirect to results page with recommendation data
+            var resultsUrl = 'quick-quiz-results.html' +
+                '?course=' + encodeURIComponent(course.name) +
+                '&icon=' + encodeURIComponent(course.icon) +
+                '&description=' + encodeURIComponent(course.description) +
+                '&color=' + encodeURIComponent(course.color);
+
+            window.location.href = resultsUrl;
+            return;
+
             $('#quizBookingForm').html(
                 '<div style="text-align:center;padding:20px 0;">' +
                     '<i class="fas fa-check-circle" style="font-size:2.5rem;color:#4ade80;margin-bottom:15px;display:block;"></i>' +

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HR4S0H22GE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HR4S0H22GE');
+    </script>
+
+    <title>Your Results - Head Start Coding</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <meta name="facebook-domain-verification" content="4eo5z0o3m8z6yroxmp3c1o4ngwxbaw" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '719206096806149');
+        fbq('track', 'PageView');
+
+        // Track quiz completion conversion
+        fbq('track', 'CompleteRegistration', {
+            content_name: 'Quick Quiz Completed',
+            content_category: 'Education',
+            status: 'completed'
+        });
+    </script>
+
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=719206096806149&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .results-container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #4ade80;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            color: #1f2937;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .recommendation-card {
+            background: #f9fafb;
+            border-left: 5px solid #6222CC;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .recommendation-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #6222CC;
+        }
+
+        .recommendation-heading {
+            color: #1f2937;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .recommendation-description {
+            color: #4b5563;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .recommendation-disclaimer {
+            color: #6b7280;
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-top: 15px;
+            margin-bottom: 0;
+        }
+
+        .contact-buttons {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 400px;
+            border: none;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            background: #20BA5A;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+        }
+
+        .email-btn {
+            background: white;
+            color: #6222CC;
+            border: 2px solid #6222CC;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .email-btn:hover {
+            background: #6222CC;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(98, 34, 204, 0.3);
+            text-decoration: none;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #6222CC;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #4f1aa8;
+            transform: translateX(-5px);
+        }
+
+        .back-link i {
+            margin-right: 8px;
+        }
+
+        @media (min-width: 768px) {
+            .contact-buttons {
+                flex-direction: row;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .contact-btn {
+                width: auto;
+                min-width: 250px;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .results-container {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .recommendation-heading {
+                font-size: 1.3rem;
+            }
+
+            .recommendation-description {
+                font-size: 1rem;
+            }
+
+            .success-icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="results-container">
+        <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+
+        <h1>Here's Your Perfect Course!</h1>
+
+        <!-- Recommendation Block -->
+        <div class="recommendation-card" id="recommendation-block">
+            <div class="recommendation-icon" id="rec-icon">
+                <i class="fas fa-puzzle-piece"></i>
+            </div>
+            <h2 class="recommendation-heading" id="rec-heading">We think your child would love Scratch!</h2>
+            <p class="recommendation-description" id="rec-description"></p>
+            <p class="recommendation-disclaimer">
+                This recommendation is based on your answers. Get in touch with us to book a free taster or ask any questions about our courses!
+            </p>
+        </div>
+
+        <!-- Contact Buttons -->
+        <div class="contact-buttons">
+            <a href="https://wa.me/447572592298?text=Hi%2C%20I%20am%20interested%20in%20learning%20more%20about%20your%20coding%20lessons!"
+               target="_blank"
+               class="contact-btn whatsapp-btn">
+                <i class="fab fa-whatsapp me-2"></i>Message Us on WhatsApp
+            </a>
+            <a href="mailto:hello@headstartcoding.co.uk?subject=Coding%20lessons%20enquiry"
+               class="contact-btn email-btn">
+                <i class="fas fa-envelope me-2"></i>Email Us
+            </a>
+        </div>
+
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i>Back to website
+        </a>
+    </div>
+
+    <!-- Load recommendation from URL parameters -->
+    <script>
+        // Get recommendation data from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const courseName = urlParams.get('course') || 'Scratch';
+        const courseIcon = urlParams.get('icon') || 'fas fa-puzzle-piece';
+        const courseDescription = urlParams.get('description') || "Your child will build their own games, animations, and stories — no experience needed, just curiosity. They'll finish the session buzzing, already proud of what they've made.";
+        const courseColor = urlParams.get('color') || '#FFB628';
+
+        // Update the page with the recommendation
+        document.getElementById('rec-icon').innerHTML = '<i class="' + courseIcon + '"></i>';
+        document.getElementById('rec-heading').textContent = 'We think your child would love ' + courseName + '!';
+        document.getElementById('rec-description').textContent = courseDescription;
+        document.querySelector('.recommendation-card').style.borderLeftColor = courseColor;
+    </script>
+</body>
+
+</html>

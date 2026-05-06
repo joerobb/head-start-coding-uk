@@ -904,6 +904,10 @@ function submitQuizBooking() {
                 });
             }
 
+            // Redirect to results page
+            window.location.href = 'quiz-results.html';
+            return;
+
             var studentName = $('#quizStudentName').val() || formData.studentName;
             $('#quizBookingForm').html(
                 '<div style="text-align:center;padding:20px 0;">' +
