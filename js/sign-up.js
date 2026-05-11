@@ -890,7 +890,7 @@ function submitQuizBooking() {
         sendCourseRecommendation: true
     };
 
-    fetch('https://hooks.zapier.com/hooks/catch/19633836/uki351v/', {
+    fetch('https://hooks.zapier.com/hooks/catch/19633836/4yreqvu/', {
         method: 'POST',
         body: JSON.stringify(formData)
     }).then(function(response) {

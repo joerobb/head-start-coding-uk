@@ -494,16 +494,9 @@
                     source: '5-signs-landing'
                 };
 
-                // TODO: Reinstall Zapier webhook once new zap is configured
-                // For now, just redirect directly to thank you page
-                setTimeout(() => {
-                    window.location.href = '5-signs-thank-you.html';
-                }, 500);
-
-                /* ZAPIER INTEGRATION - TEMPORARILY DISABLED
                 try {
                     // Send to Zapier webhook
-                    const response = await fetch('https://hooks.zapier.com/hooks/catch/19633836/uki351v/', {
+                    const response = await fetch('https://hooks.zapier.com/hooks/catch/19633836/4yrlyvw/', {
                         method: 'POST',
                         body: JSON.stringify(formData)
                     });
@@ -523,7 +516,6 @@
                     submitText.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send Me the 5 Signs';
                     submitBtn.disabled = false;
                 }
-                */
             });
 
             // Real-time validation
