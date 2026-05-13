@@ -384,9 +384,6 @@ function displayRecommendation() {
 
 // Handle multi-choice answers
 function handleChoiceAnswer(value) {
-    const initialColor = "rgba(46, 204, 113, 0.9)";
-    const transitionColor = "rgba(147, 51, 234, 0.9)";
-
     // Age range question (index 0)
     if (currentQuestionIndex === 0) {
         const option = qaData[0].options.find(o => o.value === value);
@@ -395,6 +392,7 @@ function handleChoiceAnswer(value) {
         if (option && option.outOfRange) {
             userAnswers.ageRange = value;
             const noColor = "rgba(231, 76, 60, 0.9)";
+            const transitionColor = "rgba(147, 51, 234, 0.9)";
             showNoModal(noColor, transitionColor);
             return;
         }
@@ -407,46 +405,10 @@ function handleChoiceAnswer(value) {
     // Interest question (index 3)
     if (currentQuestionIndex === 3) {
         userAnswers.interest = value;
-
-        const responses = {
-            "creative": {
-                title: "A creative mind!",
-                text: "We've got the perfect creative course for them!"
-            },
-            "logical": {
-                title: "A logical thinker!",
-                text: "We've got the perfect course to match those skills!"
-            }
-        };
-
-        const response = responses[value];
-        $("#interest-response-title").text(response.title);
-        $("#interest-response-text").text(response.text);
-
-        // Show palette for creative, oxo grid for logical
-        if (value === "creative") {
-            $("#palette-container").show();
-            $("#oxo-container").hide();
-            // Re-trigger animations by cloning swatches
-            $(".palette-swatch").each(function() {
-                var el = $(this);
-                var clone = el.clone(true);
-                el.replaceWith(clone);
-            });
-        } else {
-            $("#palette-container").hide();
-            $("#oxo-container").show();
-            // Re-trigger animations by cloning cells
-            $(".oxo-cell").each(function() {
-                var el = $(this);
-                var clone = el.clone(true);
-                el.replaceWith(clone);
-            });
-        }
     }
 
     trackFormProgress(currentQuestionIndex + 1);
-    showModal(initialColor, transitionColor);
+    advanceQuiz();
 }
 
 // Track form start for abandonment tracking
@@ -459,44 +421,18 @@ var y = window.innerHeight / 2;
 // Calculate the maximum radius to cover the entire screen
 var maxRadius = Math.sqrt(x * x + y * y);
 
-function showModal(initialColor, transitionColor) {
-    $modalOverlay.show();
-    $modal.css({ display: "block", opacity: 1 });
-    $modal[0].scrollTo({ top: 0, behavior: 'smooth' });
-    const currentAnswerClass = qaData[currentQuestionIndex].answerClass;
-    $(`.${currentAnswerClass}`).fadeIn();
-
-    $triggerNext.show();
+// Advance to next question or show results
+function advanceQuiz() {
     var nextIndex = getNextQuestionIndex(currentQuestionIndex);
-    $triggerNext.text(nextIndex >= qaData.length ? "See Results" : "Next");
-    $(".no-options-container").hide();
-
-    $('[data-toggle="counter-up"]').each(function () {
-        $(this).counterUp({
-            delay: 30,
-            time: 2000
-        });
-    });
-
-    anime({
-        targets: $modalOverlay[0],
-        clipPath: [
-            `circle(0% at ${x}px ${y}px)`,
-            `circle(${maxRadius}px at ${x}px ${y}px)`
-        ],
-        backgroundColor: [initialColor, transitionColor],
-        opacity: { value: [0, 1], duration: 1000 },
-        duration: 1500,
-        easing: "easeInOutQuad",
-    });
-
-    $questionBox.hide();
-    $progressContainer.hide();
-    $triggerBack.addClass('hide');
+    if (nextIndex >= qaData.length) {
+        showResults();
+    } else {
+        showNextQuestion();
+    }
 }
 
 function showNoModal(initialColor, transitionColor) {
-    // Choice-type questions with no "No" path
+    // Only used for age out-of-range on Q0
     const currentQ = qaData[currentQuestionIndex];
     if (!currentQ.answerNoClass) {
         return;
@@ -508,30 +444,22 @@ function showNoModal(initialColor, transitionColor) {
     const currentAnswerClass = currentQ.answerNoClass;
     $(`.${currentAnswerClass}`).fadeIn();
 
-    // Age restriction (out-of-range on Q0) — show Start Again / Email / Home buttons
-    if (currentQuestionIndex === 0) {
-        $triggerNext.hide();
+    $triggerNext.hide();
 
-        if ($(".no-options-container").length === 0) {
-            const $optionsContainer = $('<div class="no-options-container fadeInUp wow" data-wow-delay="0.3s"></div>');
-            const $startAgainBtn = $('<button class="trigger trigger-restart">Start Again</button>');
-            const $emailUsBtn = $('<a href="mailto:hello@headstartcoding.co.uk" class="trigger trigger-email">Email Us</a>');
-            const $homePageBtn = $('<a href="/" class="trigger trigger-home">Visit Home Page</a>');
+    if ($(".no-options-container").length === 0) {
+        const $optionsContainer = $('<div class="no-options-container fadeInUp wow" data-wow-delay="0.3s"></div>');
+        const $startAgainBtn = $('<button class="trigger trigger-restart">Start Again</button>');
+        const $emailUsBtn = $('<a href="mailto:hello@headstartcoding.co.uk" class="trigger trigger-email">Email Us</a>');
+        const $homePageBtn = $('<a href="/" class="trigger trigger-home">Visit Home Page</a>');
 
-            $optionsContainer.append($startAgainBtn, $emailUsBtn, $homePageBtn);
-            $(`.${currentAnswerClass}`).after($optionsContainer);
+        $optionsContainer.append($startAgainBtn, $emailUsBtn, $homePageBtn);
+        $(`.${currentAnswerClass}`).after($optionsContainer);
 
-            $startAgainBtn.click(function() {
-                resetForm();
-            });
-        } else {
-            $(".no-options-container").show();
-        }
+        $startAgainBtn.click(function() {
+            resetForm();
+        });
     } else {
-        $triggerNext.show();
-        var nextIndex = getNextQuestionIndex(currentQuestionIndex);
-        $triggerNext.text(nextIndex >= qaData.length ? "See Results" : "Next");
-        $(".no-options-container").hide();
+        $(".no-options-container").show();
     }
 
     anime({
@@ -549,30 +477,6 @@ function showNoModal(initialColor, transitionColor) {
     $questionBox.hide();
     $progressContainer.hide();
     $triggerBack.addClass('hide');
-}
-
-function hideModal() {
-    const currentAnswerClass = qaData[currentQuestionIndex].answerClass;
-    const currentAnswerNoClass = qaData[currentQuestionIndex].answerNoClass;
-    $modal.hide();
-    $(`.${currentAnswerClass}`).fadeOut();
-    if (currentAnswerNoClass) $(`.${currentAnswerNoClass}`).fadeOut();
-    $(".no-options-container").hide();
-
-    anime({
-        targets: $modalOverlay[0],
-        clipPath: [
-            `circle(${maxRadius}px at ${x}px ${y}px)`,
-            `circle(0% at ${x}px ${y}px)`
-        ],
-        opacity: { value: [1, 0], duration: 1000 },
-        duration: 1000,
-        easing: "easeInOutQuad",
-        complete: function () {
-            $modalOverlay.hide();
-            showNextQuestion();
-        }
-    });
 }
 
 function resetForm() {
@@ -669,21 +573,28 @@ function showNextQuestion() {
 function showResults() {
     displayRecommendation();
 
-    // Fade out current answer content, fade in results
-    const currentAnswerClass = qaData[currentQuestionIndex].answerClass;
-    const currentAnswerNoClass = qaData[currentQuestionIndex].answerNoClass;
-    $(`.${currentAnswerClass}`).fadeOut(400, function () {
-        $(`.a-7`).fadeIn(400);
-    });
-    if (currentAnswerNoClass) {
-        $(`.${currentAnswerNoClass}`).fadeOut(400, function () {
-            $(`.a-7`).fadeIn(400);
-        });
-    }
+    // Open the overlay and show the booking form
+    $modalOverlay.show();
+    $modal.css({ display: "block", opacity: 1 });
+    $(`.a-7`).fadeIn(400);
 
     $triggerNext.hide();
     $triggerBack.addClass('hide');
+    $questionBox.hide();
+    $progressContainer.hide();
     $modal[0].scrollTo({ top: 0, behavior: 'smooth' });
+
+    anime({
+        targets: $modalOverlay[0],
+        clipPath: [
+            `circle(0% at ${x}px ${y}px)`,
+            `circle(${maxRadius}px at ${x}px ${y}px)`
+        ],
+        backgroundColor: ["rgba(46, 204, 113, 0.9)", "rgba(147, 51, 234, 0.9)"],
+        opacity: { value: [0, 1], duration: 1000 },
+        duration: 1500,
+        easing: "easeInOutQuad",
+    });
 
     setTimeout(function () {
         launchFireworks();
@@ -696,9 +607,6 @@ function showResults() {
             recommended_course: getRecommendedCourse().name
         });
     }
-
-    // Hide progress bar on results screen
-    $progressContainer.hide();
 }
 
 function showPreviousQuestion() {
@@ -811,45 +719,26 @@ $('.trigger').one('click', function() {
 });
 
 $triggerYes.click(function () {
-    const initialColor = "rgba(46, 204, 113, 0.9)";
-    const transitionColor = "rgba(147, 51, 234, 0.9)";
-
     // Store yes/no answers
     if (currentQuestionIndex === 1) userAnswers.likesGaming = true;
     if (currentQuestionIndex === 2) userAnswers.hasCodingExp = true;
 
     trackFormProgress(currentQuestionIndex + 1);
-
-    showModal(initialColor, transitionColor);
+    advanceQuiz();
 });
 
 $triggerNo.click(function () {
-    const initialColor = "rgba(46, 204, 113, 0.9)";
-    const transitionColor = "rgba(147, 51, 234, 0.9)";
-
     // Store no answers
     if (currentQuestionIndex === 1) userAnswers.likesGaming = false;
     if (currentQuestionIndex === 2) userAnswers.hasCodingExp = false;
 
     trackFormProgress(currentQuestionIndex + 1);
-
-    showNoModal(initialColor, transitionColor);
-});
-
-$triggerNext.click(function () {
-    var nextIndex = getNextQuestionIndex(currentQuestionIndex);
-    if (nextIndex >= qaData.length) {
-        showResults();
-    } else {
-        hideModal();
-    }
+    advanceQuiz();
 });
 
 $triggerBack.click(function () {
     showPreviousQuestion();
 });
-
-$closeButton.click(hideModal);
 
 // Track page unload (potential abandonment)
 $(window).on('beforeunload', function() {
@@ -1038,31 +927,6 @@ $('#quizBookingForm').on('submit', function(e) {
 
     //Intro Skills
 
-    $(document).ready(function () {
-        // Disable the Waypoint initially
-        var skillWaypoint = new Waypoint({
-            element: $('.skill'),
-            handler: function () {
-                $('.progress .progress-bar').each(function () {
-                    $(this).css("width", $(this).attr("aria-valuenow") + '%');
-                });
-            },
-            enabled: false,  // Keep it disabled initially
-            offset: '80%'    // You can keep this same offset
-        });
-    
-        // Modal show logic — enable waypoint when modal is triggered by yes or choice buttons
-        $(document).on('click', '.trigger-yes, .trigger-choice', function () {
-            $('.modal').fadeIn();
-            skillWaypoint.enable();
-            Waypoint.refreshAll();
-        });
-    
-        // Close modal logic (optional if you have a close button)
-        $('.close-button').on('click', function () {
-            $('.modal').fadeOut();
-        });
-    });
 
     // Testimonials carousel
     $(".testimonial-carousel").owlCarousel({
