@@ -552,8 +552,10 @@ function updateQuestionUI() {
     // Back button visibility
     if (currentQuestionIndex > 0) {
         $triggerBack.removeClass('hide');
+        $('#quizTitle').hide();
     } else {
         $triggerBack.addClass('hide');
+        $('#quizTitle').show();
     }
 
     if (currentQ.type === "choice") {
@@ -786,7 +788,6 @@ function submitQuizBooking() {
     var course = getRecommendedCourse();
 
     var formData = {
-        studentName: $('#quizStudentName').val().trim(),
         parentName: $('#quizParentName').val().trim(),
         parentEmail: $('#quizParentEmail').val().trim(),
         recommendedCourse: course.name,
@@ -814,7 +815,7 @@ function submitQuizBooking() {
         }
     }).catch(function() {
         $btn.prop('disabled', false);
-        $('#quizSubmitText').text('Get My Child\'s Results');
+        $('#quizSubmitText').text('Discover My Child\'s Path');
         $('#quizFormError').text('Something went wrong. Please try again or email hello@headstartcoding.co.uk').show();
     });
 }
@@ -822,7 +823,6 @@ function submitQuizBooking() {
 $('#quizBookingForm').on('submit', function(e) {
     e.preventDefault();
 
-    var studentName = $('#quizStudentName').val().trim();
     var parentName = $('#quizParentName').val().trim();
     var parentEmail = $('#quizParentEmail').val().trim();
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -832,7 +832,6 @@ $('#quizBookingForm').on('submit', function(e) {
     $('#quizFormError').hide();
 
     var isValid = true;
-    if (!studentName) { $('#quizStudentName').addClass('is-invalid'); isValid = false; }
     if (!parentName) { $('#quizParentName').addClass('is-invalid'); isValid = false; }
     if (!parentEmail || !emailRegex.test(parentEmail)) { $('#quizParentEmail').addClass('is-invalid'); isValid = false; }
 

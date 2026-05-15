@@ -170,6 +170,8 @@
                     <div class="col-lg-12 wow fadeInUp model-info" data-wow-delay="0.1s">
                         <div class="model-container model-container-one">
                             <div class="intro-box">
+                                <!-- Quiz Title -->
+                                <p id="quizTitle" style="text-align: center; color: rgba(255,255,255,0.75); font-size: 0.95rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 30px;">Find out which of our 3 coding paths best suits your child</p>
                                 <!-- Question Box -->
                                 <div class="question-box">
                                     <h2 class="mb-4 model-sub-title current-question">
@@ -205,26 +207,23 @@
                                         <div class="cta-section sign-up-wrapper col-lg-12 hide a-7 wow fadeInUp">
                                             <!-- Results Capture Heading -->
                                             <div class="results-capture-heading">
-                                                <h2>Discover your child's results</h2>
-                                                <p>Enter your name and email and we'll send your child's personalised course recommendation straight to your inbox.</p>
+                                                <h2>Discover which coding path is perfect for your child</h2>
+                                                <p>There are 3 unique coding paths your child can go down. Enter your details below and we'll reveal which one is the perfect fit!</p>
                                             </div>
 
                                             <!-- Booking Form -->
                                             <form id="quizBookingForm" class="quiz-booking-form" novalidate>
                                                 <div class="quiz-form-group">
-                                                    <input type="text" class="quiz-form-control" id="quizStudentName" name="studentName" placeholder="Student's first name" required>
-                                                </div>
-                                                <div class="quiz-form-group">
-                                                    <input type="text" class="quiz-form-control" id="quizParentName" name="parentName" placeholder="Parent's name" required>
+                                                    <input type="text" class="quiz-form-control" id="quizParentName" name="parentName" placeholder="Your name" required>
                                                 </div>
                                                 <div class="quiz-form-group">
                                                     <input type="email" class="quiz-form-control" id="quizParentEmail" name="parentEmail" placeholder="Parent's email" required>
                                                 </div>
                                                 <button type="submit" class="btn btn-cta-primary quiz-submit-btn" id="quizSubmitBtn">
-                                                    <span id="quizSubmitText">Get My Child's Results</span>
+                                                    <span id="quizSubmitText">Discover My Child's Path</span>
                                                 </button>
                                                 <div class="quiz-form-error" id="quizFormError" style="display: none;">
-                                                    Please fill in all fields with a valid email address.
+                                                    Please enter your name and a valid email address.
                                                 </div>
                                             </form>
                                             <a href="index.html" class="quiz-exit-link"><i class="fas fa-arrow-left me-1"></i>Back to website</a>
