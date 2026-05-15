@@ -75,31 +75,65 @@
 
 if (document.body.classList.contains("sign-up")) {
 
+// Track quiz page view
+if (typeof fbq !== 'undefined') {
+    fbq('track', 'ViewContent', {
+        content_name: 'Quiz',
+        content_category: 'Education',
+        content_type: 'quiz'
+    });
+}
+if (typeof gtag !== 'undefined') {
+    gtag('event', 'quiz_started', {
+        event_category: 'Quiz',
+        event_label: 'Quiz Page Loaded'
+    });
+}
+
 // Facebook Pixel Lead Tracking Functions
 function trackFacebookLead(contactType) {
     if (typeof fbq !== 'undefined') {
+        var course = getRecommendedCourse();
         fbq('track', 'Lead', {
-            content_name: 'Coding Course Interest',
+            content_name: course.name,
             content_category: 'Education',
             contact_method: contactType,
             value: 1,
             currency: 'GBP'
         });
-
-        fbq('trackCustom', 'ContactButtonClick', {
-            contact_type: contactType,
-            form_completed: true
+    }
+    if (typeof gtag !== 'undefined') {
+        var course = getRecommendedCourse();
+        gtag('event', 'generate_lead', {
+            event_category: 'Quiz',
+            event_label: course.name,
+            value: 1,
+            currency: 'GBP'
         });
-
-        console.log('Facebook Pixel: Lead tracked for ' + contactType);
     }
 }
+
+var questionLabels = {
+    1: 'Age',
+    2: 'Gaming',
+    3: 'Coding Experience',
+    4: 'Interest'
+};
 
 function trackFormProgress(step) {
     if (typeof fbq !== 'undefined') {
         fbq('trackCustom', 'FormProgress', {
             step: step,
+            question: questionLabels[step] || 'Unknown',
             progress_percentage: Math.round((step / getTotalVisibleQuestions()) * 100),
+            age_range: userAnswers.ageRange || 'not_yet_answered'
+        });
+    }
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'quiz_progress', {
+            event_category: 'Quiz',
+            event_label: questionLabels[step] || 'Unknown',
+            step: step,
             age_range: userAnswers.ageRange || 'not_yet_answered'
         });
     }
@@ -411,8 +445,6 @@ function handleChoiceAnswer(value) {
     advanceQuiz();
 }
 
-// Track form start for abandonment tracking
-let formStarted = false;
 
 // Get the center point of the screen
 var x = window.innerWidth / 2;
@@ -607,6 +639,13 @@ function showResults() {
             recommended_course: getRecommendedCourse().name
         });
     }
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'quiz_completed', {
+            event_category: 'Quiz',
+            event_label: getRecommendedCourse().name,
+            total_questions: getTotalVisibleQuestions()
+        });
+    }
 }
 
 function showPreviousQuestion() {
@@ -713,11 +752,6 @@ document.addEventListener("DOMContentLoaded", function () {
     autoSlideTestimonials();
 });
 
-// Track when users start the form
-$('.trigger').one('click', function() {
-    formStarted = true;
-});
-
 $triggerYes.click(function () {
     // Store yes/no answers
     if (currentQuestionIndex === 1) userAnswers.likesGaming = true;
@@ -738,19 +772,6 @@ $triggerNo.click(function () {
 
 $triggerBack.click(function () {
     showPreviousQuestion();
-});
-
-// Track page unload (potential abandonment)
-$(window).on('beforeunload', function() {
-    if (formStarted && currentQuestionIndex < qaData.length - 1) {
-        if (typeof fbq !== 'undefined') {
-            fbq('trackCustom', 'FormAbandonment', {
-                abandoned_at_step: currentQuestionIndex + 1,
-                progress_percentage: Math.round(((currentQuestionIndex + 1) / getTotalVisibleQuestions()) * 100),
-                abandonment_type: 'page_unload'
-            });
-        }
-    }
 });
 
 // Initialize first question
@@ -786,25 +807,8 @@ function submitQuizBooking() {
         if (response.ok) {
             trackFacebookLead('quiz_booking');
 
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'Schedule', {
-                    content_name: course.name,
-                    content_category: 'Taster Session Booking'
-                });
-            }
-
             // Redirect to results page
             window.location.href = 'quiz-results.html';
-            return;
-
-            var studentName = $('#quizStudentName').val() || formData.studentName;
-            $('#quizBookingForm').html(
-                '<div style="text-align:center;padding:20px 0;">' +
-                    '<i class="fas fa-envelope-circle-check" style="font-size:2.5rem;color:#4ade80;margin-bottom:15px;display:block;"></i>' +
-                    '<h3 style="color:#fff;font-size:1.3rem;margin-bottom:8px;">Check your inbox!</h3>' +
-                    '<p style="color:rgba(255,255,255,0.85);font-size:1rem;">We\u2019ve sent ' + studentName + '\u2019s personalised course recommendation to your email.</p>' +
-                '</div>'
-            );
         } else {
             throw new Error('Submission failed');
         }
