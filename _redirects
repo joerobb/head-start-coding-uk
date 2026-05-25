@@ -1,2 +1,26 @@
 https://headstartcoding.com/* https://headstartcoding.co.uk/:splat 301!
 https://www.headstartcoding.com/* https://headstartcoding.co.uk/:splat 301!
+
+# Clean URL redirects - remove .html extensions
+/about.html /about 301
+/courses.html /courses 301
+/blog.html /blog 301
+
+# Course pages
+/course-python.html /course-python 301
+/course-scratch.html /course-scratch 301
+/course-javascript.html /course-javascript 301
+/course-html-css.html /course-html-css 301
+/course-3d-design.html /course-3d-design 301
+
+# Lead magnets
+/5-signs-landing.html /5-signs-landing 301
+/book-taster.html /book-taster 301
+
+# Blog posts
+/blog/2026/05/best-coding-apps-for-children.html /blog/2026/05/best-coding-apps-for-children 301
+/blog/2026/05/the-surprising-skills-your-child-learns-by-making-video-games.html /blog/2026/05/the-surprising-skills-your-child-learns-by-making-video-games 301
+/blog/2026/01/is-learning-to-code-still-worth-it-in-2026.html /blog/2026/01/is-learning-to-code-still-worth-it-in-2026 301
+/blog/2026/02/3-reasons-why-gamers-make-great-coders.html /blog/2026/02/3-reasons-why-gamers-make-great-coders 301
+/blog/2026/02/which-coding-course-is-right-for-my-child.html /blog/2026/02/which-coding-course-is-right-for-my-child 301
+/blog/2026/03/3-screen-time-tips-that-actually-work.html /blog/2026/03/3-screen-time-tips-that-actually-work 301
