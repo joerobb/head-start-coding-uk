@@ -24,18 +24,6 @@
     font-weight: normal;
 }
 @font-face {
-    font-family: "Quicksand-light";
-    src: url("../css/fonts/Quicksand/Quicksand-Light.ttf") format("truetype"), url("../css/fonts/Quicksand/Quicksand-Light.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face {
-    font-family: "Quicksand-extrabold";
-    src: url("../css/fonts/Quicksand/Quicksand-ExtraBold.ttf") format("truetype"), url("../css/fonts/Quicksand/Quicksand-ExtraBold.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face {
     font-family: "Quicksand-medium";
     src: url("../css/fonts/Quicksand/Quicksand-Medium.ttf") format("truetype"), url("../css/fonts/Quicksand/Quicksand-Medium.ttf") format("truetype");
     font-style: normal;
@@ -46,26 +34,8 @@
  * Montserrat
 ================================================================================ */
 @font-face {
-    font-family: "Montserrat-regular";
-    src: url("../css/fonts/Montserrat/Montserrat-Regular.ttf") format("truetype"), url("../css/fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face {
     font-family: "Montserrat-bold";
     src: url("../css/fonts/Montserrat/Montserrat-Bold.ttf") format("truetype"), url("../css/fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face {
-    font-family: "Montserrat-light";
-    src: url("../css/fonts/Montserrat/Montserrat-Light.ttf") format("truetype"), url("../css/fonts/Montserrat/Montserrat-Light.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face {
-    font-family: "Montserrat-extrabold";
-    src: url("../css/fonts/Montserrat/Montserrat-ExtraBold.ttf") format("truetype"), url("../css/fonts/Montserrat/Montserrat-ExtraBold.ttf") format("truetype");
     font-style: normal;
     font-weight: normal;
 }
