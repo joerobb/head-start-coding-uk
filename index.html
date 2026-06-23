@@ -539,7 +539,7 @@
                             
                             <div class="about-cta">
                                 <a href="about.html" class="btn btn-primary rounded-pill py-3 px-5 me-2">Learn More</a>
-                                <a href="book-taster.html" class="btn btn-secondary rounded-pill py-3 px-5">Book a Free Taster</a>
+                                <a href="book-taster.html" class="btn btn-secondary rounded-pill py-3 px-5 d-none d-md-inline-block">Book a Free Taster</a>
                             </div>
                         </div>
                     </div>
@@ -903,6 +903,27 @@
                 </div>
             </div>
         </section>
+
+        <!-- Newsletter Signup -->
+        <style>@media (min-width: 992px) { #newsletter { padding-top: calc(3rem + 15px) !important; } }</style>
+        <div class="container-xxl bg-primary py-5" id="newsletter">
+            <div class="container px-lg-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7 text-center">
+                        <h3 class="text-white mb-3">Sign Up to Our Newsletter</h3>
+                        <p class="text-white mb-4">Get coding tips, course updates and parenting insights delivered to your inbox.</p>
+                        <form id="newsletter-form" class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-2">
+                            <input type="text" class="form-control rounded-pill px-4 py-3 w-100" id="newsletter-name" name="first_name" placeholder="First name" required style="max-width: 200px;">
+                            <input type="email" class="form-control rounded-pill px-4 py-3 w-100" id="newsletter-email" name="email" placeholder="Email address" required style="max-width: 300px;">
+                            <button type="submit" class="btn btn-secondary rounded-pill px-5 py-3 fw-bold w-100" style="max-width: 300px;">Subscribe</button>
+                        </form>
+                        <p class="text-white-50 mt-3 mb-0" style="font-size: 0.85rem;">No spam. Unsubscribe anytime.</p>
+                        <div id="newsletter-message" class="mt-3" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Newsletter Signup End -->
 
         <!-- Pricing Section -->
         <div class="container-xxl py-5" id="pricing">
@@ -1300,6 +1321,38 @@
 
 
 
+
+    <!-- Newsletter Form Handler -->
+    <script>
+    document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var firstName = document.getElementById('newsletter-name').value;
+        var email = document.getElementById('newsletter-email').value;
+        var btn = this.querySelector('button[type="submit"]');
+        var msg = document.getElementById('newsletter-message');
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        var formData = new FormData();
+        formData.append('first_name', firstName);
+        formData.append('email', email);
+        fetch('https://hooks.zapier.com/hooks/catch/19633836/42trnzo/', {
+            method: 'POST',
+            mode: 'no-cors',
+            body: formData
+        }).then(function() {
+            msg.style.display = 'block';
+            msg.innerHTML = '<span class="text-white fw-bold">Thanks for subscribing!</span>';
+            btn.textContent = 'Subscribed';
+            document.getElementById('newsletter-name').value = '';
+            document.getElementById('newsletter-email').value = '';
+        }).catch(function() {
+            msg.style.display = 'block';
+            msg.innerHTML = '<span class="text-white">Something went wrong. Please try again.</span>';
+            btn.disabled = false;
+            btn.textContent = 'Subscribe';
+        });
+    });
+    </script>
 
     <!-- Main Javascript File -->
     <script src="js/main.js"></script>
