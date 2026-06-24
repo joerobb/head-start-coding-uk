@@ -56,6 +56,42 @@
     <!-- Template Stylesheet -->
     <link href="css/style.min.css" rel="stylesheet">
 
+    <style>
+        .about-hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .about-hero-image img {
+            width: 450px;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 10px solid #F7931E;
+        }
+        @media (max-width: 768px) {
+            .about-hero-image img {
+                width: 350px;
+                height: 350px;
+                border-width: 8px;
+            }
+            .hero-header .container {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+            .hero-header .col-lg-6 {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            #model .row,
+            #team .row {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    </style>
+
     <!-- Meta Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s)
@@ -186,7 +222,9 @@
                             <a href="#contact" class="btn btn-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a>
                         </div>
                         <div class="col-lg-6 text-center text-lg-start">
-                            <img class="img-fluid rounded animated zoomIn" src="img/Ryan.jpg" alt="Ryan Fleming - Head Tutor at Head Start Coding" width="1474" height="1689" fetchpriority="high" style="max-width: 400px;">
+                            <div class="about-hero-image">
+                                <img class="animated zoomIn" src="img/Ryan.jpg" alt="Ryan Fleming - Head Tutor at Head Start Coding" fetchpriority="high" width="1474" height="1689">
+                            </div>
                         </div>
                     </div>
                 </div>
