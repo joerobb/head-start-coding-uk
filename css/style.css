@@ -131,7 +131,15 @@
     align-items: center;
     margin-top: 40px;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
+}
+
+@media (max-width: 766px) {
+    .intro-box .yes-no-box .trigger {
+        width: 80%;
+        max-width: 300px;
+        margin: 0 auto !important;
+    }
 }
 
 @media (min-width: 920px) {
