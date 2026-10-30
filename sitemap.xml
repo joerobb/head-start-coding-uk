@@ -70,6 +70,13 @@
 
   <!-- Blog Posts -->
   <url>
+    <loc>https://headstartcoding.co.uk/blog/2026/10/when-your-child-gets-stuck</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://headstartcoding.co.uk/blog/2026/10/autumn-half-term-without-the-screen-guilt</loc>
     <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
