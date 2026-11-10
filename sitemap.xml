@@ -70,6 +70,13 @@
 
   <!-- Blog Posts -->
   <url>
+    <loc>https://headstartcoding.co.uk/blog/2026/11/scratch-or-python-which-first</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://headstartcoding.co.uk/blog/2026/10/when-your-child-gets-stuck</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
