@@ -1,6 +1,10 @@
 https://headstartcoding.com/* https://headstartcoding.co.uk/:splat 301!
 https://www.headstartcoding.com/* https://headstartcoding.co.uk/:splat 301!
 
+# Blog post template (blog/_template.html) is only for copying - never serve it
+/blog/_template.html /blog 301!
+/blog/_template /blog 301!
+
 # Clean URL redirects - remove .html extensions
 /about.html /about 301
 /courses.html /courses 301
