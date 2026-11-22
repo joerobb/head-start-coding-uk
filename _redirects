@@ -17,6 +17,9 @@ https://www.headstartcoding.com/* https://headstartcoding.co.uk/:splat 301!
 /5-signs-landing.html /5-signs-landing 301
 /book-taster.html /book-taster 301
 
+# Legal
+/privacy-policy.html /privacy-policy 301
+
 # Blog posts
 /blog/2026/11/scratch-or-python-which-first.html /blog/2026/11/scratch-or-python-which-first 301
 /blog/2026/10/when-your-child-gets-stuck.html /blog/2026/10/when-your-child-gets-stuck 301

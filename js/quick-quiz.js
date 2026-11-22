@@ -105,93 +105,11 @@ function trackFormProgress(step) {
     }
 }
 
-// Privacy Policy Modal Functionality
-const privacyModal = $('#privacy-modal');
-const privacyCheckbox = $('#privacy-agreement');
-const privacyAcceptBtn = $('#privacy-accept');
-const privacyDeclineBtn = $('#privacy-decline');
-const privacyCloseBtn = $('.privacy-close');
-const privacyContactLinks = $('.privacy-contact-link');
-let pendingContactAction = null;
-
-privacyCheckbox.on('change', function() {
-    privacyAcceptBtn.prop('disabled', !this.checked);
-});
-
-privacyContactLinks.on('click', function(e) {
-    e.preventDefault();
-    const link = $(this);
-    const contactType = link.data('contact-type');
-
-    pendingContactAction = {
-        url: link.attr('href'),
-        type: contactType
-    };
-
-    privacyModal.fadeIn(300);
-    privacyCheckbox.prop('checked', false);
-    privacyAcceptBtn.prop('disabled', true);
-    $('.privacy-modal-body').scrollTop(0);
-});
-
-privacyAcceptBtn.on('click', function() {
-    if (pendingContactAction && privacyCheckbox.prop('checked')) {
-        localStorage.setItem('privacyConsent', 'accepted');
-        localStorage.setItem('privacyConsentDate', new Date().toISOString());
-        privacyModal.fadeOut(300);
-
-        if (pendingContactAction.submitForm) {
-            pendingContactAction = null;
-            setTimeout(function() {
-                submitQuizBooking();
-            }, 300);
-        } else {
-            trackFacebookLead(pendingContactAction.type);
-            setTimeout(() => {
-                window.open(pendingContactAction.url, '_blank');
-                pendingContactAction = null;
-            }, 300);
-        }
-    }
-});
-
-privacyDeclineBtn.on('click', function() {
-    privacyModal.fadeOut(300);
-    pendingContactAction = null;
-    setTimeout(() => {
-        alert('You need to accept the Privacy Policy to contact us. Your privacy and data protection are important to us.');
-    }, 300);
-});
-
-privacyCloseBtn.on('click', function() {
-    privacyModal.fadeOut(300);
-    pendingContactAction = null;
-});
-
-privacyModal.on('click', function(e) {
-    if (e.target === this) {
-        privacyModal.fadeOut(300);
-        pendingContactAction = null;
-    }
-});
-
-$(document).ready(function() {
-    const consentDate = localStorage.getItem('privacyConsentDate');
-    const consent = localStorage.getItem('privacyConsent');
-
-    if (consent === 'accepted' && consentDate) {
-        const consentTimestamp = new Date(consentDate);
-        const twelveMonthsAgo = new Date();
-        twelveMonthsAgo.setMonth(twelveMonthsAgo.getMonth() - 12);
-
-        if (consentTimestamp > twelveMonthsAgo) {
-            privacyContactLinks.off('click').on('click', function(e) {
-                const contactType = $(this).data('contact-type');
-                trackFacebookLead(contactType);
-                return true;
-            });
-        }
-    }
+// Contact links (WhatsApp / email) open normally; we just record the lead.
+// No consent gate: replying to an enquiry doesn't need consent under UK GDPR,
+// and the privacy notice is shown next to each form / button instead.
+$('.contact-track-link').on('click', function() {
+    trackFacebookLead($(this).data('contact-type'));
 });
 
 // Modal elements
@@ -891,7 +809,13 @@ function submitQuizBooking() {
         hasCodingExperience: userAnswers.hasCodingExp ? 'Yes' : 'No',
         interest: userAnswers.interest || 'N/A',
         submissionDate: new Date().toISOString(),
-        sendCourseRecommendation: false
+        sendCourseRecommendation: false,
+        // Marketing consent record (UK GDPR Art. 7(1) / PECR): only add to
+        // marketing emails in MailerLite when marketingConsent is true.
+        marketingConsent: $('#quizMarketingConsent').is(':checked'),
+        marketingConsentText: $('#quizMarketingConsent').is(':checked')
+            ? 'Yes, please send me occasional coding tips, news and offers by email.' : '',
+        privacyPolicyVersion: '2026-11-19'
     };
 
     // Open calendar immediately (before async fetch) to avoid popup blocker
@@ -963,25 +887,7 @@ $('#quizBookingForm').on('submit', function(e) {
         return;
     }
 
-    // Check if privacy consent already given (within 12 months)
-    var consent = localStorage.getItem('privacyConsent');
-    var consentDate = localStorage.getItem('privacyConsentDate');
-    if (consent === 'accepted' && consentDate) {
-        var consentTimestamp = new Date(consentDate);
-        var twelveMonthsAgo = new Date();
-        twelveMonthsAgo.setMonth(twelveMonthsAgo.getMonth() - 12);
-        if (consentTimestamp > twelveMonthsAgo) {
-            submitQuizBooking();
-            return;
-        }
-    }
-
-    // Show privacy modal — submit on accept
-    pendingContactAction = { type: 'quiz_booking', submitForm: true };
-    privacyModal.fadeIn(300);
-    privacyCheckbox.prop('checked', false);
-    privacyAcceptBtn.prop('disabled', true);
-    $('.privacy-modal-body').scrollTop(0);
+    submitQuizBooking();
 });
 
 }

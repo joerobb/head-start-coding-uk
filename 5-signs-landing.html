@@ -4,7 +4,8 @@
     <meta charset="utf-8">
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HR4S0H22GE"></script>
+    <!-- Cookie consent: Google Analytics + Meta Pixel only load after opt-in -->
+    <script src="js/cookie-consent.js?v=2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -248,9 +249,6 @@
         fbq('init', '719206096806149');
         fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=719206096806149&ev=PageView&noscript=1"
-    /></noscript>
     <!-- End Meta Pixel Code -->
         <script type="application/ld+json">
         {
@@ -328,13 +326,18 @@
                                     <div class="invalid-feedback"></div>
                                 </div>
 
+                                <div class="form-group form-check text-start small">
+                                    <input class="form-check-input" type="checkbox" id="marketingConsent" name="marketingConsent">
+                                    <label class="form-check-label" for="marketingConsent">Yes, please also send me occasional coding tips, news and offers by email. <span class="text-muted">(Optional &ndash; unsubscribe any time.)</span></label>
+                                </div>
+
                                 <button type="submit" class="submit-btn" id="submitBtn">
                                     <div class="spinner" id="spinner"></div>
                                     <span id="submitText"><i class="fas fa-paper-plane me-2"></i>Send Me the 5 Signs</span>
                                 </button>
 
                                 <p class="text-center text-muted small mt-3 mb-0">
-                                    <i class="fas fa-lock me-1"></i>We respect your privacy. Unsubscribe anytime.
+                                    <i class="fas fa-lock me-1"></i>For parents and carers. We&rsquo;ll email you the free guide &ndash; see our <a href="privacy-policy.html">Privacy Policy</a> for how we use your details.
                                 </p>
                             </form>
                         </div>
@@ -469,7 +472,7 @@
             <div class="container py-5 px-lg-5">
                 <div class="row g-5">
                     <div class="col-lg-12 text-center">
-                        <p class="text-white mb-0">Questions? Email us at <a href="mailto:hello@headstartcoding.co.uk" class="text-secondary">hello@headstartcoding.co.uk</a></p>
+                        <p class="text-white mb-0">Questions? Email us at <a href="mailto:hello@headstartcoding.co.uk" class="text-secondary">hello@headstartcoding.co.uk</a> <span class="mx-1">|</span> <a href="privacy-policy.html" class="text-secondary">Privacy Policy</a> <span class="mx-1">|</span> <a href="#" class="text-secondary" data-cookie-settings>Cookie Settings</a></p>
                     </div>
                 </div>
             </div>
@@ -545,7 +548,13 @@
                     parentEmail: document.getElementById('parentEmail').value.trim(),
                     leadMagnet: '5 Signs PDF',
                     submissionDate: new Date().toISOString(),
-                    source: '5-signs-landing'
+                    source: '5-signs-landing',
+                    // Marketing consent record (UK GDPR Art. 7(1) / PECR): only add to
+                    // marketing emails in MailerLite when marketingConsent is true.
+                    marketingConsent: document.getElementById('marketingConsent').checked,
+                    marketingConsentText: document.getElementById('marketingConsent').checked
+                        ? 'Yes, please also send me occasional coding tips, news and offers by email.' : '',
+                    privacyPolicyVersion: '2026-11-19'
                 };
 
                 try {

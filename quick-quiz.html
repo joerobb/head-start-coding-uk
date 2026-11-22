@@ -7,7 +7,8 @@
     <meta charset="utf-8">
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HR4S0H22GE"></script>
+    <!-- Cookie consent: Google Analytics + Meta Pixel only load after opt-in -->
+    <script src="js/cookie-consent.js?v=2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -66,9 +67,6 @@
         fbq('init', '719206096806149');
         fbq('track', 'PageView');
     </script>
-
-    <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=719206096806149&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
 </head>
 
@@ -97,74 +95,6 @@
                 <div class="row g-5 align-items-center intro-container">
                     <div id="fireworks-container"></div>
                     
-                    <!-- Privacy Policy Modal -->
-                    <div id="privacy-modal" class="privacy-modal">
-                        <div class="privacy-modal-overlay"></div>
-                        <div class="privacy-modal-content">
-                            <div class="privacy-modal-header">
-                                <h2>Privacy Policy</h2>
-                                <span class="privacy-close">&times;</span>
-                            </div>
-                            <div class="privacy-modal-body">
-                                <h3>Information We Collect</h3>
-                                <p>We collect personal information that you voluntarily provide to us when you contact us about our coding courses, including:</p>
-                                <ul>
-                                    <li>Your name and contact details (email address, phone number)</li>
-                                    <li>Your child's name and age</li>
-                                    <li>Information about your child's interests and experience with technology</li>
-                                    <li>Any special requirements or preferences for lessons</li>
-                                </ul>
-
-                                <h3>How We Use Your Information</h3>
-                                <p>We use the information we collect to:</p>
-                                <ul>
-                                    <li>Provide information about our coding courses</li>
-                                    <li>Schedule and conduct coding lessons</li>
-                                    <li>Communicate with you about your child's progress</li>
-                                    <li>Send you updates about our services (with your consent)</li>
-                                    <li>Improve our educational programs</li>
-                                </ul>
-
-                                <h3>Information Sharing</h3>
-                                <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy. We may share information with:</p>
-                                <ul>
-                                    <li>Our qualified tutors for lesson delivery purposes</li>
-                                    <li>Service providers who assist us in operating our website and conducting our business</li>
-                                    <li>Law enforcement or regulatory authorities when required by law</li>
-                                </ul>
-
-                                <h3>Data Security</h3>
-                                <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
-
-                                <h3>Your Rights</h3>
-                                <p>Under GDPR, you have the right to:</p>
-                                <ul>
-                                    <li>Access your personal data</li>
-                                    <li>Correct inaccurate personal data</li>
-                                    <li>Request deletion of your personal data</li>
-                                    <li>Object to processing of your personal data</li>
-                                    <li>Request data portability</li>
-                                    <li>Withdraw consent at any time</li>
-                                </ul>
-
-                                <h3>Contact Us</h3>
-                                <p>If you have any questions about this Privacy Policy, please contact us at hello@headstartcoding.co.uk</p>
-
-                                <div class="privacy-consent">
-                                    <label class="privacy-checkbox-container">
-                                        <input type="checkbox" id="privacy-agreement">
-                                        <span class="privacy-checkmark"></span>
-                                        I have read and agree to the Privacy Policy and consent to the collection and use of my personal information as described above.
-                                    </label>
-                                </div>
-
-                                <div class="privacy-modal-footer">
-                                    <button id="privacy-decline" class="privacy-btn privacy-btn-secondary">Decline</button>
-                                    <button id="privacy-accept" class="privacy-btn privacy-btn-primary" disabled>Accept & Continue</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     
                     <!-- Overlay -->
                     <div class="modal-overlay">
@@ -398,12 +328,12 @@
                                                         <a href="https://wa.me/447572592298?text=Hi%2C%20I%20am%20interested%20in%20learning%20more%20about%20your%20coding%20lessons!"
                                                            target="_blank"
                                                            rel="noopener noreferrer"
-                                                           class="quiz-whatsapp-btn privacy-contact-link"
+                                                           class="quiz-whatsapp-btn contact-track-link"
                                                            data-contact-type="whatsapp">
                                                             <i class="fab fa-whatsapp me-2"></i>WhatsApp Us
                                                         </a>
                                                         <a href="mailto:hello@headstartcoding.co.uk?subject=Coding%20lessons%20enquiry"
-                                                           class="quiz-email-btn privacy-contact-link"
+                                                           class="quiz-email-btn contact-track-link"
                                                            data-contact-type="email">
                                                             <i class="fas fa-envelope me-2"></i>Email Us
                                                         </a>

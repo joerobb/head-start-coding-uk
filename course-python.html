@@ -5,7 +5,8 @@
     <meta charset="utf-8">
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HR4S0H22GE"></script>
+    <!-- Cookie consent: Google Analytics + Meta Pixel only load after opt-in -->
+    <script src="js/cookie-consent.js?v=2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -308,9 +309,6 @@
         fbq('init', '719206096806149');
         fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=719206096806149&ev=PageView&noscript=1"
-    /></noscript>
     <!-- End Meta Pixel Code -->
     <script type="application/ld+json">
     {
@@ -658,11 +656,18 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-12">
+                                        <div class="form-check text-start">
+                                            <input class="form-check-input" type="checkbox" id="marketing-consent" name="marketing-consent" value="Yes - send me occasional coding tips, news and offers by email">
+                                            <label class="form-check-label small" for="marketing-consent">Yes, please send me occasional coding tips, news and offers by email. <span class="text-muted">(Optional &ndash; unsubscribe any time.)</span></label>
+                                        </div>
+                                    </div>
                                     <div class="col-12 text-center">
-                                        <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 py-3 privacy-contact-link" data-contact-type="form">
+                                        <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 py-3">
                                             <i class="fas fa-paper-plane me-2"></i>
                                             Send Message
                                         </button>
+                                        <p class="small text-muted mt-3 mb-0">This form is for parents and carers. We&rsquo;ll only use your details to reply to your enquiry. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
                                         <p class="text-muted mt-3 small">
                                             <i class="fas fa-shield-check text-success me-1"></i>
                                             We'll aim to respond within 24 hours and never share your details
@@ -764,7 +769,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-8 text-center text-md-start mb-3 mb-md-0">
                             <div class="copyright-text">
-                                &copy; <script>document.write(new Date().getFullYear())</script> <a class="text-secondary" href="index.html">Head Start Coding</a>. All Rights Reserved.
+                                &copy; <script>document.write(new Date().getFullYear())</script> <a class="text-secondary" href="index.html">Head Start Coding</a>. All Rights Reserved. <span class="mx-1">|</span> <a class="text-secondary" href="privacy-policy.html">Privacy Policy</a> <span class="mx-1">|</span> <a class="text-secondary" href="#" data-cookie-settings>Cookie Settings</a>
                             </div>
                         </div>
                         <div class="col-md-4 text-center text-md-end">
