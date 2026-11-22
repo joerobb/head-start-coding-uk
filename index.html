@@ -1273,6 +1273,8 @@
         formData.append('first_name', firstName);
         formData.append('email', email);
         // Consent record (UK GDPR Art. 7(1) / PECR)
+        // Subscribing to the newsletter is itself the opt-in, so this is always true
+        formData.append('marketingConsent', 'true');
         formData.append('consent_text', 'By subscribing you agree to receive our email newsletter with coding tips, news and offers.');
         formData.append('consent_date', new Date().toISOString());
         formData.append('source', 'homepage-newsletter');
